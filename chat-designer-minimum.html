@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nebula Chat Designer Minimum</title>
+  <title>Nebula: бриф по платному чату</title>
   <style>
     :root {
       --purple: #7b4dff;
@@ -38,7 +38,7 @@
       gap: 12px;
       font-size: 28px;
       font-weight: 800;
-      margin-bottom: 28px;
+      margin-bottom: 18px;
     }
     .dot {
       width: 24px;
@@ -71,6 +71,48 @@
       background: var(--white);
       color: #554d61;
       font-size: 14px;
+    }
+    .panel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 16px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+    .panel-links,
+    .panel-step-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .panel-nav a,
+    .panel-step-links a,
+    .breadcrumbs a {
+      color: var(--purple-dark);
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .panel-nav a {
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+    .panel-nav a.active {
+      color: var(--ink);
+      background: var(--purple-soft);
+    }
+    .breadcrumbs {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .breadcrumbs span {
+      color: var(--ink);
+      font-weight: 800;
     }
     .grid {
       display: grid;
@@ -164,46 +206,60 @@
 <body>
   <main class="page">
     <div class="brand"><span class="dot"></span> NEURO</div>
+    <nav class="panel-nav" aria-label="Навигация по панели">
+      <div class="panel-links">
+        <a href="index.html">Панель</a>
+        <a href="paid-funnel.html#screen-onboarding">Онбординг</a>
+        <a href="paid-funnel.html">Платная воронка</a>
+        <a href="chat-paid-session-mockups.html">Макеты чата</a>
+        <a class="active" href="chat-designer-minimum.html">Бриф по чату</a>
+      </div>
+      <div class="panel-step-links">
+        <a href="chat-paid-session-mockups.html">Назад: макеты чата</a>
+        <a href="index.html">Вперед: панель</a>
+      </div>
+    </nav>
+    <div class="breadcrumbs"><a href="index.html">Панель</a> / <span>Бриф по чату</span></div>
 
     <section class="hero">
       <div>
         <h1>Что реально дорисовать для desktop-чата</h1>
         <p class="lead">Сжатый список для Антона: не переделывать весь messenger, а закрыть только paid-service состояния, без которых платная консультация может сломаться на запуске.</p>
       </div>
-      <div class="note">Source: локальный LK source pack, 11 chat-related exports + запись клиентской paid session от 2025-04-11. Fresh Figma node-level proof заблокирован лимитом Figma MCP.</div>
+      <div class="note">Источник: локальный LK source pack, 11 chat-related exports + запись клиентской paid session от 2025-04-11. Fresh Figma node-level proof был ограничен лимитом Figma MCP.</div>
     </section>
 
     <section class="grid" aria-label="11 deliverables" style="grid-template-columns: repeat(11, 1fr);">
-      <div class="pill"><strong>1</strong>Offer/payment</div>
+      <div class="pill"><strong>1</strong>Офер / оплата</div>
       <div class="pill"><strong>2</strong>Статус платной сессии</div>
       <div class="pill"><strong>3</strong>Вопрос перед чатом</div>
       <div class="pill"><strong>4</strong>Обрыв связи</div>
       <div class="pill"><strong>5</strong>Эксперт недоступен</div>
-      <div class="pill"><strong>6</strong>Connecting/no charge</div>
-      <div class="pill"><strong>7</strong>Low/no credits</div>
-      <div class="pill"><strong>8</strong>Payment retry</div>
-      <div class="pill"><strong>9</strong>Failed send/upload</div>
-      <div class="pill"><strong>10</strong>Ended transcript</div>
-      <div class="pill"><strong>11</strong>Support/refund/report</div>
+      <div class="pill"><strong>6</strong>Подключение / без списания</div>
+      <div class="pill"><strong>7</strong>Мало / нет кредитов</div>
+      <div class="pill"><strong>8</strong>Повтор оплаты</div>
+      <div class="pill"><strong>9</strong>Ошибка отправки</div>
+      <div class="pill"><strong>10</strong>Итог / transcript</div>
+      <div class="pill"><strong>11</strong>Support / возврат / жалоба</div>
     </section>
 
     <section class="section">
       <h2>Уже есть, не просим заново</h2>
       <div class="table">
         <div class="row yes">
-          <div><span class="tag">Covered</span><h3>Базовый messenger</h3></div>
-          <p>Левый список чатов, активный тред, header, date separators, входящие/исходящие сообщения, read/delivered/sending examples.</p>
-          <p>Не надо тратить дизайн-слот на новый shell.</p>
+          <div><span class="tag">Уже есть</span><h3>Базовый messenger</h3></div>
+          <p>Левый список чатов, активный тред, header, разделители дат, входящие/исходящие сообщения, примеры read/delivered/sending.</p>
+          <p>Не надо тратить дизайн-слот на новый каркас чата.</p>
         </div>
         <div class="row yes">
-          <div><span class="tag">Covered</span><h3>Медиа и действия</h3></div>
-          <p>Image grid, video tile, fullscreen video modal, audio messages, reply state, reactions, context menu, saved/search.</p>
-          <p>Нужны только failure states, не полный redesign.</p>
+          <div><span class="tag">Уже есть</span><h3>Медиа и действия</h3></div>
+          <p>Сетка изображений, видео-плитка, fullscreen video modal, audio messages, reply state, reactions, context menu, saved/search.</p>
+          <p>Нужны только failure states, не полный редизайн.</p>
         </div>
         <div class="row yes">
-          <div><span class="tag">Covered</span><h3>Эксперт в контексте</h3></div>
+          <div><span class="tag">Уже есть</span><h3>Эксперт в контексте</h3></div>
           <p>Есть modal/profile card и вариант с expert sidebar.</p>
-          <p>Можно переиспользовать в paid chat flow.</p>
+          <p>Можно переиспользовать в платном chat flow.</p>
         </div>
       </div>
     </section>
@@ -212,117 +268,117 @@
       <h2>Нужно дорисовать для запуска</h2>
       <div class="table">
         <div class="row need">
-          <div><span class="tag">Required</span><h3>1. Офер / оплата / credits</h3></div>
+          <div><span class="tag">Нужно</span><h3>1. Офер / оплата / кредиты</h3></div>
           <ul>
-            <li>selected expert and format</li>
-            <li>package/credit offer</li>
-            <li>price and what user receives</li>
-            <li>Pay / Buy credits / Top up</li>
-            <li>processing, success, failed, pending, cancelled</li>
+            <li>выбранный эксперт и формат консультации</li>
+            <li>пакет / credit offer</li>
+            <li>цена и что пользователь получает</li>
+            <li>оплатить / купить кредиты / пополнить</li>
+            <li>обработка, успех, ошибка, ожидание, отмена</li>
           </ul>
           <p>Пользователь должен понимать, что именно покупает, до старта платного чата.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>2. Статус платной сессии bar</h3></div>
+          <div><span class="tag">Нужно</span><h3>2. Статус платной сессии</h3></div>
           <ul>
-            <li>free preview / paid live / waiting / ended</li>
-            <li>credits or minutes left</li>
-            <li>cost/package label</li>
-            <li>Top up / Continue / End chat CTA</li>
+            <li>free preview / paid live / ожидание / завершено</li>
+            <li>остаток кредитов или минут</li>
+            <li>лейбл стоимости / пакета</li>
+            <li>CTA: пополнить / продолжить / завершить чат</li>
           </ul>
           <p>Главная защита от непонимания оплаты внутри чата.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>3. Вопрос перед чатом</h3></div>
+          <div><span class="tag">Нужно</span><h3>3. Вопрос перед чатом</h3></div>
           <ul>
-            <li>selected expert/topic/package</li>
-            <li>question textarea</li>
-            <li>optional context</li>
-            <li>privacy note and validation</li>
+            <li>выбранный эксперт / тема / пакет</li>
+            <li>поле вопроса</li>
+            <li>необязательный контекст</li>
+            <li>заметка о приватности и валидация</li>
           </ul>
           <p>Без этого у эксперта нет структурированной задачи.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>4. Обрыв связи / bad connection</h3></div>
+          <div><span class="tag">Нужно</span><h3>4. Обрыв связи / плохая связь</h3></div>
           <ul>
-            <li>expert connection lost</li>
-            <li>client connection unstable</li>
-            <li>reconnecting indicator</li>
-            <li>billing paused</li>
-            <li>wait / async / support choices</li>
+            <li>эксперт потерял соединение</li>
+            <li>у клиента нестабильная связь</li>
+            <li>индикатор переподключения</li>
+            <li>списание на паузе</li>
+            <li>выбор: ждать / async / support</li>
           </ul>
           <p>Если у эксперта плохая связь, клиент должен видеть, что услуга защищена и кредиты не списываются молча.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>5. Эксперт недоступен / delayed</h3></div>
+          <div><span class="tag">Нужно</span><h3>5. Эксперт недоступен / задерживается</h3></div>
           <ul>
-            <li>offline/busy after selection</li>
-            <li>available alternative experts</li>
-            <li>free-minute/bonus offer if used</li>
-            <li>ETA or waiting state</li>
-            <li>send async / choose another expert</li>
-            <li>refund/support hint if fulfillment fails</li>
+            <li>offline/busy после выбора</li>
+            <li>доступные альтернативные эксперты</li>
+            <li>free-minute/bonus offer, если используется</li>
+            <li>ETA или состояние ожидания</li>
+            <li>отправить async / выбрать другого эксперта</li>
+            <li>подсказка по refund/support, если услуга не исполнена</li>
           </ul>
           <p>Нельзя строить запуск на допущении, что эксперт всегда online.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>6. Connecting to expert / no-charge progress</h3></div>
+          <div><span class="tag">Нужно</span><h3>6. Подключение к эксперту / без списания</h3></div>
           <ul>
-            <li>selected expert</li>
-            <li>connection progress</li>
-            <li>expected wait, e.g. 15-20 seconds if true</li>
-            <li>explicit no-charge during connection</li>
-            <li>keep waiting / choose another expert / support fallback</li>
+            <li>выбранный эксперт</li>
+            <li>progress подключения</li>
+            <li>ожидаемое время, например 15-20 секунд, если это правда</li>
+            <li>явно: во время подключения списания нет</li>
+            <li>ждать / выбрать другого эксперта / support fallback</li>
           </ul>
           <p>Запись показывает это как отдельный trust state: клиент не должен думать, что его уже тарифицируют во время подключения.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>7. Low credits / no credits</h3></div>
+          <div><span class="tag">Нужно</span><h3>7. Мало кредитов / нет кредитов</h3></div>
           <ul>
-            <li>low balance warning</li>
-            <li>session stopped state</li>
-            <li>top up and continue</li>
-            <li>end and save transcript</li>
-            <li>auto-refill offer with skip/standard payment</li>
+            <li>предупреждение о низком балансе</li>
+            <li>состояние остановленной сессии</li>
+            <li>пополнить и продолжить</li>
+            <li>завершить и сохранить transcript</li>
+            <li>auto-refill offer с пропуском / обычной оплатой</li>
           </ul>
-          <p>Самый критичный interruption в paid chat.</p>
+          <p>Самое критичное прерывание в платном чате.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>8. Ошибка оплаты / retry another method</h3></div>
+          <div><span class="tag">Нужно</span><h3>8. Ошибка оплаты / другой способ</h3></div>
           <ul>
-            <li>payment failed message</li>
-            <li>selected package/order summary</li>
-            <li>try another method</li>
-            <li>choose another package</li>
-            <li>safe return to chat or support</li>
+            <li>сообщение, что оплата не прошла</li>
+            <li>выбранный пакет / summary заказа</li>
+            <li>попробовать другой способ</li>
+            <li>выбрать другой пакет</li>
+            <li>безопасный возврат в чат или support</li>
           </ul>
           <p>Это revenue-critical state: покупатель не должен застрять на продолжении консультации.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>9. Failed send/upload</h3></div>
+          <div><span class="tag">Нужно</span><h3>9. Ошибка отправки / загрузки</h3></div>
           <ul>
-            <li>message sending/failed/retry</li>
-            <li>attachment uploading/failed/retry/remove</li>
-            <li>unsupported file</li>
+            <li>сообщение отправляется / ошибка / повтор</li>
+            <li>вложение загружается / ошибка / повтор / удалить</li>
+            <li>неподдерживаемый файл</li>
           </ul>
-          <p>Достаточно component state set, не отдельные большие страницы.</p>
+          <p>Достаточно набора component states, не отдельные большие страницы.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>10. Ended consultation / transcript</h3></div>
+          <div><span class="tag">Нужно</span><h3>10. Консультация завершена / transcript</h3></div>
           <ul>
-            <li>consultation ended</li>
-            <li>transcript saved</li>
-            <li>question summary and final answer</li>
-            <li>follow-up, rating, save/bookmark</li>
+            <li>консультация завершена</li>
+            <li>transcript сохранен</li>
+            <li>summary вопроса и финальный ответ</li>
+            <li>follow-up, rating, сохранить/bookmark</li>
           </ul>
           <p>Закрывает платное обещание и создает следующий заказ.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>11. Support/refund/report</h3></div>
+          <div><span class="tag">Нужно</span><h3>11. Support / возврат / жалоба</h3></div>
           <ul>
-            <li>report message/expert</li>
-            <li>request help/refund</li>
-            <li>submitted/in review/resolved</li>
+            <li>пожаловаться на сообщение / эксперта</li>
+            <li>запросить помощь / возврат</li>
+            <li>отправлено / на рассмотрении / решено</li>
           </ul>
           <p>Нужен понятный safety/support path внутри платного чата.</p>
         </div>
@@ -333,20 +389,20 @@
       <h2>Не просим сейчас</h2>
       <div class="table">
         <div class="row skip">
-          <div><span class="tag">Defer</span><h3>Messenger polish</h3></div>
-          <p>Archive/mute/delete, full notification center, full search mechanics, edited/deleted-for-everyone messages, deep saved-message management.</p>
-          <p>Не блокирует первый paid consultation launch.</p>
+          <div><span class="tag">Позже</span><h3>Полировка messenger</h3></div>
+          <p>Archive/mute/delete, полноценный notification center, полная механика поиска, edited/deleted-for-everyone messages, глубокое управление saved messages.</p>
+          <p>Не блокирует первый запуск платной консультации.</p>
         </div>
         <div class="row skip">
-          <div><span class="tag">Defer</span><h3>Complex extras</h3></div>
-          <p>Scheduling flow, advanced moderation copy, complex media gallery, full voice recording lifecycle if voice is not MVP.</p>
+          <div><span class="tag">Позже</span><h3>Сложные дополнительные сценарии</h3></div>
+          <p>Scheduling flow, advanced moderation copy, сложная media gallery, полный voice recording lifecycle, если голос не входит в MVP.</p>
           <p>Можно вернуться после MVP-flow.</p>
         </div>
       </div>
     </section>
 
     <section class="copybox">
-      <p>Короткий brief Антону: “Базовый desktop chat уже есть. Не редизайним весь messenger. Нужно дорисовать только paid-service states: offer/payment/credits, session status, question intake, connecting to expert with no-charge progress, expert connection lost/bad connection, expert busy/unavailable fallback with alternative experts, low/no credits top-up, failed payment/retry, failed send/upload, ended transcript, support/refund/report.”</p>
+      <p>Короткий бриф Антону: “Базовый desktop-чат уже есть. Не редизайним весь messenger. Нужно дорисовать только состояния платной услуги: офер/оплата/кредиты, статус сессии, вопрос перед чатом, подключение к эксперту без списания, обрыв связи или плохая связь, эксперт занят/недоступен с альтернативными экспертами, мало/нет кредитов и пополнение, ошибка оплаты и повтор, ошибка отправки/загрузки, завершенный transcript, support/возврат/жалоба.”</p>
     </section>
     <section class="copybox">
       <p>Кликабельные HTML-макеты этих состояний: <a href="chat-paid-session-mockups.html">chat-paid-session-mockups.html</a></p>

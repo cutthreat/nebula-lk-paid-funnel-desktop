@@ -43,7 +43,7 @@
       gap: 12px;
       font-size: 28px;
       font-weight: 800;
-      margin-bottom: 30px;
+      margin-bottom: 18px;
     }
 
     .dot {
@@ -108,6 +108,55 @@
     .button.primary {
       color: #fff;
       background: var(--purple-dark);
+    }
+
+    .panel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 16px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .panel-links,
+    .panel-step-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .panel-nav a,
+    .panel-step-links a,
+    .breadcrumbs a {
+      color: var(--purple-dark);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .panel-nav a {
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .panel-nav a.active {
+      color: var(--ink);
+      background: var(--purple-soft);
+    }
+
+    .breadcrumbs {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .breadcrumbs span {
+      color: var(--ink);
+      font-weight: 800;
     }
 
     .section {
@@ -201,14 +250,6 @@
       font-size: 14px;
     }
 
-    .embed {
-      width: 100%;
-      height: 620px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-
     .footer-note {
       color: var(--muted);
       font-size: 14px;
@@ -219,6 +260,19 @@
 <body>
   <main class="page">
     <div class="brand"><span class="dot"></span> NEURO</div>
+    <nav class="panel-nav" aria-label="Навигация по панели">
+      <div class="panel-links">
+        <a class="active" href="index.html">Панель</a>
+        <a href="paid-funnel.html#screen-onboarding">Онбординг</a>
+        <a href="paid-funnel.html">Платная воронка</a>
+        <a href="chat-paid-session-mockups.html">Макеты чата</a>
+        <a href="chat-designer-minimum.html">Бриф по чату</a>
+      </div>
+      <div class="panel-step-links">
+        <a href="paid-funnel.html#screen-onboarding">Вперед: онбординг</a>
+      </div>
+    </nav>
+    <div class="breadcrumbs"><span>Панель</span></div>
 
     <section class="hero">
       <div>
@@ -238,6 +292,21 @@
       <a class="button" href="paid-funnel.html#screen-chat">Платный чат</a>
       <a class="button" href="paid-funnel.html#screen-result">Итог / transcript</a>
     </nav>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Полный кликабельный макет онбординга</h2>
+          <p>Отдельная точка входа в уже готовый рабочий прототип: после регистрации пользователь отвечает на несколько вопросов, получает понятный контекст и переходит к матчингу экспертов.</p>
+        </div>
+        <a class="button primary" href="paid-funnel.html#screen-onboarding">Открыть онбординг</a>
+      </div>
+      <div class="critical">
+        <div><strong>Сбор намерения</strong><span>Любовь, карьера, личный путь и уточняющие ответы до покупки.</span></div>
+        <div><strong>Подготовка к покупке</strong><span>Пользователь не попадает сразу в каталог, а получает следующий логичный шаг.</span></div>
+        <div><strong>Переход к матчингу</strong><span>После онбординга показываем экспертов, которые подходят под запрос.</span></div>
+      </div>
+    </section>
 
     <section class="section">
       <div class="section-head">
@@ -299,11 +368,16 @@
     <section class="section">
       <div class="section-head">
         <div>
-          <h2>Превью брифа по чату</h2>
-          <p>Встроенная версия списка для быстрого просмотра на этой же панели.</p>
+          <h2>Бриф по чату без встроенной прокрутки</h2>
+          <p>Превью заменено на короткую выжимку. Полный список открывается отдельной страницей, чтобы в панели не было вертикальной и горизонтальной прокрутки внутри iframe.</p>
         </div>
+        <a class="button" href="chat-designer-minimum.html">Открыть полный бриф</a>
       </div>
-      <iframe class="embed" src="chat-designer-minimum.html" title="Nebula chat designer minimum"></iframe>
+      <div class="critical">
+        <div><strong>P0 для дизайнера</strong><span>Офер, оплата, статус сессии, подключение, обрыв связи, low credits, transcript.</span></div>
+        <div><strong>Что не трогаем</strong><span>Базовый messenger shell, медиа, реакции, поиск, saved messages уже есть в макетах.</span></div>
+        <div><strong>Как смотреть</strong><span>Полные состояния собраны на странице макетов платного чата и доступны из навигации панели.</span></div>
+      </div>
     </section>
   </main>
 </body>

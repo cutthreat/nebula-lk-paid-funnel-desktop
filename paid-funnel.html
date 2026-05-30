@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nebula LK paid funnel desktop mockups</title>
+  <title>Nebula: платная воронка ЛК desktop</title>
   <style>
     :root {
       --purple: #7c4dff;
@@ -91,6 +91,40 @@
       padding: 8px 13px;
       color: var(--purple-dark);
       font-weight: 700;
+    }
+
+    .breadcrumbs {
+      max-width: 1360px;
+      margin: 0 auto 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .breadcrumbs a,
+    .panel-step-links a {
+      color: var(--purple-dark);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .breadcrumbs span {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .panel-step-links {
+      max-width: 1360px;
+      margin: 0 auto 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .panel-step-links a {
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 8px;
+      padding: 9px 12px;
     }
 
     .board-head {
@@ -730,30 +764,37 @@
   <div class="page">
     <header class="topbar">
       <div class="brand"><span class="brand-dot"></span> NEURO</div>
-      <nav class="nav">
-        <a href="#">Psychic</a>
-        <a href="#">Favorite</a>
-        <a class="active" href="#">Chatroom</a>
-        <a href="#">Horoscope</a>
+      <nav class="nav" aria-label="Навигация по панели">
+        <a href="index.html">Панель</a>
+        <a class="active" href="paid-funnel.html">Платная воронка</a>
+        <a href="chat-paid-session-mockups.html">Макеты чата</a>
+        <a href="chat-designer-minimum.html">Бриф по чату</a>
       </nav>
       <div class="user-pill">VI</div>
     </header>
+    <div class="breadcrumbs"><a href="index.html">Панель</a> / <span>Платная воронка</span></div>
+    <div class="panel-step-links" aria-label="Переходы">
+      <a href="index.html">Назад: панель</a>
+      <a href="paid-funnel.html#screen-onboarding">Онбординг</a>
+      <a href="paid-funnel.html#screen-match">Результат матчинга</a>
+      <a href="chat-paid-session-mockups.html">Вперед: макеты чата</a>
+    </div>
 
     <section class="board-head">
       <div>
-        <h1>Desktop LK paid consultation mockups</h1>
+        <h1>Desktop-макеты платной консультации в ЛК</h1>
         <p class="lead">Набросок того, что нужно дорисовать в личном кабинете, чтобы пользователь после регистрации шел к покупке и получению консультации, а не просто в каталог и чат.</p>
       </div>
-      <div class="scope-note">Scope: только desktop. Это product mockup для дизайнера, не pixel-perfect Figma acceptance.</div>
+      <div class="scope-note">Фокус: только desktop. Это продуктовый HTML-макет для дизайнера, не pixel-perfect Figma acceptance.</div>
     </section>
 
     <nav class="tabs" aria-label="Mockup screens">
-      <button class="tab active" data-tab="screen-onboarding"><strong>1. Onboarding</strong><span>Intent capture</span></button>
-      <button class="tab" data-tab="screen-match"><strong>2. Match result</strong><span>Advisor shortlist</span></button>
-      <button class="tab" data-tab="screen-checkout"><strong>3. Package</strong><span>Checkout contract</span></button>
-      <button class="tab" data-tab="screen-question"><strong>4. Question</strong><span>Structured intake</span></button>
-      <button class="tab" data-tab="screen-chat"><strong>5. Paid chat</strong><span>Session states</span></button>
-      <button class="tab" data-tab="screen-result"><strong>6. Result</strong><span>Async + transcript</span></button>
+      <button class="tab active" data-tab="screen-onboarding"><strong>1. Онбординг</strong><span>Сбор намерения</span></button>
+      <button class="tab" data-tab="screen-match"><strong>2. Матчинг</strong><span>Подбор экспертов</span></button>
+      <button class="tab" data-tab="screen-checkout"><strong>3. Пакет</strong><span>Офер и оплата</span></button>
+      <button class="tab" data-tab="screen-question"><strong>4. Вопрос</strong><span>Контекст до чата</span></button>
+      <button class="tab" data-tab="screen-chat"><strong>5. Платный чат</strong><span>Состояния сессии</span></button>
+      <button class="tab" data-tab="screen-result"><strong>6. Итог</strong><span>Transcript и follow-up</span></button>
     </nav>
 
     <section id="screen-onboarding" class="mockup active">
@@ -761,35 +802,35 @@
         <div class="profile-mini">
           <img src="img/avatar-3.png" alt="">
           <h2>Victoriya</h2>
-          <p class="muted">Taurus profile</p>
+          <p class="muted">Профиль: Taurus</p>
         </div>
         <nav class="side-menu">
-          <a class="active" href="#">Profile</a>
-          <a href="#">Psychics</a>
-          <a href="#">Chatroom</a>
-          <a href="#">Favorite</a>
-          <a href="#">Horoscope</a>
-          <a href="#">Setting</a>
+          <a class="active" href="#">Профиль</a>
+          <a href="#">Эксперты</a>
+          <a href="#">Чат</a>
+          <a href="#">Избранное</a>
+          <a href="#">Гороскоп</a>
+          <a href="#">Настройки</a>
         </nav>
         <div class="balance">
-          <strong>Balance: 0 credits</strong>
-          <button class="primary" data-go="screen-checkout">Refill credits</button>
+          <strong>Баланс: 0 кредитов</strong>
+          <button class="primary" data-go="screen-checkout">Пополнить кредиты</button>
         </div>
       </aside>
       <main class="main">
         <div class="workspace">
           <div class="section-title">
-            <h2>Your zodiac profile</h2>
-            <span class="pill">After registration</span>
+            <h2>Ваш zodiac-профиль</h2>
+            <span class="pill">После регистрации</span>
           </div>
           <div class="grid-2">
             <div class="panel">
-              <h3>Taurus daily horoscope</h3>
-              <p class="muted">The cabinet content stays visible, but the first commercial action is guided.</p>
+              <h3>Ежедневный гороскоп Taurus</h3>
+              <p class="muted">Контент ЛК остается видимым, но первое коммерческое действие направлено.</p>
             </div>
             <div class="panel">
-              <h3>Recommended psychics</h3>
-              <p class="muted">Do not drop the user into a generic catalogue before asking what they want.</p>
+              <h3>Рекомендованные эксперты</h3>
+              <p class="muted">Не отправляем пользователя в общий каталог до того, как поняли его запрос.</p>
             </div>
           </div>
           <div class="modal-backdrop">
@@ -797,35 +838,35 @@
               <div class="progress"><span class="done"></span><span class="done"></span><span class="done"></span><span></span><span></span></div>
               <div class="section-title">
                 <div>
-                  <h2>What do you want clarity about?</h2>
-                  <p class="muted">This is the production Figma version of the HTML onboarding prototype.</p>
+                  <h2>В чем вы хотите получить ясность?</h2>
+                  <p class="muted">Это production-логика Figma-версии для HTML-прототипа онбординга.</p>
                 </div>
                 <span class="pill">P0-1</span>
               </div>
               <div class="choice-grid">
-                <div class="choice active"><strong>Love situation</strong><br><span class="muted">Relationship, breakup, compatibility</span></div>
-                <div class="choice"><strong>Career decision</strong><br><span class="muted">Work, money, next step</span></div>
-                <div class="choice"><strong>Personal path</strong><br><span class="muted">Energy, purpose, confidence</span></div>
+                <div class="choice active"><strong>Любовная ситуация</strong><br><span class="muted">Отношения, расставание, совместимость</span></div>
+                <div class="choice"><strong>Решение по карьере</strong><br><span class="muted">Работа, деньги, следующий шаг</span></div>
+                <div class="choice"><strong>Личный путь</strong><br><span class="muted">Энергия, предназначение, уверенность</span></div>
               </div>
               <div class="grid-2">
                 <div class="panel">
-                  <strong>Context clarification</strong>
-                  <p class="muted">Relationship status, urgency, preferred reading type, optional birth data.</p>
+                  <strong>Уточнение контекста</strong>
+                  <p class="muted">Статус отношений, срочность, предпочитаемый тип reading, данные рождения по желанию.</p>
                 </div>
                 <div class="panel">
-                  <strong>Question draft</strong>
+                  <strong>Черновик вопроса</strong>
                   <p class="muted">“Will my current partner and I stay together?”</p>
                 </div>
               </div>
               <div class="legend">
-                <span>Needs states: empty</span>
-                <span>validation</span>
-                <span>skip optional data</span>
-                <span>back/close confirmation</span>
-                <span>handoff to match result</span>
+                <span>Состояние: пусто</span>
+                <span>Валидация</span>
+                <span>Пропуск необязательных данных</span>
+                <span>Подтверждение назад/закрыть</span>
+                <span>Переход к матчингу</span>
               </div>
               <div style="display:flex;justify-content:flex-end;margin-top:18px;">
-                <button class="primary" data-go="screen-match">Show matched advisors</button>
+                <button class="primary" data-go="screen-match">Показать подходящих экспертов</button>
               </div>
             </div>
           </div>
@@ -838,23 +879,23 @@
         <div class="profile-mini">
           <img src="img/avatar-3.png" alt="">
           <h2>Victoriya</h2>
-          <p class="muted">Love situation selected</p>
+          <p class="muted">Выбрана любовная ситуация</p>
         </div>
         <nav class="side-menu">
-          <a href="#">Profile</a>
-          <a class="active" href="#">Psychics</a>
-          <a href="#">Chatroom</a>
-          <a href="#">Favorite</a>
-          <a href="#">Horoscope</a>
-          <a href="#">Setting</a>
+          <a href="#">Профиль</a>
+          <a class="active" href="#">Эксперты</a>
+          <a href="#">Чат</a>
+          <a href="#">Избранное</a>
+          <a href="#">Гороскоп</a>
+          <a href="#">Настройки</a>
         </nav>
       </aside>
       <main class="main">
         <div class="workspace">
           <div class="section-title">
             <div>
-              <h2>Your matched advisors</h2>
-              <p class="muted">Show why each expert fits the user’s intent, not just a generic rating list.</p>
+              <h2>Результат матчинга экспертов</h2>
+              <p class="muted">Показываем, почему каждый эксперт подходит под запрос пользователя, а не просто общий список рейтинга.</p>
             </div>
             <span class="pill">P0-2</span>
           </div>
@@ -864,45 +905,45 @@
                 <img src="img/avatar-1.png" alt="">
                 <div>
                   <h3>Veronika</h3>
-                  <div><strong>4.8</strong> <span class="muted">1,211 reviews</span></div>
-                  <span class="status online">online</span>
+                  <div><strong>4.8</strong> <span class="muted">1 211 отзывов</span></div>
+                  <span class="status online">онлайн</span>
                 </div>
                 <span class="heart">♡</span>
               </div>
-              <div class="tags"><span>Love</span><span>Tarot</span><span>Compatibility</span><span>Psychic</span></div>
-              <div class="why"><strong>Why matched:</strong> strong love-reading profile, online now, can answer a specific relationship question in live chat.</div>
-              <button class="primary" data-go="screen-checkout">Choose Veronika</button>
+              <div class="tags"><span>Любовь</span><span>Таро</span><span>Совместимость</span><span>Psychic</span></div>
+              <div class="why"><strong>Почему подходит:</strong> сильный профиль по love-reading, сейчас онлайн, может ответить на конкретный вопрос в live-чате.</div>
+              <button class="primary" data-go="screen-checkout">Выбрать Veronika</button>
             </article>
             <article class="advisor-card">
               <div class="advisor-head">
                 <img src="img/avatar-2.png" alt="">
                 <div>
                   <h3>Marina</h3>
-                  <div><strong>4.9</strong> <span class="muted">9,109 reviews</span></div>
-                  <span class="status busy">busy</span>
+                  <div><strong>4.9</strong> <span class="muted">9 109 отзывов</span></div>
+                  <span class="status busy">занята</span>
                 </div>
                 <span class="heart">♡</span>
               </div>
-              <div class="tags"><span>Relationship</span><span>Angel</span><span>Spirituality</span></div>
-              <div class="why"><strong>Why matched:</strong> best for emotional context. Offer async answer if live chat is unavailable.</div>
-              <button class="secondary" data-go="screen-checkout" data-toast="Designer note: busy expert should route to async package instead of live chat.">Send offline question</button>
+              <div class="tags"><span>Отношения</span><span>Ангельские чтения</span><span>Spirituality</span></div>
+              <div class="why"><strong>Почему подходит:</strong> лучше для эмоционального контекста. Если live-чат недоступен, предлагаем async-ответ.</div>
+              <button class="secondary" data-go="screen-checkout" data-toast="Заметка дизайнеру: если эксперт занят, ведем к async-пакету вместо live-чата.">Отправить offline-вопрос</button>
             </article>
             <article class="advisor-card">
               <div class="advisor-head">
                 <img src="img/avatar-3.png" alt="">
                 <div>
                   <h3>Mia Jacomo</h3>
-                  <div><strong>4.7</strong> <span class="muted">752 reviews</span></div>
+                  <div><strong>4.7</strong> <span class="muted">752 отзыва</span></div>
                   <span class="status offline">offline</span>
                 </div>
                 <span class="heart">♡</span>
               </div>
-              <div class="tags"><span>Tarot</span><span>Breakup</span><span>Future</span></div>
-              <div class="why"><strong>Why matched:</strong> good for future-oriented tarot, but should not be the primary live-chat CTA while offline.</div>
-              <button class="secondary" data-toast="Notification state opened: designer should draw notify-me confirmation.">Notify me</button>
+              <div class="tags"><span>Таро</span><span>Расставание</span><span>Будущее</span></div>
+              <div class="why"><strong>Почему подходит:</strong> хороша для future-oriented tarot, но не должна быть основным live-chat CTA, пока offline.</div>
+              <button class="secondary" data-toast="Открыто состояние уведомления: дизайнеру нужно нарисовать подтверждение notify-me.">Уведомить меня</button>
             </article>
           </div>
-          <div class="annotation" style="margin-top:18px;">Designer ask: add reason-for-match copy, online/busy/offline alternatives, package price, and one obvious primary action.</div>
+          <div class="annotation" style="margin-top:18px;">Задача дизайнеру: добавить объяснение матчинга, альтернативы online/busy/offline, цену пакета и одно очевидное основное действие.</div>
         </div>
       </main>
     </section>
@@ -912,54 +953,54 @@
         <div class="profile-mini">
           <img src="img/avatar-3.png" alt="">
           <h2>Victoriya</h2>
-          <p class="muted">Selected: Veronika</p>
+          <p class="muted">Выбрана: Veronika</p>
         </div>
         <nav class="side-menu">
-          <a href="#">Profile</a>
-          <a class="active" href="#">Psychics</a>
-          <a href="#">Chatroom</a>
-          <a href="#">Favorite</a>
-          <a href="#">Horoscope</a>
-          <a href="#">Setting</a>
+          <a href="#">Профиль</a>
+          <a class="active" href="#">Эксперты</a>
+          <a href="#">Чат</a>
+          <a href="#">Избранное</a>
+          <a href="#">Гороскоп</a>
+          <a href="#">Настройки</a>
         </nav>
       </aside>
       <main class="main">
         <div class="workspace">
           <div class="section-title">
             <div>
-              <h2>Choose your first reading</h2>
-              <p class="muted">This is the missing purchase contract inside LK.</p>
+              <h2>Выберите первую консультацию</h2>
+              <p class="muted">Это недостающий договор покупки внутри ЛК: что пользователь покупает, у кого и за что платит.</p>
             </div>
             <span class="pill">P0-3 / P0-4</span>
           </div>
           <div class="offer">
             <div>
-              <div class="package-row active" tabindex="0" data-package="Starter love reading" data-price="45 credits">
+              <div class="package-row active" tabindex="0" data-package="Стартовая love-консультация" data-price="45 кредитов">
                 <div>
-                  <strong>Starter love reading</strong>
-                  <p class="muted">10 minutes live chat with Veronika. Best for one focused relationship question.</p>
+                  <strong>Стартовая love-консультация</strong>
+                  <p class="muted">10 минут live-чата с Veronika. Лучше всего для одного сфокусированного вопроса об отношениях.</p>
                 </div>
-                <div class="price">45 credits</div>
+                <div class="price">45 кредитов</div>
               </div>
-              <div class="package-row" tabindex="0" data-package="Detailed async answer" data-price="39 credits">
+              <div class="package-row" tabindex="0" data-package="Подробный async-ответ" data-price="39 кредитов">
                 <div>
-                  <strong>Detailed async answer</strong>
-                  <p class="muted">Send your question now. Expert prepares a structured answer with ETA.</p>
+                  <strong>Подробный async-ответ</strong>
+                  <p class="muted">Отправьте вопрос сейчас. Эксперт подготовит структурированный ответ с понятным ETA.</p>
                 </div>
-                <div class="price">39 credits</div>
+                <div class="price">39 кредитов</div>
               </div>
-              <div class="package-row" tabindex="0" data-package="Extended session" data-price="99 credits">
+              <div class="package-row" tabindex="0" data-package="Расширенная сессия" data-price="99 кредитов">
                 <div>
-                  <strong>Extended session</strong>
-                  <p class="muted">25 minutes for deeper context and follow-up questions.</p>
+                  <strong>Расширенная сессия</strong>
+                  <p class="muted">25 минут для глубокого контекста и follow-up вопросов.</p>
                 </div>
-                <div class="price">99 credits</div>
+                <div class="price">99 кредитов</div>
               </div>
               <div class="payment-state">
-                <div class="state"><strong>Success</strong><br><span class="muted">go to question</span></div>
-                <div class="state"><strong>Failed</strong><br><span class="muted">retry method</span></div>
-                <div class="state"><strong>Pending</strong><br><span class="muted">do not duplicate</span></div>
-                <div class="state"><strong>No credits</strong><br><span class="muted">top-up offer</span></div>
+                <div class="state"><strong>Успешно</strong><br><span class="muted">переход к вопросу</span></div>
+                <div class="state"><strong>Ошибка</strong><br><span class="muted">повтор / другой способ</span></div>
+                <div class="state"><strong>В обработке</strong><br><span class="muted">не дублировать оплату</span></div>
+                <div class="state"><strong>Нет кредитов</strong><br><span class="muted">предложить top-up</span></div>
               </div>
             </div>
             <aside class="checkout-box">
@@ -967,15 +1008,15 @@
                 <img src="img/avatar-1.png" alt="">
                 <div>
                   <h3 style="margin:0;">Veronika</h3>
-                  <span>Love & relationship expert</span>
+                  <span>Эксперт по любви и отношениям</span>
                 </div>
               </div>
-              <div class="line"><span>Package</span><strong>Starter love reading</strong></div>
-              <div class="line"><span>Question topic</span><strong>Relationship</strong></div>
-              <div class="line"><span>Balance</span><strong>0 credits</strong></div>
-              <div class="line"><span>Due now</span><strong>45 credits</strong></div>
-              <button class="primary" data-go="screen-question" style="background:#ffbd5a;color:#3a236f;">Refill and continue</button>
-              <p style="margin:0;color:#eadfff;">Small trust note: private consultation, support available, refund route shown before payment.</p>
+              <div class="line"><span>Пакет</span><strong>Стартовая love-консультация</strong></div>
+              <div class="line"><span>Тема вопроса</span><strong>Отношения</strong></div>
+              <div class="line"><span>Баланс</span><strong>0 кредитов</strong></div>
+              <div class="line"><span>К оплате сейчас</span><strong>45 кредитов</strong></div>
+              <button class="primary" data-go="screen-question" style="background:#ffbd5a;color:#3a236f;">Пополнить и продолжить</button>
+              <p style="margin:0;color:#eadfff;">Trust note: приватная консультация, поддержка доступна, route возврата показан до оплаты.</p>
             </aside>
           </div>
         </div>
@@ -987,49 +1028,49 @@
         <div class="profile-mini">
           <img src="img/avatar-3.png" alt="">
           <h2>Victoriya</h2>
-          <p class="muted">Payment success</p>
+          <p class="muted">Оплата успешна</p>
         </div>
         <nav class="side-menu">
-          <a href="#">Profile</a>
-          <a href="#">Psychics</a>
-          <a class="active" href="#">Chatroom</a>
-          <a href="#">Favorite</a>
-          <a href="#">Horoscope</a>
-          <a href="#">Setting</a>
+          <a href="#">Профиль</a>
+          <a href="#">Эксперты</a>
+          <a class="active" href="#">Чат</a>
+          <a href="#">Избранное</a>
+          <a href="#">Гороскоп</a>
+          <a href="#">Настройки</a>
         </nav>
       </aside>
       <main class="main">
         <div class="workspace">
           <div class="section-title">
             <div>
-              <h2>Prepare your question</h2>
-              <p class="muted">A paid consultation needs a structured task, not only an empty chat input.</p>
+              <h2>Подготовьте вопрос</h2>
+              <p class="muted">Платной консультации нужен структурированный запрос, а не пустой chat input.</p>
             </div>
             <span class="pill">P0-5</span>
           </div>
           <div class="question-area">
             <div class="panel">
-              <div class="tags" style="margin-bottom:16px;"><span>Love</span><span class="active">Relationship status</span><span>Compatibility</span><span>Future</span><span>Tarot</span></div>
-              <textarea>Will my current partner and I stay together? I want to understand if this relationship has a future and what I should do next.</textarea>
+              <div class="tags" style="margin-bottom:16px;"><span>Любовь</span><span class="active">Статус отношений</span><span>Совместимость</span><span>Будущее</span><span>Таро</span></div>
+              <textarea>Останемся ли мы с текущим партнером вместе? Я хочу понять, есть ли у этих отношений будущее и что мне делать дальше.</textarea>
               <div class="input-row">
-                <input value="Partner name: optional">
-                <input value="Birth date: optional">
+                <input value="Имя партнера: необязательно">
+                <input value="Дата рождения: необязательно">
               </div>
               <div class="legend">
-                <span>Attachment add</span>
-                <span>privacy note</span>
-                <span>edit before send</span>
-                <span>empty/error</span>
-                <span>question too broad</span>
+                <span>Добавить вложение</span>
+                <span>Заметка о приватности</span>
+                <span>Редактировать до отправки</span>
+                <span>Пусто / ошибка</span>
+                <span>Вопрос слишком широкий</span>
               </div>
             </div>
             <aside class="soft-panel">
-              <h3>Your reading setup</h3>
-              <p><strong>Advisor:</strong> Veronika</p>
-              <p><strong>Format:</strong> Live chat, 10 minutes</p>
-              <p><strong>Paid:</strong> 45 credits</p>
-              <p class="muted">The expert receives this context before the paid session starts.</p>
-              <button class="primary" data-go="screen-chat">Send and start chat</button>
+              <h3>Настройки консультации</h3>
+              <p><strong>Эксперт:</strong> Veronika</p>
+              <p><strong>Формат:</strong> live-чат, 10 минут</p>
+              <p><strong>Оплачено:</strong> 45 кредитов</p>
+              <p class="muted">Эксперт получает этот контекст до начала платной сессии.</p>
+              <button class="primary" data-go="screen-chat">Отправить и начать чат</button>
             </aside>
           </div>
         </div>
@@ -1041,15 +1082,15 @@
         <div class="profile-mini">
           <img src="img/avatar-3.png" alt="">
           <h2>Victoriya</h2>
-          <p class="muted">Live session</p>
+          <p class="muted">Live-сессия</p>
         </div>
         <nav class="side-menu">
-          <a href="#">Profile</a>
-          <a href="#">Psychics</a>
-          <a class="active" href="#">Chatroom</a>
-          <a href="#">Favorite</a>
-          <a href="#">Horoscope</a>
-          <a href="#">Setting</a>
+          <a href="#">Профиль</a>
+          <a href="#">Эксперты</a>
+          <a class="active" href="#">Чат</a>
+          <a href="#">Избранное</a>
+          <a href="#">Гороскоп</a>
+          <a href="#">Настройки</a>
         </nav>
       </aside>
       <main class="main">
@@ -1061,38 +1102,38 @@
                   <img src="img/avatar-1.png" alt="" style="width:56px;height:56px;">
                   <div>
                     <h3 style="margin:0;">Veronika</h3>
-                    <span class="status online">live paid chat</span>
+                    <span class="status online">платный live-чат</span>
                   </div>
                 </div>
                 <span class="pill">P0-6</span>
               </div>
               <div class="chat-body">
-                <div class="bubble out">My main question: will my current partner and I stay together?</div>
-                <div class="bubble in">I’m reading your situation now. The strongest signal is not separation, but a decision point that needs a direct conversation.</div>
-                <div class="bubble out">What should I ask him first?</div>
-                <div class="bubble in">Start with what changed between you, not with blame. I’ll pull one more card for timing.</div>
+                <div class="bubble out">Мой главный вопрос: останемся ли мы с текущим партнером вместе?</div>
+                <div class="bubble in">Сейчас читаю вашу ситуацию. Самый сильный сигнал не про расставание, а про точку решения, где нужен прямой разговор.</div>
+                <div class="bubble out">Что мне спросить у него первым?</div>
+                <div class="bubble in">Начните с того, что изменилось между вами, а не с обвинений. Я вытяну еще одну карту по срокам.</div>
               </div>
               <div class="session-bar">
-                <strong>3:42 left</strong>
+                <strong>Осталось 3:42</strong>
                 <div class="meter"><span></span></div>
-                <button class="primary" data-go="screen-checkout">Top up</button>
+                <button class="primary" data-go="screen-checkout">Пополнить</button>
               </div>
             </section>
             <aside class="right-rail">
-              <div class="alert warn"><strong>Low credits state</strong><br>Show before the chat abruptly stops.</div>
-              <div class="alert info"><strong>Waiting state</strong><br>Advisor typing, advisor delayed, user can pause or request async answer.</div>
-              <div class="alert good"><strong>Session ended</strong><br>Show summary, transcript, follow-up CTA, rating.</div>
+              <div class="alert warn"><strong>Мало кредитов</strong><br>Показываем до резкой остановки чата.</div>
+              <div class="alert info"><strong>Ожидание</strong><br>Эксперт печатает, задерживается, пользователь может поставить паузу или запросить async-ответ.</div>
+              <div class="alert good"><strong>Сессия завершена</strong><br>Показываем summary, transcript, follow-up CTA и rating.</div>
               <div class="panel">
-                <h3>States to draw</h3>
+                <h3>Состояния для отрисовки</h3>
                 <div class="legend">
                   <span>free preview</span>
                   <span>paid/live</span>
-                  <span>waiting</span>
-                  <span>typing</span>
-                  <span>low credits</span>
-                  <span>no credits</span>
-                  <span>ended</span>
-                  <span>unavailable</span>
+                  <span>ожидание</span>
+                  <span>печатает</span>
+                  <span>мало кредитов</span>
+                  <span>нет кредитов</span>
+                  <span>завершено</span>
+                  <span>недоступен</span>
                 </div>
               </div>
             </aside>
@@ -1106,57 +1147,57 @@
         <div class="profile-mini">
           <img src="img/avatar-3.png" alt="">
           <h2>Victoriya</h2>
-          <p class="muted">Reading delivered</p>
+          <p class="muted">Ответ доставлен</p>
         </div>
         <nav class="side-menu">
-          <a href="#">Profile</a>
-          <a href="#">Psychics</a>
-          <a class="active" href="#">Chatroom</a>
-          <a href="#">Favorite</a>
-          <a href="#">Horoscope</a>
-          <a href="#">Setting</a>
+          <a href="#">Профиль</a>
+          <a href="#">Эксперты</a>
+          <a class="active" href="#">Чат</a>
+          <a href="#">Избранное</a>
+          <a href="#">Гороскоп</a>
+          <a href="#">Настройки</a>
         </nav>
       </aside>
       <main class="main">
         <div class="workspace">
           <div class="section-title">
             <div>
-              <h2>Your reading result</h2>
-              <p class="muted">This closes the paid promise and creates the next purchase moment.</p>
+              <h2>Результат консультации</h2>
+              <p class="muted">Это закрывает платное обещание и создает следующий момент покупки.</p>
             </div>
             <span class="pill">P0-7 / P0-8 / P0-10</span>
           </div>
           <div class="grid-2">
             <section class="result-card">
-              <h3>Answer from Veronika</h3>
-              <p><strong>Your question:</strong> Will my current partner and I stay together?</p>
-              <p>The reading suggests that the relationship is still active emotionally, but the next two weeks are important. The answer is not to push for certainty, but to ask one direct question about shared plans.</p>
+              <h3>Ответ от Veronika</h3>
+              <p><strong>Ваш вопрос:</strong> Останемся ли мы с текущим партнером вместе?</p>
+              <p>Reading показывает, что отношения эмоционально еще активны, но следующие две недели важны. Решение не в том, чтобы давить на определенность, а в одном прямом вопросе о совместных планах.</p>
               <div class="legend">
-                <span>Save</span>
+                <span>Сохранить</span>
                 <span>Bookmark</span>
-                <span>Rate advisor</span>
-                <span>Continue with Veronika</span>
-                <span>Report issue</span>
+                <span>Оценить эксперта</span>
+                <span>Продолжить с Veronika</span>
+                <span>Сообщить о проблеме</span>
               </div>
               <div style="display:flex;gap:12px;margin-top:18px;">
-                <button class="primary" data-go="screen-checkout">Ask follow-up</button>
-                <button class="secondary" data-toast="Rating state opened: designer should draw rate, skip, report issue and thank-you states.">Rate reading</button>
+                <button class="primary" data-go="screen-checkout">Задать follow-up</button>
+                <button class="secondary" data-toast="Открыто состояние рейтинга: дизайнеру нужно нарисовать оценку, пропуск, жалобу и thank-you state.">Оценить reading</button>
               </div>
             </section>
             <section class="panel">
-              <h3>Async reading lifecycle</h3>
+              <h3>Жизненный цикл async-reading</h3>
               <div class="timeline">
-                <div class="timeline-row"><span class="dot">1</span><div><strong>Submitted</strong><br><span class="muted">Question received, payment locked.</span></div></div>
-                <div class="timeline-row"><span class="dot">2</span><div><strong>Preparing</strong><br><span class="muted">Expert is working, ETA visible.</span></div></div>
-                <div class="timeline-row"><span class="dot">3</span><div><strong>Delayed</strong><br><span class="muted">User sees updated ETA or refund route.</span></div></div>
-                <div class="timeline-row"><span class="dot">4</span><div><strong>Delivered</strong><br><span class="muted">Result, transcript, rating, follow-up.</span></div></div>
+                <div class="timeline-row"><span class="dot">1</span><div><strong>Отправлено</strong><br><span class="muted">Вопрос получен, оплата зафиксирована.</span></div></div>
+                <div class="timeline-row"><span class="dot">2</span><div><strong>Готовится</strong><br><span class="muted">Эксперт работает, ETA виден.</span></div></div>
+                <div class="timeline-row"><span class="dot">3</span><div><strong>Задержка</strong><br><span class="muted">Пользователь видит обновленный ETA или route возврата.</span></div></div>
+                <div class="timeline-row"><span class="dot">4</span><div><strong>Доставлено</strong><br><span class="muted">Результат, transcript, rating, follow-up.</span></div></div>
               </div>
             </section>
           </div>
           <div class="grid-3" style="margin-top:18px;">
-            <div class="alert info"><strong>Support ticket</strong><br>Request help without leaving LK.</div>
-            <div class="alert warn"><strong>Refund request</strong><br>Clear route if answer is delayed/unavailable.</div>
-            <div class="alert good"><strong>Retention CTA</strong><br>Continue with same advisor while context is fresh.</div>
+            <div class="alert info"><strong>Support ticket</strong><br>Запросить помощь, не выходя из ЛК.</div>
+            <div class="alert warn"><strong>Refund request</strong><br>Понятный route, если ответ задержан или недоступен.</div>
+            <div class="alert good"><strong>Retention CTA</strong><br>Продолжить с тем же экспертом, пока контекст свежий.</div>
           </div>
         </div>
       </main>
