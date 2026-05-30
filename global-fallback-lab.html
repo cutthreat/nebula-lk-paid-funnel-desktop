@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nebula LK: глобальная карта fallback-состояний</title>
+  <title>Nebula LK: карта запасных состояний</title>
   <style>
     :root {
       --purple: #7b4dff;
@@ -516,45 +516,45 @@
       <nav class="nav" aria-label="Навигация по панели">
         <a href="index.html">Панель</a>
         <a href="onboarding-modal.html">Онбординг</a>
-        <a href="matching-payment-example.html">Матчинг + оплата</a>
+        <a href="matching-payment-example.html">Путь к консультации</a>
         <a href="paid-funnel.html">Платная воронка</a>
         <a href="chat-paid-session-mockups.html">Макеты чата</a>
-        <a class="active" href="global-fallback-lab.html">Fallback lab</a>
+        <a class="active" href="global-fallback-lab.html">Запасные состояния</a>
         <a href="chat-designer-minimum.html">Бриф</a>
       </nav>
     </header>
 
-    <div class="crumbs"><a href="index.html">Панель</a> / <span>Глобальная карта fallback-состояний</span></div>
+    <div class="crumbs"><a href="index.html">Панель</a> / <span>Карта запасных состояний</span></div>
     <div class="step-links">
-      <a href="matching-payment-example.html#fallback">Назад: fallback в матчинге</a>
+      <a href="matching-payment-example.html#fallback">Назад: запасные состояния выбора эксперта</a>
       <a href="chat-paid-session-mockups.html">Вперед: макеты платного чата</a>
     </div>
 
     <section class="hero">
       <div>
-        <h1>Глобальная карта состояний платной консультации</h1>
-        <p class="lead">Перепроход по всей воронке ЛК: от онбординга и матчинга до оплаты, live-чата, сбоев, завершения и поддержки. Это не финальный дизайн, а интерактивный бриф, где видно, что именно должен отрисовать дизайнер.</p>
+        <h1>Карта запасных состояний платной консультации</h1>
+        <p class="lead">Полный проход по воронке ЛК: от онбординга и выбора эксперта до оплаты, живого чата, сбоев, завершения и поддержки. На каждом шаге видно, что происходит с клиентом и какое действие возвращает его в консультацию.</p>
       </div>
       <aside class="note">
-        <strong>Роли проверки</strong>
-        Caster: экран должен читаться как спокойный коммерческий продукт, без лишней визуальной температуры. Антон: у каждого сбоя есть понятный следующий шаг, без тупиков и fake-ready.
+        <strong>Фокус проверки</strong>
+        У каждого сбоя должен быть понятный следующий шаг: продолжить, заменить эксперта, повторить действие, сохранить результат или обратиться в поддержку.
       </aside>
     </section>
 
     <section class="workbench">
       <aside class="rail" aria-label="Состояния воронки">
         <button class="active" data-state="onboarding"><strong>01</strong><span>Онбординг: неполные данные</span></button>
-        <button data-state="matching"><strong>02</strong><span>Матчинг: мало подходящих экспертов</span></button>
+        <button data-state="matching"><strong>02</strong><span>Мало доступных экспертов</span></button>
         <button data-state="expertBusy"><strong>03</strong><span>Эксперт занят после выбора</span></button>
-        <button data-state="payment"><strong>04</strong><span>Оплата: processing / failed</span></button>
-        <button data-state="freeLimit"><strong>05</strong><span>Free intro закончился</span></button>
+        <button data-state="payment"><strong>04</strong><span>Оплата: обработка / ошибка</span></button>
+        <button data-state="freeLimit"><strong>05</strong><span>Бесплатное вступление завершено</span></button>
         <button data-state="connecting"><strong>06</strong><span>Подключение без списания</span></button>
-        <button data-state="live"><strong>07</strong><span>Live-сессия: баланс и таймер</span></button>
-        <button data-state="lowCredits"><strong>08</strong><span>Мало / нет credits</span></button>
+        <button data-state="live"><strong>07</strong><span>Живая сессия: баланс и таймер</span></button>
+        <button data-state="lowCredits"><strong>08</strong><span>Мало / нет кредитов</span></button>
         <button data-state="connection"><strong>09</strong><span>Обрыв связи</span></button>
         <button data-state="sendFail"><strong>10</strong><span>Сообщение / файл не отправлен</span></button>
         <button data-state="ended"><strong>11</strong><span>Сессия завершена</span></button>
-        <button data-state="support"><strong>12</strong><span>Support / refund / report</span></button>
+        <button data-state="поддержка"><strong>12</strong><span>Поддержка / возврат / жалоба</span></button>
       </aside>
 
       <section class="stage">
@@ -569,7 +569,7 @@
         <div class="screen">
           <div class="mock">
             <div class="mock-nav">
-              <div class="expert"><span class="avatar"></span><div><strong id="expertName">Veronika</strong><span id="expertMeta">Онлайн · 45 credits/min</span></div></div>
+              <div class="expert"><span class="avatar"></span><div><strong id="expertName">Veronika</strong><span id="expertMeta">Онлайн · 45 кредитов/мин</span></div></div>
               <div><button class="button">Профиль</button> <button class="button danger">Завершить</button></div>
             </div>
             <div class="session">
@@ -598,7 +598,7 @@
               <ul id="deliverables"></ul>
             </div>
             <div class="panel">
-              <h3>Проверка Caster / Антон</h3>
+              <h3>Проверка сценария</h3>
               <div class="verdict" id="verdict"></div>
             </div>
             <div class="panel">
@@ -616,122 +616,122 @@
       onboarding: {
         title: 'Онбординг: пользователь не знает часть данных',
         subtitle: 'Дата партнера, время рождения и город не должны превращать первый путь в тяжелую анкету.',
-        tags: ['P0', 'до матчинга', 'мягкая валидация'],
-        session: ['Данные для консультации', 'Часть полей необязательная · можно продолжить', 'Подобрать экспертов', '22%'],
+        tags: ['P0', 'до выбора эксперта', 'мягкая валидация'],
+        session: ['Данные для консультации', 'Часть полей необязательная · можно продолжить', 'Перейти к эксперту', '22%'],
         modal: '<h3>Добавьте детали, если знаете</h3><p>Дата рождения помогает персонализации. Дату партнера и время рождения можно не указывать.</p><div class="receipt"><div><span>Ваша дата</span><strong>ДД / ММ / ГГГГ</strong></div><div><span>Дата партнера</span><strong>необязательно</strong></div><div><span>Время</span><strong>можно не знать</strong></div></div><button class="button primary">Продолжить без лишней анкеты</button>',
         deliverables: ['маски дат для себя и партнера', 'состояние “не знаю”', 'ошибка только у конкретного поля', 'счетчик в поле ситуации'],
-        verdict: ['Caster: визуально держать легкость мастера, не форму регистрации.', 'Антон: нельзя блокировать оплату из-за необязательного поля.'],
+        verdict: ['Мастер должен ощущаться легким, а не как регистрационная анкета.', 'Необязательные поля не блокируют переход к консультации.'],
         done: 'Пользователь может продолжить даже без даты партнера, но видит аккуратные подсказки и понятную валидацию.'
       },
       matching: {
-        title: 'Матчинг: мало подходящих online-экспертов',
-        subtitle: 'Если shortlist слабый, экран должен объяснить, что происходит, и дать следующий лучший путь.',
-        tags: ['P0', 'fallback', 'не каталог'],
-        session: ['Подбор экспертов', 'Найден 1 online и 2 async-варианта', 'Расширить подбор', '36%'],
-        modal: '<h3>Мало экспертов онлайн</h3><p>Можно расширить критерии или отправить вопрос эксперту, который ответит позже.</p><div class="receipt"><div><span>Онлайн сейчас</span><strong>1 эксперт</strong></div><div><span>Асинхронно</span><strong>2 эксперта</strong></div><div><span>Подбор</span><strong>можно расширить</strong></div></div><button class="button primary">Показать лучший вариант</button> <button class="button">Расширить критерии</button>',
-        deliverables: ['empty/low-match state', 'причина слабого подбора', 'async-альтернатива', 'расширить критерии'],
-        verdict: ['Caster: не показывать пустоту как провал сервиса.', 'Антон: нельзя бросать клиента в общий каталог без объяснения.'],
-        done: 'Даже при слабом матчинге пользователь получает следующий коммерческий шаг.'
+        title: 'Мало доступных экспертов',
+        subtitle: 'Если доступных экспертов мало, экран должен объяснить, что происходит, и дать следующий лучший путь.',
+        tags: ['P0', 'запасной сценарий', 'не каталог'],
+        session: ['Выбор эксперта', 'Найден 1 онлайн и 2 асинхронных варианта', 'Показать варианты', '36%'],
+        modal: '<h3>Мало экспертов онлайн</h3><p>Можно расширить критерии или отправить вопрос эксперту, который ответит позже.</p><div class="receipt"><div><span>Онлайн сейчас</span><strong>1 эксперт</strong></div><div><span>Асинхронно</span><strong>2 эксперта</strong></div><div><span>Следующий шаг</span><strong>можно выбрать</strong></div></div><button class="button primary">Показать лучший вариант</button> <button class="button">Расширить критерии</button>',
+        deliverables: ['состояние малого числа вариантов', 'причина слабого подбора', 'асинхронная альтернатива', 'расширить критерии'],
+        verdict: ['Малое число доступных экспертов не выглядит как провал сервиса.', 'Клиент получает объяснение и следующий лучший шаг.'],
+        done: 'Даже при малом числе доступных экспертов пользователь получает следующий шаг.'
       },
       expertBusy: {
         title: 'Эксперт занят сразу после выбора',
-        subtitle: 'Нельзя делать выбранного эксперта единственной дорогой, если он внезапно стал busy.',
-        tags: ['P0', 'busy expert', 'retention'],
-        session: ['Veronika занята', 'Можно ждать, выбрать онлайн-эксперта или отправить async-вопрос', 'Выбрать вариант', '18%'],
-        modal: '<h3>Veronika сейчас занята</h3><p>Ваш выбор сохранен. Можно подождать или начать с другим экспертом без повторного онбординга.</p><div class="receipt"><div><span>Ожидание</span><strong>примерно 8 минут</strong></div><div><span>Online альтернатива</span><strong>Margo Lover</strong></div><div><span>Async</span><strong>ответ позже</strong></div></div><button class="button primary">Выбрать Margo</button> <button class="button">Ждать Veronika</button>',
-        deliverables: ['busy state в карточке', 'сохранение выбранного эксперта', 'альтернативы', 'ожидаемое время'],
-        verdict: ['Caster: состояние должно выглядеть как забота, не как ошибка.', 'Антон: если эксперт занят, система обязана предложить замену.'],
+        subtitle: 'Нельзя делать выбранного эксперта единственной дорогой, если он внезапно стал занят.',
+        tags: ['P0', 'эксперт занят', 'сохранение пути'],
+        session: ['Veronika занята', 'Можно ждать, выбрать онлайн-эксперта или отправить асинхронный вопрос', 'Выбрать вариант', '18%'],
+        modal: '<h3>Veronika сейчас занята</h3><p>Ваш выбор сохранен. Можно подождать или начать с другим экспертом без повторного онбординга.</p><div class="receipt"><div><span>Ожидание</span><strong>примерно 8 минут</strong></div><div><span>Альтернатива онлайн</span><strong>Margo Lover</strong></div><div><span>Асинхронно</span><strong>ответ позже</strong></div></div><button class="button primary">Выбрать Margo</button> <button class="button">Ждать Veronika</button>',
+        deliverables: ['состояние занятого эксперта в карточке', 'сохранение выбранного эксперта', 'альтернативы', 'ожидаемое время'],
+        verdict: ['Состояние выглядит как забота, а не ошибка.', 'Если эксперт занят, система предлагает ожидание, замену или асинхронный ответ.'],
         done: 'Пользователь не теряет прогресс и понимает, как получить консультацию.'
       },
       payment: {
         title: 'Оплата: обработка, ошибка, другой способ',
         subtitle: 'Покупатель не должен застрять между офером и чатом.',
-        tags: ['P0', 'payment', 'recovery'],
+        tags: ['P0', 'оплата', 'восстановление пути'],
         session: ['Оплата в обработке', 'Не закрывайте страницу · повторно не списываем', 'Проверить статус', '48%'],
         modal: '<h3>Оплата не завершена</h3><p>Пакет сохранен. Попробуйте другой способ оплаты или выберите меньший пакет.</p><div class="receipt"><div><span>Пакет</span><strong>Стартовая консультация</strong></div><div><span>Итого</span><strong>$19.99</strong></div><div><span>Статус</span><strong style="color:#b92f41">ошибка оплаты</strong></div></div><button class="button primary">Другой способ</button> <button class="button">Другой пакет</button> <button class="button">Поддержка</button>',
-        deliverables: ['processing state', 'failed state', 'retry', 'другой способ', 'возврат к оферу без потери выбора'],
-        verdict: ['Caster: условия покупки должны быть крупнее служебного шума.', 'Антон: ошибка оплаты без восстановления напрямую бьет по выручке.'],
+        deliverables: ['состояние обработки', 'состояние ошибки', 'повтор', 'другой способ', 'возврат к оферу без потери выбора'],
+        verdict: ['Условия оплаты виднее служебных деталей.', 'Ошибка оплаты восстанавливает путь: другой способ, другой пакет или поддержка.'],
         done: 'После ошибки оплаты пользователь видит заказ, статус и 2-3 безопасных продолжения.'
       },
       freeLimit: {
-        title: 'Free intro закончился',
-        subtitle: 'Переход к оплате должен быть прозрачным, без ощущения внезапного paywall.',
-        tags: ['P0', 'free to paid', 'paywall'],
+        title: 'Бесплатное вступление завершено',
+        subtitle: 'Переход к оплате должен быть прозрачным, без ощущения внезапной блокировки.',
+        tags: ['P0', 'от бесплатного к платному', 'переход к оплате'],
         session: ['Бесплатное вступление завершено', 'Дальше нужна платная консультация', 'Продолжить платно', '9%'],
-        modal: '<h3>Бесплатное вступление завершено</h3><p>Эксперт готов продолжить разбор в платной консультации. До оплаты списаний нет.</p><div class="receipt"><div><span>Было бесплатно</span><strong>3 минуты</strong></div><div><span>Продолжение</span><strong>15 минут live-чата</strong></div><div><span>Цена</span><strong>$19.99</strong></div></div><button class="button primary">Продолжить консультацию</button> <button class="button">Сохранить и выйти</button>',
-        deliverables: ['конец free intro', 'что было бесплатно', 'что будет платно', 'продолжить/выйти'],
-        verdict: ['Caster: paywall должен быть спокойным договором, не резким баннером.', 'Антон: пользователь должен заранее понимать момент списания.'],
+        modal: '<h3>Бесплатное вступление завершено</h3><p>Эксперт готов продолжить разбор в платной консультации. До оплаты списаний нет.</p><div class="receipt"><div><span>Было бесплатно</span><strong>3 минуты</strong></div><div><span>Продолжение</span><strong>15 минут живого чата</strong></div><div><span>Цена</span><strong>$19.99</strong></div></div><button class="button primary">Продолжить консультацию</button> <button class="button">Сохранить и выйти</button>',
+        deliverables: ['конец бесплатного вступления', 'что было бесплатно', 'что будет платно', 'продолжить/выйти'],
+        verdict: ['Переход к оплате выглядит как спокойный договор, не как резкий баннер.', 'Клиент заранее понимает момент начала списания.'],
         done: 'Пользователь понимает, где закончился free и где начинается paid.'
       },
       connecting: {
         title: 'Подключение к эксперту без списания',
-        subtitle: 'Отдельное состояние доверия перед live-сессией.',
-        tags: ['P0', 'connecting', 'no charge'],
-        session: ['Подключаем эксперта', 'На этом шаге credits не списываются', 'Ждать', '54%'],
-        modal: '<h3>Подключаем вас к Veronika</h3><p>Эксперт открывает сессию. Пока идет подключение, credits не списываются.</p><div class="receipt"><div><span>Списание</span><strong>нет</strong></div><div><span>Ожидание</span><strong>15-20 секунд</strong></div><div><span>Если долго</span><strong>выбрать другого</strong></div></div><button class="button primary">Продолжить ждать</button> <button class="button">Выбрать другого</button>',
-        deliverables: ['connecting screen', 'явная фраза “не списываем”', 'таймаут', 'альтернатива'],
-        verdict: ['Caster: экран должен снижать тревогу ожидания.', 'Антон: без “не списываем” это доверительный провал.'],
-        done: 'Во время подключения пользователь видит, что деньги/credits еще не тратятся.'
+        subtitle: 'Отдельное состояние доверия перед живой сессией.',
+        tags: ['P0', 'подключение', 'без списания'],
+        session: ['Подключаем эксперта', 'На этом шаге кредиты не списываются', 'Ждать', '54%'],
+        modal: '<h3>Подключаем вас к Veronika</h3><p>Эксперт открывает сессию. Пока идет подключение, кредиты не списываются.</p><div class="receipt"><div><span>Списание</span><strong>нет</strong></div><div><span>Ожидание</span><strong>15-20 секунд</strong></div><div><span>Если долго</span><strong>выбрать другого</strong></div></div><button class="button primary">Продолжить ждать</button> <button class="button">Выбрать другого</button>',
+        deliverables: ['экран подключения', 'явная фраза “не списываем”', 'таймаут', 'альтернатива'],
+        verdict: ['Экран снижает тревогу ожидания.', 'Фраза о том, что списания пока нет, обязательна.'],
+        done: 'Во время подключения пользователь видит, что деньги/кредиты еще не тратятся.'
       },
       live: {
-        title: 'Live-сессия: баланс, таймер, статус',
+        title: 'Живая сессия: баланс, таймер, статус',
         subtitle: 'В активном чате всегда видно цену времени.',
-        tags: ['P0', 'live', 'credits'],
-        session: ['Paid live-сессия', 'Осталось 06:42 · 280 credits · 45 credits/min', 'Пополнить', '66%'],
+        tags: ['P0', 'живая сессия', 'кредиты'],
+        session: ['Платная консультация', 'Осталось 06:42 · 280 кредитов · 45 кредитов/мин', 'Пополнить', '66%'],
         modal: '',
-        deliverables: ['баланс credits в чате', 'статус Free/Paid/Live/Ended', 'остаток времени или credits', 'CTA пополнить/продолжить'],
-        verdict: ['Caster: session bar должен быть заметным, но не кричащим.', 'Антон: пользователь обязан понимать списание в реальном времени.'],
+        deliverables: ['баланс кредитов в чате', 'статус бесплатно / оплачено / идет / завершено', 'остаток времени или кредитов', 'кнопка пополнить/продолжить'],
+        verdict: ['Панель сессии заметна, но не перетягивает чат.', 'Клиент понимает списание и остаток в реальном времени.'],
         done: 'На любом скролле чата виден статус сессии, остаток и действие.'
       },
       lowCredits: {
-        title: 'Мало credits / credits закончились',
+        title: 'Мало кредитов / кредиты закончились',
         subtitle: 'Критичное прерывание платной консультации.',
-        tags: ['P0', 'low credits', 'pause'],
-        session: ['Credits заканчиваются', 'Осталось 00:49 · эксперт может подождать пополнение', 'Купить credits', '12%'],
-        modal: '<h3>Недостаточно credits для продолжения</h3><p>Пополните баланс, чтобы продолжить с Veronika, или завершите сессию и сохраните стенограмму.</p><div class="receipt"><div><span>Баланс</span><strong>12 credits</strong></div><div><span>Рекомендуем</span><strong>350 credits</strong></div><div><span>Стенограмма</span><strong>сохранится</strong></div></div><button class="button primary">Пополнить и продолжить</button> <button class="button">Завершить</button>',
-        deliverables: ['warning заранее', 'not enough credits', 'пакеты пополнения', 'сохранение стенограммы'],
-        verdict: ['Caster: это предупреждение, не катастрофа.', 'Антон: нельзя молча оборвать платную услугу.'],
+        tags: ['P0', 'мало кредитов', 'пауза'],
+        session: ['Кредиты заканчиваются', 'Осталось 00:49 · эксперт может подождать пополнение', 'Купить кредиты', '12%'],
+        modal: '<h3>Недостаточно кредитов для продолжения</h3><p>Пополните баланс, чтобы продолжить с Veronika, или завершите сессию и сохраните стенограмму.</p><div class="receipt"><div><span>Баланс</span><strong>12 кредитов</strong></div><div><span>Рекомендуем</span><strong>350 кредитов</strong></div><div><span>Стенограмма</span><strong>сохранится</strong></div></div><button class="button primary">Пополнить и продолжить</button> <button class="button">Завершить</button>',
+        deliverables: ['предупреждение заранее', 'недостаточно кредитов', 'пакеты пополнения', 'сохранение стенограммы'],
+        verdict: ['Это спокойное предупреждение, не катастрофа.', 'Платная услуга не обрывается молча: есть пополнение или корректное завершение.'],
         done: 'У пользователя есть ясный выбор: пополнить или корректно завершить.'
       },
       connection: {
-        title: 'Обрыв связи / reconnecting',
+        title: 'Обрыв связи / переподключение',
         subtitle: 'Разделить проблему клиента и эксперта, показать паузу списания.',
-        tags: ['P0', 'connection lost', 'billing pause'],
+        tags: ['P0', 'обрыв связи', 'пауза списания'],
         session: ['Проблема со связью', 'Списание на паузе, пока эксперт переподключается', 'Ждать', '38%'],
-        modal: '<h3>Связь с экспертом потеряна</h3><p>Veronika переподключается. Списание приостановлено, пока эксперт не в сети.</p><div class="receipt"><div><span>Причина</span><strong>эксперт offline</strong></div><div><span>Списание</span><strong>пауза</strong></div><div><span>Запасной путь</span><strong>async или support</strong></div></div><button class="button primary">Ждать</button> <button class="button">Отправить async</button> <button class="button">Поддержка</button>',
-        deliverables: ['connection lost', 'reconnecting', 'last sync', 'billing pause', 'support path'],
-        verdict: ['Caster: сообщение должно выглядеть спокойно и защитно.', 'Антон: клиент должен видеть, что сервис не списывает деньги во время сбоя.'],
+        modal: '<h3>Связь с экспертом потеряна</h3><p>Veronika переподключается. Списание приостановлено, пока эксперт не в сети.</p><div class="receipt"><div><span>Причина</span><strong>эксперт не в сети</strong></div><div><span>Списание</span><strong>пауза</strong></div><div><span>Запасной путь</span><strong>асинхронно или поддержка</strong></div></div><button class="button primary">Ждать</button> <button class="button">Отправить асинхронно</button> <button class="button">Поддержка</button>',
+        deliverables: ['обрыв связи', 'переподключение', 'последняя синхронизация', 'пауза списания', 'путь в поддержку'],
+        verdict: ['Сообщение выглядит спокойно и защитно.', 'Клиент видит, что во время сбоя списание приостановлено.'],
         done: 'При плохой связи клиент понимает статус, списание и следующий шаг.'
       },
       sendFail: {
         title: 'Сообщение или вложение не отправлено',
         subtitle: 'Ошибки доставки не должны терять контент пользователя.',
-        tags: ['P0', 'retry', 'attachment'],
-        session: ['Paid live-сессия', 'Осталось 04:10 · есть ошибка доставки', 'Повторить', '51%'],
+        tags: ['P0', 'повтор', 'вложение'],
+        session: ['Платная консультация', 'Осталось 04:10 · есть ошибка доставки', 'Повторить', '51%'],
         messages: '<div class="date">20 апреля</div><div class="bubble in">Пришлите дату рождения и главный вопрос.</div><div class="bubble out error">Я хочу понять, стоит ли ждать партнера.<div class="meta"><span>Не отправлено</span><button class="button">Повторить</button></div></div><div class="bubble error">Файл не загрузился: размер больше лимита.<div class="meta"><button class="button">Повторить</button><button class="button">Удалить</button></div></div>',
         modal: '',
-        deliverables: ['sending/pending', 'send failed', 'retry', 'upload error', 'remove attachment', 'file limits'],
-        verdict: ['Caster: ошибка должна быть локальной, а не ломать весь чат.', 'Антон: пользовательский текст нельзя терять.'],
+        deliverables: ['отправка / ожидание', 'не отправлено', 'повтор', 'ошибка загрузки', 'удалить вложение', 'лимиты файла'],
+        verdict: ['Ошибка локальная и не ломает весь чат.', 'Текст и вложения пользователя не теряются.'],
         done: 'Сообщение/файл можно повторить или удалить, текст остается на экране.'
       },
       ended: {
         title: 'Сессия завершена / стенограмма сохранена',
         subtitle: 'Закрывает платное обещание и открывает следующий заказ.',
-        tags: ['P0', 'ended', 'transcript'],
-        session: ['Session ended', 'Стенограмма сохранена · можно продолжить с Veronika', 'Продолжить', '100%'],
-        modal: '<h3>Консультация завершена</h3><p>Стенограмма сохранена. Можно задать следующий вопрос или оценить консультацию.</p><div class="receipt"><div><span>Эксперт</span><strong>Veronika</strong></div><div><span>Стенограмма</span><strong>сохранена</strong></div><div><span>Следующий шаг</span><strong>follow-up вопрос</strong></div></div><button class="button primary">Задать следующий вопрос</button> <button class="button">Оценить</button>',
-        deliverables: ['session ended', 'transcript saved', 'continue/buy credits', 'rating', 'next question'],
-        verdict: ['Caster: финал должен быть спокойным, с ощущением результата.', 'Антон: без сохраненной стенограммы платное обещание неполное.'],
+        tags: ['P0', 'завершено', 'стенограмма'],
+        session: ['Сессия завершена', 'Стенограмма сохранена · можно продолжить с Veronika', 'Продолжить', '100%'],
+        modal: '<h3>Консультация завершена</h3><p>Стенограмма сохранена. Можно задать следующий вопрос или оценить консультацию.</p><div class="receipt"><div><span>Эксперт</span><strong>Veronika</strong></div><div><span>Стенограмма</span><strong>сохранена</strong></div><div><span>Следующий шаг</span><strong>следующий вопрос</strong></div></div><button class="button primary">Задать следующий вопрос</button> <button class="button">Оценить</button>',
+        deliverables: ['сессия завершена', 'стенограмма сохранена', 'продолжить / купить кредиты', 'оценка', 'следующий вопрос'],
+        verdict: ['Финал спокойный и показывает результат услуги.', 'Стенограмма сохраняется и доступна после сессии.'],
         done: 'После сессии клиент видит результат, запись и понятный следующий шаг.'
       },
-      support: {
-        title: 'Support / refund / report из чата',
+      поддержка: {
+        title: 'Поддержка / возврат / жалоба из чата',
         subtitle: 'Платная услуга требует безопасный путь помощи и жалобы.',
-        tags: ['P0', 'trust', 'support'],
+        tags: ['P0', 'доверие', 'поддержка'],
         session: ['Обращение в поддержку', 'Стенограмма будет приложена к обращению', 'Отправить', '100%'],
         modal: '<h3>Помощь по консультации</h3><p>Выберите тип обращения. Стенограмма и статус сессии будут приложены автоматически.</p><div class="receipt"><div><span>Тип</span><strong>возврат / жалоба</strong></div><div><span>Доказательство</span><strong>стенограмма</strong></div><div><span>Статус</span><strong>черновик</strong></div></div><button class="button primary">Отправить обращение</button> <button class="button">Пожаловаться на эксперта</button>',
-        deliverables: ['report expert', 'report message', 'refund/support', 'status submitted/reviewed/resolved'],
-        verdict: ['Caster: support не должен выглядеть как техническая свалка.', 'Антон: для платной услуги путь жалобы и возврата обязателен.'],
+        deliverables: ['жалоба на эксперта', 'жалоба на сообщение', 'возврат / поддержка', 'статус отправлено / проверяется / решено'],
+        verdict: ['Поддержка не выглядит как техническая форма.', 'Для платной услуги есть путь жалобы, возврата и проверки стенограммы.'],
         done: 'Клиент может обратиться в поддержку прямо из контекста платной сессии.'
       }
     };

@@ -767,10 +767,10 @@
       <nav class="nav" aria-label="Навигация по панели">
         <a href="index.html">Панель</a>
         <a href="onboarding-modal.html">Онбординг</a>
-        <a href="matching-payment-example.html">Матчинг + оплата</a>
+        <a href="matching-payment-example.html">Путь к консультации</a>
         <a class="active" href="paid-funnel.html">Платная воронка</a>
         <a href="chat-paid-session-mockups.html">Макеты чата</a>
-        <a href="global-fallback-lab.html">Fallback lab</a>
+        <a href="global-fallback-lab.html">Запасные состояния</a>
         <a href="chat-designer-minimum.html">Бриф по чату</a>
       </nav>
       <div class="user-pill">VI</div>
@@ -779,23 +779,23 @@
     <div class="panel-step-links" aria-label="Переходы">
       <a href="index.html">Назад: панель</a>
       <a href="onboarding-modal.html">Онбординг</a>
-      <a href="matching-payment-example.html">Матчинг + оплата</a>
-      <a href="global-fallback-lab.html">Глобальная карта fallback</a>
-      <a href="paid-funnel.html#screen-match">Результат матчинга в полной воронке</a>
+      <a href="matching-payment-example.html">Путь к консультации</a>
+      <a href="global-fallback-lab.html">Карта запасных состояний</a>
+      <a href="paid-funnel.html#screen-match">Результат выбора в полной воронке</a>
       <a href="chat-paid-session-mockups.html">Вперед: макеты чата</a>
     </div>
 
     <section class="board-head">
       <div>
         <h1>Десктоп-макеты платной консультации в ЛК</h1>
-        <p class="lead">Набросок того, что нужно дорисовать в личном кабинете, чтобы пользователь после регистрации шел к покупке и получению консультации, а не просто в каталог и чат.</p>
+        <p class="lead">Кликабельный сценарий того, что нужно закрыть в личном кабинете: после регистрации клиент уточняет запрос, переходит к эксперту, оплачивает понятный пакет и получает консультацию.</p>
       </div>
-      <div class="scope-note">Фокус: только десктоп. Это продуктовый HTML-макет для дизайнера, не критерий pixel-perfect приемки в Figma.</div>
+      <div class="scope-note">Фокус: только десктоп. Это кликабельный продуктовый макет платной консультации.</div>
     </section>
 
     <nav class="tabs" aria-label="Mockup screens">
       <button class="tab active" data-tab="screen-onboarding"><strong>1. Онбординг</strong><span>Сбор намерения</span></button>
-      <button class="tab" data-tab="screen-match"><strong>2. Матчинг</strong><span>Подбор экспертов</span></button>
+      <button class="tab" data-tab="screen-match"><strong>2. Эксперт</strong><span>Выбор эксперта</span></button>
       <button class="tab" data-tab="screen-checkout"><strong>3. Пакет</strong><span>Офер и оплата</span></button>
       <button class="tab" data-tab="screen-question"><strong>4. Вопрос</strong><span>Контекст до чата</span></button>
       <button class="tab" data-tab="screen-chat"><strong>5. Платный чат</strong><span>Состояния сессии</span></button>
@@ -844,7 +844,7 @@
               <div class="section-title">
                 <div>
                   <h2>В чем вы хотите получить ясность?</h2>
-                  <p class="muted">Это рабочая логика Figma-версии для HTML-прототипа онбординга.</p>
+                  <p class="muted">Это логика онбординга для первого платного пути.</p>
                 </div>
                 <span class="pill">P0-1</span>
               </div>
@@ -868,10 +868,10 @@
                 <span>Валидация</span>
                 <span>Пропуск необязательных данных</span>
                 <span>Подтверждение назад/закрыть</span>
-                <span>Переход к матчингу</span>
+                <span>Переход к эксперту</span>
               </div>
               <div style="display:flex;justify-content:flex-end;margin-top:18px;">
-                <button class="primary" data-go="screen-match">Показать подходящих экспертов</button>
+                <button class="primary" data-go="screen-match">Перейти к рекомендованному эксперту</button>
               </div>
             </div>
           </div>
@@ -899,8 +899,8 @@
         <div class="workspace">
           <div class="section-title">
             <div>
-              <h2>Результат матчинга экспертов</h2>
-              <p class="muted">Показываем, почему каждый эксперт подходит под запрос пользователя, а не просто общий список рейтинга.</p>
+              <h2>Результат выбора экспертов</h2>
+              <p class="muted">Показываем основной рекомендованный вариант и запасные пути, если эксперт занят или недоступен.</p>
             </div>
             <span class="pill">P0-2</span>
           </div>
@@ -916,7 +916,7 @@
                 <span class="heart">♡</span>
               </div>
               <div class="tags"><span>Любовь</span><span>Таро</span><span>Совместимость</span><span>Эксперты</span></div>
-              <div class="why"><strong>Почему подходит:</strong> сильный профиль по консультации по отношениям, сейчас онлайн, может ответить на конкретный вопрос в live-чате.</div>
+              <div class="why"><strong>Почему подходит:</strong> сильный профиль по консультации по отношениям, сейчас онлайн, может ответить на конкретный вопрос в живой чате.</div>
               <button class="primary" data-go="screen-checkout">Выбрать Veronika</button>
             </article>
             <article class="advisor-card">
@@ -930,8 +930,8 @@
                 <span class="heart">♡</span>
               </div>
               <div class="tags"><span>Отношения</span><span>Ангельские чтения</span><span>Духовность</span></div>
-              <div class="why"><strong>Почему подходит:</strong> лучше для эмоционального контекста. Если live-чат недоступен, предлагаем асинхронный ответ.</div>
-              <button class="secondary" data-go="screen-checkout" data-toast="Заметка дизайнеру: если эксперт занят, ведем к асинхронному пакету вместо live-чата.">Отправить вопрос вне live-чата</button>
+              <div class="why"><strong>Почему подходит:</strong> лучше для эмоционального контекста. Если живой чат недоступен, предлагаем асинхронный ответ.</div>
+              <button class="secondary" data-go="screen-checkout" data-toast="Если эксперт занят, ведем к асинхронному пакету вместо живого чата.">Отправить вопрос вне живого чата</button>
             </article>
             <article class="advisor-card">
               <div class="advisor-head">
@@ -944,11 +944,11 @@
                 <span class="heart">♡</span>
               </div>
               <div class="tags"><span>Таро</span><span>Расставание</span><span>Будущее</span></div>
-              <div class="why"><strong>Почему подходит:</strong> хороша для таро с фокусом на будущее, но не должна быть основным действием live-чата, пока не в сети.</div>
-              <button class="secondary" data-toast="Открыто состояние уведомления: дизайнеру нужно нарисовать подтверждение уведомления.">Уведомить меня</button>
+              <div class="why"><strong>Почему подходит:</strong> хороша для таро с фокусом на будущее, но не должна быть основным действием живого чата, пока не в сети.</div>
+              <button class="secondary" data-toast="Открыто состояние уведомления: нужно подтверждение и путь назад.">Уведомить меня</button>
             </article>
           </div>
-          <div class="annotation" style="margin-top:18px;">Задача дизайнеру: добавить объяснение матчинга, альтернативы онлайн / занята / не в сети, цену пакета и одно очевидное основное действие.</div>
+          <div class="annotation" style="margin-top:18px;">Нужно: добавить объяснение выбора, альтернативы онлайн / занята / не в сети, цену пакета и одно очевидное основное действие.</div>
         </div>
       </main>
     </section>
@@ -983,7 +983,7 @@
               <div class="package-row active" tabindex="0" data-package="Стартовая консультация по отношениям" data-price="45 кредитов">
                 <div>
                   <strong>Стартовая консультация по отношениям</strong>
-                  <p class="muted">10 минут live-чата с Veronika. Лучше всего для одного сфокусированного вопроса об отношениях.</p>
+                  <p class="muted">10 минут живого чата с Veronika. Лучше всего для одного сфокусированного вопроса об отношениях.</p>
                 </div>
                 <div class="price">45 кредитов</div>
               </div>
@@ -1021,7 +1021,7 @@
               <div class="line"><span>Баланс</span><strong>0 кредитов</strong></div>
               <div class="line"><span>К оплате сейчас</span><strong>45 кредитов</strong></div>
               <button class="primary" data-go="screen-question" style="background:#ffbd5a;color:#3a236f;">Пополнить и продолжить</button>
-              <p style="margin:0;color:#eadfff;">Заметка доверия: приватная консультация, поддержка доступна, путь возврата показан до оплаты.</p>
+              <p style="margin:0;color:#eadfff;">Доверие: приватная консультация, поддержка доступна, путь возврата показан до оплаты.</p>
             </aside>
           </div>
         </div>
@@ -1072,7 +1072,7 @@
             <aside class="soft-panel">
               <h3>Настройки консультации</h3>
               <p><strong>Эксперт:</strong> Veronika</p>
-              <p><strong>Формат:</strong> live-чат, 10 минут</p>
+              <p><strong>Формат:</strong> живой чат, 10 минут</p>
               <p><strong>Оплачено:</strong> 45 кредитов</p>
               <p class="muted">Эксперт получает этот контекст до начала платной сессии.</p>
               <button class="primary" data-go="screen-chat">Отправить и начать чат</button>
@@ -1087,7 +1087,7 @@
         <div class="profile-mini">
           <img src="img/avatar-3.png" alt="">
           <h2>Victoriya</h2>
-          <p class="muted">Live-сессия</p>
+          <p class="muted">Живая сессия</p>
         </div>
         <nav class="side-menu">
           <a href="#">Профиль</a>
@@ -1107,7 +1107,7 @@
                   <img src="img/avatar-1.png" alt="" style="width:56px;height:56px;">
                   <div>
                     <h3 style="margin:0;">Veronika</h3>
-                    <span class="status online">платный live-чат</span>
+                    <span class="status online">платный живой чат</span>
                   </div>
                 </div>
                 <span class="pill">P0-6</span>
@@ -1132,7 +1132,7 @@
                 <h3>Состояния для отрисовки</h3>
                 <div class="legend">
                   <span>бесплатный предпросмотр</span>
-                  <span>платный live-чат</span>
+                  <span>платный живой чат</span>
                   <span>ожидание</span>
                   <span>печатает</span>
                   <span>мало кредитов</span>
@@ -1168,7 +1168,7 @@
           <div class="section-title">
             <div>
               <h2>Результат консультации</h2>
-              <p class="muted">Это закрывает платное обещание и создает следующий момент покупки.</p>
+              <p class="muted">Это закрывает платное обещание и создает следующий платный шаг.</p>
             </div>
             <span class="pill">P0-7 / P0-8 / P0-10</span>
           </div>
@@ -1186,7 +1186,7 @@
               </div>
               <div style="display:flex;gap:12px;margin-top:18px;">
                 <button class="primary" data-go="screen-checkout">Задать следующий вопрос</button>
-                <button class="secondary" data-toast="Открыто состояние рейтинга: дизайнеру нужно нарисовать оценку, пропуск, жалобу и состояние благодарности.">Оценить консультацию</button>
+                <button class="secondary" data-toast="Открыто состояние рейтинга: нужна оценка, пропуск, жалоба и благодарность.">Оценить консультацию</button>
               </div>
             </section>
             <section class="panel">

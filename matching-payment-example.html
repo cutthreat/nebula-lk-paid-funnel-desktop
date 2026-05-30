@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nebula: интерактивный пример матчинга и оплаты</title>
+  <title>Nebula: путь к консультации и оплата</title>
   <style>
     :root {
       --purple: #7145df;
@@ -479,31 +479,31 @@
       <nav class="nav" aria-label="Навигация по панели">
         <a href="index.html">Панель</a>
         <a href="onboarding-modal.html">Онбординг</a>
-        <a class="active" href="matching-payment-example.html">Матчинг + оплата</a>
-        <a href="global-fallback-lab.html">Fallback lab</a>
+        <a class="active" href="matching-payment-example.html">Путь к консультации</a>
+        <a href="global-fallback-lab.html">Запасные состояния</a>
         <a href="chat-paid-session-mockups.html">Макеты чата</a>
         <a href="chat-designer-minimum.html">Бриф</a>
       </nav>
     </header>
 
-    <div class="crumbs"><a href="index.html">Панель</a> / <span>Интерактивный пример матчинга и оплаты</span></div>
+    <div class="crumbs"><a href="index.html">Панель</a> / <span>Путь к консультации и оплата</span></div>
     <div class="steps">
       <a href="onboarding-modal.html">Назад: онбординг</a>
-      <a href="global-fallback-lab.html">Глобальная карта fallback</a>
+      <a href="global-fallback-lab.html">Карта запасных состояний</a>
       <a href="paid-funnel.html">Полная воронка</a>
       <a href="chat-paid-session-mockups.html">Вперед: paid chat states</a>
     </div>
 
     <section class="hero">
       <div>
-        <h1>Матчинг экспертов и покупка консультации</h1>
-        <p class="lead">Фокусный интерактивный пример для дизайнера: как после онбординга показать подходящих экспертов, объяснить причину матчинга и довести пользователя до понятного офера/оплаты.</p>
+        <h1>Путь к платной консультации</h1>
+        <p class="lead">Фокусный пример: как после онбординга провести клиента к консультации по логике AskNebula: уточнить запрос, показать рекомендованного эксперта и запасные варианты, затем перейти к понятному оферу и оплате.</p>
       </div>
-      <aside class="note">Это не pixel-perfect дизайн. Это продуктовый сценарий и список состояний, которые Антону нужно перенести в стилистику Nebula.</aside>
+      <aside class="note">Это продуктовый сценарий: состав экранов, состояния и тексты, которые нужно оформить в стилистике Nebula.</aside>
     </section>
 
     <nav class="tabs" aria-label="Состояния примера">
-      <button class="tab active" data-screen="match"><strong>1. Результат матчинга</strong><span>3 эксперта и причины подбора</span></button>
+      <button class="tab active" data-screen="match"><strong>1. Рекомендованный эксперт</strong><span>основной вариант и запасные пути</span></button>
       <button class="tab" data-screen="profile"><strong>2. Карточка эксперта</strong><span>Детали перед выбором</span></button>
       <button class="tab" data-screen="payment"><strong>3. Офер / оплата</strong><span>Пакет, цена, заметку доверия</span></button>
       <button class="tab" data-screen="fallback"><strong>4. Запасные состояния</strong><span>занята / не в сети / ошибка / нет кредитов</span></button>
@@ -516,7 +516,7 @@
           <h2 style="margin:0 0 4px;">Victoriya</h2>
           <p class="muted" style="margin:0;">Запрос: отношения</p>
         </div>
-        <div class="side-link active"><span>Матчинг</span><b>3</b></div>
+        <div class="side-link active"><span>Рекомендация</span><b>3</b></div>
         <div class="side-link"><span>Вопрос</span><b>1</b></div>
         <div class="side-link"><span>Баланс</span><b>0</b></div>
         <div class="side-link"><span>Чат</span><b>•</b></div>
@@ -527,7 +527,7 @@
           <div class="screen-head">
             <div>
               <h2>Мы нашли экспертов под ваш запрос</h2>
-              <p>После онбординга не показываем общий каталог. Показываем shortlist, где у каждого эксперта есть причина подбора, доступность и один следующий шаг.</p>
+              <p>После онбординга не показываем общий каталог. Показываем короткий список, где у каждого эксперта есть причина подбора, доступность и один следующий шаг.</p>
             </div>
             <span class="pill">P0 пример</span>
           </div>
@@ -536,22 +536,22 @@
               <div class="advisor-top"><div class="photo"></div><div><h3>Veronika</h3><div><b>4.8</b> <span class="muted">1 211 отзывов</span></div></div><span>♡</span></div>
               <span class="status online">онлайн</span>
               <div class="chips"><span>Любовь</span><span>Таро</span><span>Совместимость</span></div>
-              <div class="why"><b>Почему подходит:</b> сильный консультации по отношениям профиль, сейчас онлайн, отвечает в live-чате.</div>
+              <div class="why"><b>Почему подходит:</b> сильный консультации по отношениям профиль, сейчас онлайн, отвечает в живой чате.</div>
               <button class="button primary" data-go="payment" data-toast="Выбрана Veronika. Дальше показываем офер перед оплатой.">Выбрать Veronika</button>
             </article>
             <article class="card advisor">
               <div class="advisor-top"><div class="photo"></div><div><h3>Marina</h3><div><b>4.9</b> <span class="muted">9 109 отзывов</span></div></div><span>♡</span></div>
               <span class="status busy">занята</span>
               <div class="chips"><span>Отношения</span><span>Ангельские чтения</span></div>
-              <div class="why"><b>Почему подходит:</b> хорошо работает с эмоциональным контекстом, но live-чат сейчас недоступен.</div>
-              <button class="button" data-go="fallback" data-toast="Для busy эксперта нужен отдельный fallback, а не тупик.">Показать варианты</button>
+              <div class="why"><b>Почему подходит:</b> хорошо работает с эмоциональным контекстом, но живой чат сейчас недоступен.</div>
+              <button class="button" data-go="fallback" data-toast="Для занятого эксперта нужен отдельный запасной сценарий, а не тупик.">Показать варианты</button>
             </article>
             <article class="card advisor">
               <div class="advisor-top"><div class="photo"></div><div><h3>Mia Jacomo</h3><div><b>4.7</b> <span class="muted">752 отзыва</span></div></div><span>♡</span></div>
               <span class="status offline">не в сети</span>
               <div class="chips"><span>Астрология</span><span>Будущее</span></div>
               <div class="why"><b>Почему подходит:</b> полезна для разбора по данным рождения, но первичным действие должен быть асинхронный формат или уведомление.</div>
-              <button class="button" data-toast="Уведомить меня: дизайнеру нужно состояние подтверждения.">Уведомить меня</button>
+              <button class="button" data-toast="Уведомить меня: нужно состояние подтверждения.">Уведомить меня</button>
             </article>
           </div>
         </section>
@@ -559,7 +559,7 @@
         <section class="screen" id="screen-profile">
           <div class="screen-head">
             <div>
-              <h2>Карточка эксперта перед покупкой</h2>
+              <h2>Карточка эксперта перед стартом консультации</h2>
               <p>Если пользователь сомневается, ему нужен быстрый слой доверия: специализация, опыт, reviews, availability, что входит в первую консультацию.</p>
             </div>
             <span class="pill">Перед оплатой</span>
@@ -573,7 +573,7 @@
               </div>
               <div class="chips" style="margin:18px 0;"><span>Любовь</span><span>Таро</span><span>Совместимость</span><span>Эксперты</span></div>
               <p>“Помогаю разобраться в отношениях, понять чувства партнера и выбрать спокойный следующий шаг без давления.”</p>
-              <div class="why"><b>Дизайнеру:</b> нужно состояние full profile modal/card, которое открывается из матчинга и возвращает к оферу без потери выбора.</div>
+              <div class="why"><b>Важно:</b> карточка открывается из выбора эксперта и возвращает к оферу без потери выбора.</div>
             </div>
             <aside class="panel">
               <h3>Что показать в карточке</h3>
@@ -592,13 +592,13 @@
           <div class="screen-head">
             <div>
               <h2>Офер перед оплатой</h2>
-              <p>Пользователь должен понять покупку до старта чата: эксперт, формат, пакет, цена, что входит, что будет после оплаты.</p>
+              <p>Пользователь должен понять платный шаг до старта чата: эксперт, формат, пакет, цена, что входит и что будет после оплаты.</p>
             </div>
             <span class="pill">Критично для выручки</span>
           </div>
           <div class="split">
             <div class="packages">
-              <div class="package active" data-package="Стартовая консультация по отношениям" data-price="$19.99"><div><b>Стартовая консультация по отношениям</b><br><span class="muted">10 минут live-чата с Veronika для одного фокусного вопроса.</span></div><div class="price">$19.99</div></div>
+              <div class="package active" data-package="Стартовая консультация по отношениям" data-price="$19.99"><div><b>Стартовая консультация по отношениям</b><br><span class="muted">10 минут живого чата с Veronika для одного фокусного вопроса.</span></div><div class="price">$19.99</div></div>
               <div class="package" data-package="Подробный асинхронный ответ" data-price="$14.99"><div><b>Подробный асинхронный ответ</b><br><span class="muted">Отправить вопрос сейчас и получить структурированный ответ позже.</span></div><div class="price">$14.99</div></div>
               <div class="package" data-package="Расширенная сессия" data-price="$39.99"><div><b>Расширенная сессия</b><br><span class="muted">25 минут для глубокого разбора и следующий вопрос.</span></div><div class="price">$39.99</div></div>
               <div class="state-list">
@@ -609,12 +609,12 @@
               </div>
             </div>
             <aside class="summary">
-              <h3 style="margin:0 0 14px;">Сводка покупки</h3>
+              <h3 style="margin:0 0 14px;">Сводка консультации</h3>
               <div class="line"><span>Эксперт</span><b>Veronika</b></div>
               <div class="line"><span>Формат</span><b id="summaryPackage">Стартовая консультация по отношениям</b></div>
               <div class="line"><span>Тема</span><b>Отношения</b></div>
               <div class="line"><span>Итого</span><b id="summaryPrice">$19.99</b></div>
-              <p style="color:#eadfff;">Заметка доверия: приватная консультация, стенограмма сохраняется, путь поддержки/возврата доступен.</p>
+              <p style="color:#eadfff;">Доверие: приватная консультация, стенограмма сохраняется, путь поддержки/возврата доступен.</p>
               <button class="button primary" style="background:var(--amber);color:#321a6a;border-color:var(--amber);" data-toast="Оплата успешна: следующий экран должен вести к question intake.">Оплатить и продолжить</button>
             </aside>
           </div>
@@ -623,7 +623,7 @@
         <section class="screen" id="screen-fallback">
           <div class="screen-head">
             <div>
-              <h2>Запасные состояния после матчинга</h2>
+              <h2>Запасные состояния после выбора</h2>
               <p>Нельзя считать, что выбранный эксперт всегда онлайн, платеж всегда проходит, а баланс всегда достаточный. Здесь нужен интерактивный набор сценариев, а не просто список рисков.</p>
             </div>
             <span class="pill">Не потерять клиента</span>
@@ -633,25 +633,25 @@
               <button class="active" data-fallback="busy"><strong>01</strong><span>Эксперт занят</span></button>
               <button data-fallback="offline"><strong>02</strong><span>Эксперт не в сети</span></button>
               <button data-fallback="paymentFail"><strong>03</strong><span>Оплата не прошла</span></button>
-              <button data-fallback="noCredits"><strong>04</strong><span>Недостаточно credits</span></button>
-              <button data-fallback="lowPool"><strong>05</strong><span>Мало подходящих online</span></button>
+              <button data-fallback="noCredits"><strong>04</strong><span>Недостаточно кредитов</span></button>
+              <button data-fallback="lowPool"><strong>05</strong><span>Мало подходящих онлайн</span></button>
               <button data-fallback="closedOffer"><strong>06</strong><span>Пользователь закрыл офер</span></button>
             </div>
             <div class="fallback-detail">
               <div class="fallback-card">
                 <h3 id="fallbackTitle">Эксперт занят</h3>
-                <p id="fallbackText">Выбранный эксперт стал busy после матчинга. Нужно сохранить выбор и дать варианты: ждать, async-вопрос, другой online-эксперт.</p>
+                <p id="fallbackText">Выбранный эксперт стал занят после выбора. Нужно сохранить выбор и дать варианты: ждать, асинхронный вопрос, другой онлайн-эксперт.</p>
                 <div class="fallback-actions" id="fallbackActions"></div>
               </div>
               <div class="fallback-spec" id="fallbackSpec"></div>
               <div class="fallback-card">
-                <h3>Вердикт Caster / Антон</h3>
-                <p id="fallbackVerdict">Caster: состояние должно выглядеть как забота, а не ошибка. Антон: у пользователя не должно быть тупика после выбора эксперта.</p>
+                <h3>Проверка сценария</h3>
+                <p id="fallbackVerdict">Состояние выглядит как забота, а не ошибка: у пользователя нет тупика после выбора эксперта.</p>
               </div>
               <div class="fallback-card">
                 <h3>Смотреть глобально</h3>
                 <p>Полная карта состояний по всей воронке вынесена в отдельный интерактивный пример.</p>
-                <div class="fallback-actions"><a class="button primary" href="global-fallback-lab.html">Открыть глобальный fallback lab</a></div>
+                <div class="fallback-actions"><a class="button primary" href="global-fallback-lab.html">Открыть карту запасных состояний</a></div>
               </div>
             </div>
           </div>
@@ -675,58 +675,58 @@
     const fallbackStates = {
       busy: {
         title: 'Эксперт занят',
-        text: 'Выбранный эксперт стал busy после матчинга. Нужно сохранить выбор и дать варианты: ждать, async-вопрос, другой online-эксперт.',
-        actions: ['Ждать Veronika', 'Отправить async-вопрос', 'Выбрать Margo online'],
+        text: 'Выбранный эксперт стал занят после выбора. Нужно сохранить выбор и дать варианты: ждать, асинхронный вопрос, другой онлайн-эксперт.',
+        actions: ['Ждать Veronika', 'Отправить асинхронный вопрос', 'Выбрать Margo онлайн'],
         spec: [
-          ['Что показать', 'Busy-label, сохраненный выбор, примерное время ожидания.'],
-          ['Что делает клиент', 'Ждет, меняет эксперта или отправляет вопрос без live-чата.'],
+          ['Что показать', 'Статус занят, сохраненный выбор, примерное время ожидания.'],
+          ['Что делает клиент', 'Ждет, меняет эксперта или отправляет вопрос без живого чата.'],
           ['Критерий', 'Нет тупика после выбора эксперта.']
         ],
-        verdict: 'Caster: состояние должно выглядеть как забота, а не ошибка. Антон: у пользователя не должно быть тупика после выбора эксперта.'
+        verdict: 'Состояние выглядит как забота, а не ошибка: у пользователя нет тупика после выбора эксперта.'
       },
       offline: {
         title: 'Эксперт не в сети',
-        text: 'Эксперт подходит по матчингу, но сейчас offline. Важно не продавать live-чат как доступный.',
-        actions: ['Уведомить меня', 'Выбрать online-эксперта', 'Отправить вопрос позже'],
+        text: 'Эксперт подходит по запросу, но сейчас не в сети. Важно не продавать живой чат как доступный.',
+        actions: ['Уведомить меня', 'Выбрать онлайн-эксперта', 'Отправить вопрос позже'],
         spec: [
-          ['Что показать', 'Offline-label, недоступный live CTA, альтернативы.'],
+          ['Что показать', 'Статус не в сети, недоступная кнопка живого чата, альтернативы.'],
           ['Что делает клиент', 'Выбирает доступного эксперта или оставляет заявку.'],
-          ['Критерий', 'Live-CTA не обещает невозможное.']
+          ['Критерий', 'Кнопка живого чата не обещает невозможное.']
         ],
-        verdict: 'Caster: offline должен быть спокойным статусом, не серым провалом карточки. Антон: нельзя вести в оплату live-сессии с offline-экспертом.'
+        verdict: 'Статус недоступности спокойный и честный: оплата живого чата не предлагается, пока эксперт не в сети.'
       },
       paymentFail: {
         title: 'Оплата не прошла',
         text: 'Пользователь уже выбрал эксперта и пакет. Ошибка оплаты должна восстановить путь покупки, а не выбросить его назад.',
         actions: ['Другой способ оплаты', 'Другой пакет', 'Поддержка'],
         spec: [
-          ['Что показать', 'Заказ, цена, статус ошибки, безопасный retry.'],
+          ['Что показать', 'Заказ, цена, статус ошибки, безопасный повтор.'],
           ['Что делает клиент', 'Повторяет оплату или меняет пакет без потери выбора.'],
           ['Критерий', 'После ошибки виден следующий коммерческий шаг.']
         ],
-        verdict: 'Caster: ошибка оплаты не должна выглядеть технической свалкой. Антон: это прямой риск потери выручки, recovery обязателен.'
+        verdict: 'Ошибка оплаты восстанавливает путь: другой способ, другой пакет или поддержка без потери выбора.'
       },
       noCredits: {
-        title: 'Недостаточно credits',
+        title: 'Недостаточно кредитов',
         text: 'Состояние важно как до старта, так и при продолжении. Эксперт, вопрос и пакет должны сохраниться.',
-        actions: ['Купить credits', 'Выбрать меньший пакет', 'Сохранить выбор'],
+        actions: ['Купить кредиты', 'Выбрать меньший пакет', 'Сохранить выбор'],
         spec: [
           ['Что показать', 'Баланс, нужный минимум, пакеты пополнения.'],
           ['Что делает клиент', 'Пополняет баланс и возвращается к выбранному эксперту.'],
-          ['Критерий', 'Нет повторного матчинга после пополнения.']
+          ['Критерий', 'Нет повторного выбора после пополнения.']
         ],
-        verdict: 'Caster: это предупреждение, не катастрофа. Антон: нельзя заставлять пользователя заново проходить путь после пополнения.'
+        verdict: 'Пополнение не сбрасывает путь: эксперт, вопрос и пакет сохраняются.'
       },
       lowPool: {
-        title: 'Мало подходящих online',
-        text: 'Если система нашла мало экспертов, нужно объяснить почему и предложить расширить критерии или async-формат.',
-        actions: ['Расширить критерии', 'Показать async', 'Подождать online'],
+        title: 'Мало подходящих онлайн',
+        text: 'Если система нашла мало экспертов, нужно объяснить почему и предложить расширить критерии или асинхронный-формат.',
+        actions: ['Расширить критерии', 'Показать асинхронный', 'Подождать онлайн'],
         spec: [
-          ['Что показать', 'Количество online, почему мало, что изменится при расширении.'],
-          ['Что делает клиент', 'Осознанно расширяет подбор или выбирает async.'],
+          ['Что показать', 'Количество онлайн, почему мало, что изменится при расширении.'],
+          ['Что делает клиент', 'Осознанно расширяет подбор или выбирает асинхронный.'],
           ['Критерий', 'Экран не выглядит как пустой каталог.']
         ],
-        verdict: 'Caster: пустой результат должен выглядеть управляемо. Антон: слабый shortlist без объяснения разрушает доверие к матчингу.'
+        verdict: 'Мало доступных экспертов объясняется спокойно: пользователь видит альтернативы и следующий шаг.'
       },
       closedOffer: {
         title: 'Пользователь закрыл офер',
@@ -734,10 +734,10 @@
         actions: ['Вернуться к оферу', 'Сохранить выбор', 'Сменить эксперта'],
         spec: [
           ['Что показать', 'Сохраненный эксперт, выбранный пакет, понятный возврат.'],
-          ['Что делает клиент', 'Возвращается к покупке без повторного онбординга.'],
+          ['Что делает клиент', 'Возвращается к оплате без повторного онбординга.'],
           ['Критерий', 'Закрытие офера не сбрасывает воронку.']
         ],
-        verdict: 'Caster: возврат должен быть тихим и уверенным. Антон: потеря прогресса после закрытия офера недопустима.'
+        verdict: 'Закрытие офера не обнуляет прогресс: можно вернуться к оплате и сохранить выбор.'
       }
     };
 
@@ -758,7 +758,7 @@
       const state = fallbackStates[name];
       fallbackTitle.textContent = state.title;
       fallbackText.textContent = state.text;
-      fallbackActions.innerHTML = state.actions.map((action, index) => `<button class="button ${index === 0 ? 'primary' : ''}" data-toast="${action}: нужно отрисовать как реальное действие.">${action}</button>`).join('');
+      fallbackActions.innerHTML = state.actions.map((action, index) => `<button class="button ${index === 0 ? 'primary' : ''}" data-toast="${action}: действие должно вести к следующему шагу.">${action}</button>`).join('');
       fallbackSpec.innerHTML = state.spec.map((item) => `<div><b>${item[0]}</b><span>${item[1]}</span></div>`).join('');
       fallbackVerdict.textContent = state.verdict;
       document.querySelectorAll('[data-fallback]').forEach((button) => button.classList.toggle('active', button.dataset.fallback === name));
