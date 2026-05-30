@@ -443,6 +443,40 @@
       margin-bottom: 2px;
     }
 
+    .field-value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .field-help {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+
+    .mask-chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--violet);
+      padding: 3px 7px;
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .field.optional {
+      border-style: dashed;
+    }
+
     .field.full { grid-column: 1 / -1; min-height: 90px; }
 
     .advisor-row {
@@ -811,6 +845,69 @@
 
     .input-label.full { grid-column: 1 / -1; }
 
+    .label-row,
+    .input-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .label-row strong {
+      color: var(--ink);
+      font-size: 12px;
+    }
+
+    .field-meta {
+      color: var(--violet);
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .input-hint {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .input-counter {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .input-error {
+      border-color: #ff8a8a !important;
+      box-shadow: 0 0 0 3px rgba(255, 87, 87, .12) !important;
+    }
+
+    .field-notes {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .field-note {
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .field-note b {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+
     .helper {
       color: var(--muted);
       font-size: 13px;
@@ -924,7 +1021,7 @@
       .notes { position: static; }
       .shell { grid-template-columns: 1fr; }
       .sidebar { display: none; }
-      .option-grid, .advisor-row, .format-row, .state-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .option-grid, .advisor-row, .format-row, .state-grid, .field-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .mobile-wrap { grid-template-columns: 1fr; }
     }
 
@@ -949,7 +1046,7 @@
       }
       .modal h2 { font-size: 22px; }
       .modal-head, .modal-body { padding: 20px; }
-      .option-grid, .advisor-row, .format-row, .mini-form, .step-gallery, .state-grid, .payment-card { grid-template-columns: 1fr; }
+      .option-grid, .advisor-row, .format-row, .mini-form, .step-gallery, .state-grid, .field-notes, .payment-card { grid-template-columns: 1fr; }
       .actions { display: grid; }
       .primary-actions { display: grid; }
       .toast { right: 12px; bottom: 12px; }
@@ -1002,6 +1099,14 @@
 
         <h3>Важно дизайнеру</h3>
         <p>Это не регистрационная анкета. Это персональный мастер: пользователь должен почувствовать, что его ситуацию поняли и сейчас подберут подходящего человека.</p>
+
+        <h3>Микродетали полей</h3>
+        <ul>
+          <li>Даты рождения пользователя и партнера должны иметь одинаковую маску: ДД / ММ / ГГГГ.</li>
+          <li>Для необязательных полей нужны состояния: пусто, фокус, заполнено, ошибка, “не знаю”.</li>
+          <li>Для описания ситуации нужен лимит и счетчик, чтобы не перегружать пользователя.</li>
+          <li>Ошибки должны быть мягкими: подсказать формат, а не блокировать весь онбординг без объяснения.</li>
+        </ul>
 
         <div class="legend">
           <span><i class="dot"></i> Главные коммерческие шаги</span>
@@ -1087,11 +1192,31 @@
             <div class="screen-label">Шаг 3 / данные для консультации</div>
             <h3>Минимальные данные</h3>
             <div class="mini-form">
-              <div class="field"><b>Ваша дата рождения</b>ДД / ММ / ГГГГ</div>
-              <div class="field"><b>Время рождения</b>Если известно</div>
-              <div class="field"><b>Город рождения</b>Город, страна</div>
-              <div class="field"><b>Дата партнера</b>Необязательно</div>
-              <div class="field full"><b>Опишите ситуацию</b>Что вы хотите понять?</div>
+              <div class="field">
+                <b>Ваша дата рождения</b>
+                <span class="field-value">ДД / ММ / ГГГГ <span class="mask-chip">маска</span></span>
+                <span class="field-help">Опционально, но помогает персонализации.</span>
+              </div>
+              <div class="field optional">
+                <b>Время рождения</b>
+                <span class="field-value">ЧЧ:ММ <span class="mask-chip">если известно</span></span>
+                <span class="field-help">Нужно показать пустое, заполненное и “не знаю”.</span>
+              </div>
+              <div class="field optional">
+                <b>Город рождения</b>
+                <span class="field-value">Город, страна</span>
+                <span class="field-help">Автокомплит или обычный ввод, без тяжелой анкеты.</span>
+              </div>
+              <div class="field optional">
+                <b>Дата партнера</b>
+                <span class="field-value">ДД / ММ / ГГГГ <span class="mask-chip">та же маска</span></span>
+                <span class="field-help">Если дата неизвестна, пользователь просто оставляет поле пустым.</span>
+              </div>
+              <div class="field full">
+                <b>Опишите ситуацию</b>
+                <span class="field-value">Что вы хотите понять? <span class="mask-chip">до 240 знаков</span></span>
+                <span class="field-help">Нужны состояния: пусто, фокус, заполнено, ошибка, счетчик.</span>
+              </div>
             </div>
           </div>
 
@@ -1410,6 +1535,56 @@
       showToast.timer = setTimeout(() => toast.classList.remove("show"), 2600);
     }
 
+    function formatDateInput(value) {
+      const digits = String(value || "").replace(/\D/g, "").slice(0, 8);
+      if (digits.length <= 2) return digits;
+      if (digits.length <= 4) return `${digits.slice(0, 2)} / ${digits.slice(2)}`;
+      return `${digits.slice(0, 2)} / ${digits.slice(2, 4)} / ${digits.slice(4)}`;
+    }
+
+    function formatTimeInput(value) {
+      const digits = String(value || "").replace(/\D/g, "").slice(0, 4);
+      if (digits.length <= 2) return digits;
+      return `${digits.slice(0, 2)}:${digits.slice(2)}`;
+    }
+
+    function isValidDateMask(value) {
+      if (!value.trim()) return true;
+      const match = value.match(/^(\d{2}) \/ (\d{2}) \/ (\d{4})$/);
+      if (!match) return false;
+      const day = Number(match[1]);
+      const month = Number(match[2]);
+      const year = Number(match[3]);
+      return day >= 1 && day <= 31 && month >= 1 && month <= 12 && year >= 1900 && year <= 2035;
+    }
+
+    function isValidTimeMask(value) {
+      if (!value.trim()) return true;
+      const match = value.match(/^(\d{2}):(\d{2})$/);
+      if (!match) return false;
+      const hours = Number(match[1]);
+      const minutes = Number(match[2]);
+      return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
+    }
+
+    function validateDataStep() {
+      const checks = [
+        ["birthDate", isValidDateMask, "Проверьте вашу дату рождения: формат ДД / ММ / ГГГГ."],
+        ["partnerDate", isValidDateMask, "Проверьте дату партнера: формат ДД / ММ / ГГГГ."],
+        ["birthTime", isValidTimeMask, "Проверьте время рождения: формат ЧЧ:ММ."]
+      ];
+      for (const [field, validator, message] of checks) {
+        const input = modalBody.querySelector(`[data-field="${field}"]`);
+        if (input && !validator(state[field] || "")) {
+          input.classList.add("input-error");
+          input.focus();
+          showToast(message);
+          return false;
+        }
+      }
+      return true;
+    }
+
     function setModalVisible(visible) {
       modal.classList.toggle("hidden", !visible);
       reopenOnboarding.classList.toggle("show", !visible);
@@ -1491,23 +1666,38 @@
       if (key === "data") {
         return `
           <div class="screen-label">${steps[2].label}</div>
-          <p class="helper">Заметка дизайнеру: эти поля должны ощущаться необязательными и легкими. Не превращаем онбординг в тяжелую анкету.</p>
+          <p class="helper">Заметка дизайнеру: это не тяжелая анкета. Поля остаются необязательными, но у дат и времени уже есть точная маска, подсказки и мягкая проверка.</p>
           <div class="mini-form">
-            <label class="input-label">Ваша дата рождения
-              <input class="app-input" data-field="birthDate" placeholder="ДД / ММ / ГГГГ" value="${escapeHtml(state.birthDate)}">
+            <label class="input-label">
+              <span class="label-row"><strong>Ваша дата рождения</strong><span class="field-meta">ДД / ММ / ГГГГ</span></span>
+              <input class="app-input" data-field="birthDate" data-mask="date" inputmode="numeric" maxlength="14" placeholder="ДД / ММ / ГГГГ" value="${escapeHtml(state.birthDate)}">
+              <span class="input-hint">Опционально. Нужна для персонализации, не как обязательный барьер.</span>
             </label>
-            <label class="input-label">Время рождения
-              <input class="app-input" data-field="birthTime" placeholder="Если известно" value="${escapeHtml(state.birthTime)}">
+            <label class="input-label">
+              <span class="label-row"><strong>Время рождения</strong><span class="field-meta">необязательно</span></span>
+              <input class="app-input" data-field="birthTime" data-mask="time" inputmode="numeric" maxlength="5" placeholder="ЧЧ:ММ" value="${escapeHtml(state.birthTime)}">
+              <span class="input-hint">Если пользователь не знает время, поле можно оставить пустым.</span>
             </label>
-            <label class="input-label">Город рождения
+            <label class="input-label">
+              <span class="label-row"><strong>Город рождения</strong><span class="field-meta">необязательно</span></span>
               <input class="app-input" data-field="birthCity" placeholder="Город, страна" value="${escapeHtml(state.birthCity)}">
+              <span class="input-hint">В идеале: автоподсказки городов. В прототипе - обычный ввод.</span>
             </label>
-            <label class="input-label">Дата партнера
-              <input class="app-input" data-field="partnerDate" placeholder="Необязательно" value="${escapeHtml(state.partnerDate)}">
+            <label class="input-label">
+              <span class="label-row"><strong>Дата партнера</strong><span class="field-meta">та же маска</span></span>
+              <input class="app-input" data-field="partnerDate" data-mask="date" inputmode="numeric" maxlength="14" placeholder="ДД / ММ / ГГГГ" value="${escapeHtml(state.partnerDate)}">
+              <span class="input-hint">Необязательно. Если дата неизвестна, пользователь ничего не выбирает.</span>
             </label>
-            <label class="input-label full">Опишите ситуацию
-              <textarea class="app-textarea" data-field="situation" placeholder="Достаточно нескольких слов">${escapeHtml(state.situation)}</textarea>
+            <label class="input-label full">
+              <span class="label-row"><strong>Опишите ситуацию</strong><span class="input-counter">${state.situation.length}/240</span></span>
+              <textarea class="app-textarea" data-field="situation" maxlength="240" placeholder="Например: я не понимаю, стоит ли продолжать отношения">${escapeHtml(state.situation)}</textarea>
+              <span class="input-hint">Достаточно одной фразы. Это помогает эксперту начать с контекста, а не с уточнений.</span>
             </label>
+            <div class="field-notes">
+              <div class="field-note"><b>Состояние ошибки</b>Если дата введена не полностью, показываем подсказку формата и красную рамку только у этого поля.</div>
+              <div class="field-note"><b>Состояние “не знаю”</b>Для времени и даты партнера пустое поле считается нормальным, без ошибки.</div>
+              <div class="field-note"><b>Состояние фокуса</b>Фокус должен мягко подсвечивать поле, чтобы форма ощущалась легкой.</div>
+            </div>
           </div>
         `;
       }
@@ -1582,8 +1772,10 @@
         return `
           <div class="screen-label">${steps[6].label}</div>
           <div class="question">
-            <label class="input-label full">Главный вопрос для ${advisor.name}
-              <textarea class="app-textarea" data-field="question" placeholder="Задайте один понятный вопрос">${escapeHtml(state.question)}</textarea>
+            <label class="input-label full">
+              <span class="label-row"><strong>Главный вопрос для ${advisor.name}</strong><span class="input-counter">${state.question.length}/280</span></span>
+              <textarea class="app-textarea" data-field="question" maxlength="280" placeholder="Задайте один понятный вопрос">${escapeHtml(state.question)}</textarea>
+              <span class="input-hint">После оплаты вопрос уходит эксперту. Нужны состояния: пусто, заполнено, отправка, ошибка отправки.</span>
             </label>
             <div class="pill-row">
               <span class="pill">Прикрепить фото/файл</span>
@@ -1620,7 +1812,29 @@
       if (key === "data" || key === "question") {
         modalBody.querySelectorAll("[data-field]").forEach((item) => {
           item.addEventListener("input", () => {
+            if (item.dataset.mask === "date") {
+              item.value = formatDateInput(item.value);
+            }
+            if (item.dataset.mask === "time") {
+              item.value = formatTimeInput(item.value);
+            }
+            item.classList.remove("input-error");
             state[item.dataset.field] = item.value;
+            const counter = item.closest(".input-label")?.querySelector(".input-counter");
+            if (counter) {
+              const limit = item.getAttribute("maxlength") || "";
+              counter.textContent = `${item.value.length}${limit ? `/${limit}` : ""}`;
+            }
+          });
+          item.addEventListener("blur", () => {
+            if (item.dataset.mask === "date" && !isValidDateMask(item.value)) {
+              item.classList.add("input-error");
+              showToast("Дата должна быть в формате ДД / ММ / ГГГГ.");
+            }
+            if (item.dataset.mask === "time" && !isValidTimeMask(item.value)) {
+              item.classList.add("input-error");
+              showToast("Время должно быть в формате ЧЧ:ММ.");
+            }
           });
         });
       }
@@ -1666,6 +1880,11 @@
           <div class="summary-row"><b>Ситуация</b><span>${escapeHtml(state.clarify)}</span></div>
           <div class="summary-row"><b>Эксперт</b><span>${advisor.name} - ${advisor.role}</span></div>
           <div class="summary-row"><b>Формат</b><span>${escapeHtml(state.format)}</span></div>
+          <div class="summary-row"><b>Данные</b><span>${escapeHtml([
+            state.birthDate ? `дата: ${state.birthDate}` : "дата не указана",
+            state.partnerDate ? `партнер: ${state.partnerDate}` : "дата партнера не указана",
+            state.birthTime ? `время: ${state.birthTime}` : ""
+          ].filter(Boolean).join("; "))}</span></div>
           <div class="summary-row"><b>Вопрос</b><span>${escapeHtml(state.question)}</span></div>
         </div>
       `;
@@ -1736,11 +1955,16 @@
           <div class="screen-label">Мобильный / шаг 3</div>
           <h3>Добавьте детали</h3>
           <p class="helper">Мобильный ввод данных должен быть коротким. Состояние с клавиатурой нужно отрисовать отдельно.</p>
-          <label class="input-label">Дата рождения
-            <input class="app-input" placeholder="ДД / ММ / ГГГГ">
+          <label class="input-label">
+            <span class="label-row"><strong>Дата рождения</strong><span class="field-meta">ДД / ММ / ГГГГ</span></span>
+            <input class="app-input" data-mobile-mask="date" inputmode="numeric" maxlength="14" placeholder="ДД / ММ / ГГГГ">
+          </label>
+          <label class="input-label" style="margin-top:10px;">
+            <span class="label-row"><strong>Дата партнера</strong><span class="field-meta">необязательно</span></span>
+            <input class="app-input" data-mobile-mask="date" inputmode="numeric" maxlength="14" placeholder="ДД / ММ / ГГГГ">
           </label>
           <label class="input-label" style="margin-top:10px;">Опишите ситуацию
-            <textarea class="app-textarea" data-mobile-question-source placeholder="Достаточно нескольких слов"></textarea>
+            <textarea class="app-textarea" data-mobile-question-source maxlength="240" placeholder="Достаточно нескольких слов"></textarea>
           </label>
         `;
       }
@@ -1849,6 +2073,19 @@
           }
         });
       }
+
+      mobileSheetBody.querySelectorAll("[data-mobile-mask='date']").forEach((item) => {
+        item.addEventListener("input", () => {
+          item.value = formatDateInput(item.value);
+          item.classList.remove("input-error");
+        });
+        item.addEventListener("blur", () => {
+          if (!isValidDateMask(item.value)) {
+            item.classList.add("input-error");
+            showToast("Дата должна быть в формате ДД / ММ / ГГГГ.");
+          }
+        });
+      });
     }
 
     nextStep.addEventListener("click", () => {
@@ -1857,6 +2094,7 @@
         return;
       }
       if (state.step === 2) {
+        if (!validateDataStep()) return;
         showToast("Подбираем экспертов по теме и данным консультации...");
       }
       if (state.step === 5) {
@@ -1897,6 +2135,13 @@
         return;
       }
       if (mobileState.step === 2) {
+        const invalidDate = Array.from(mobileSheetBody.querySelectorAll("[data-mobile-mask='date']")).find((item) => !isValidDateMask(item.value));
+        if (invalidDate) {
+          invalidDate.classList.add("input-error");
+          invalidDate.focus();
+          showToast("Проверьте дату: формат ДД / ММ / ГГГГ.");
+          return;
+        }
         showToast("Мобильный матчинг: показать загрузку перед экспертами.");
       }
       if (mobileState.step === 5) {
