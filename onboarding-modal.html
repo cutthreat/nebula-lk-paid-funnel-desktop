@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nebula: интерактивный onboarding modal</title>
+  <title>Nebula: интерактивная модалка онбординга</title>
   <style>
     :root {
       --bg: #f6f3fb;
@@ -833,7 +833,7 @@
       font-weight: 700;
     }
 
-    .summary-card {
+        .summary-card {
       display: grid;
       gap: 12px;
       border: 1px solid var(--line);
@@ -842,7 +842,7 @@
       padding: 18px;
     }
 
-    .summary-row {
+        .summary-row {
       display: grid;
       grid-template-columns: 150px 1fr;
       gap: 12px;
@@ -851,12 +851,12 @@
       font-size: 14px;
     }
 
-    .summary-row:last-child {
+        .summary-row:last-child {
       border-bottom: 0;
       padding-bottom: 0;
     }
 
-    .summary-row b { color: var(--muted); }
+        .summary-row b { color: var(--muted); }
 
     .success-box,
     .warning-box,
@@ -974,11 +974,11 @@
         <a href="matching-payment-example.html">Вперед: матчинг + оплата</a>
       </div>
     </nav>
-    <div class="breadcrumbs"><a href="index.html">Панель</a> / <span>Интерактивный onboarding modal</span></div>
+    <div class="breadcrumbs"><a href="index.html">Панель</a> / <span>Интерактивная модалка онбординга</span></div>
 
     <div class="top">
       <div>
-        <h1>Интерактивный post-signup onboarding modal для ЛК Nebula</h1>
+        <h1>Интерактивный post-signup модалка онбординга для ЛК Nebula</h1>
         <p>HTML-набросок для дизайнера в прежнем формате: модалка поверх кабинета, шаги, выбор, состояния и переход к первой платной консультации.</p>
       </div>
       <div class="tag">Интерактивный пример / P0 funnel</div>
@@ -993,10 +993,10 @@
         <ul>
           <li>Выбор темы.</li>
           <li>Уточнение боли.</li>
-          <li>Данные для reading.</li>
+          <li>Данные для консультации.</li>
           <li>Подбор экспертов.</li>
           <li>Формат консультации.</li>
-          <li>Free intro / payment.</li>
+          <li>Бесплатное вступление / оплата.</li>
           <li>Главный вопрос эксперту.</li>
         </ul>
 
@@ -1006,7 +1006,7 @@
         <div class="legend">
           <span><i class="dot"></i> Главные коммерческие шаги</span>
           <span><i class="dot green"></i> Успешный путь</span>
-          <span><i class="dot yellow"></i> Бонус / free intro</span>
+          <span><i class="dot yellow"></i> Бонус / бесплатное вступление</span>
           <span><i class="dot red"></i> Ошибки и блокеры</span>
         </div>
       </aside>
@@ -1017,10 +1017,10 @@
           <div class="nav">
             <div class="logo">NEURO</div>
             <div class="nav-links">
-              <span>Psychic</span>
-              <span>Favorite</span>
-              <span>Chatroom</span>
-              <span>Horoscope</span>
+              <span>Эксперты</span>
+              <span>Избранное</span>
+              <span>Чат</span>
+              <span>Гороскоп</span>
             </div>
           </div>
 
@@ -1045,10 +1045,10 @@
             <div class="modal-head">
               <div class="modal-title-row">
                 <div>
-                  <h2 id="modalTitle">What do you need guidance with?</h2>
-                  <p class="modal-sub" id="modalSubtitle">Answer a few quick questions and we will match you with advisors who fit your situation.</p>
+                  <h2 id="modalTitle">В чем вам нужна ясность?</h2>
+                  <p class="modal-sub" id="modalSubtitle">Ответьте на несколько быстрых вопросов, и мы подберем экспертов под вашу ситуацию.</p>
                 </div>
-                <button class="close" id="closeOnboarding" aria-label="Close">×</button>
+                <button class="close" id="closeOnboarding" aria-label="Закрыть">×</button>
               </div>
               <div class="progress" id="progress">
                 <div class="step active" data-progress="0"></div>
@@ -1065,10 +1065,10 @@
 
             <div class="modal-body" style="padding-top:0;">
               <div class="actions">
-                <span class="skip" id="skipOnboarding">Skip for now</span>
+                <span class="skip" id="skipOnboarding">Пропустить сейчас</span>
                 <div class="primary-actions">
-                  <button class="ghost" id="backStep">Back</button>
-                  <button class="cta" id="nextStep">Continue</button>
+                  <button class="ghost" id="backStep">Назад</button>
+                  <button class="cta" id="nextStep">Продолжить</button>
                 </div>
               </div>
             </div>
@@ -1077,86 +1077,86 @@
 
         <div class="step-gallery">
           <div class="mini-screen">
-            <div class="screen-label">Step 2 / clarify</div>
+            <div class="screen-label">Шаг 2 / уточнение</div>
             <h3>Уточнение запроса</h3>
-            <p>Для выбранной темы показываем 3-4 варианта: “I want to understand my current relationship”, “Will my ex come back?”, “I need compatibility guidance”.</p>
-            <div class="choice selected">I want to understand my current relationship</div>
+            <p>Для выбранной темы показываем 3-4 варианта: “Хочу понять текущие отношения”, “Вернется ли бывший партнер?”, “Мне нужна подсказка по совместимости”.</p>
+            <div class="choice selected">Хочу понять текущие отношения</div>
           </div>
 
           <div class="mini-screen">
-            <div class="screen-label">Step 3 / reading data</div>
+            <div class="screen-label">Шаг 3 / данные для консультации</div>
             <h3>Минимальные данные</h3>
             <div class="mini-form">
-              <div class="field"><b>Your birth date</b>MM / DD / YYYY</div>
-              <div class="field"><b>Birth time</b>If known</div>
-              <div class="field"><b>Birth city</b>City, country</div>
-              <div class="field"><b>Partner date</b>Optional</div>
-              <div class="field full"><b>Describe your situation</b>What do you want to understand?</div>
+              <div class="field"><b>Ваша дата рождения</b>ДД / ММ / ГГГГ</div>
+              <div class="field"><b>Время рождения</b>Если известно</div>
+              <div class="field"><b>Город рождения</b>Город, страна</div>
+              <div class="field"><b>Дата партнера</b>Необязательно</div>
+              <div class="field full"><b>Опишите ситуацию</b>Что вы хотите понять?</div>
             </div>
           </div>
 
           <div class="mini-screen">
-            <div class="screen-label">Step 4 / matched advisors</div>
-            <h3>We found advisors for your situation</h3>
+            <div class="screen-label">Шаг 4 / подходящие эксперты</div>
+            <h3>Мы нашли экспертов под вашу ситуацию</h3>
             <div class="advisor-row">
               <div class="advisor">
                 <div class="advisor-top">
                   <div class="photo"></div>
-                  <div><h3>Veronika</h3><p>Love expert · 4.8 ★</p></div>
+                  <div><h3>Veronika</h3><p>Эксперт по любви · 4.8 ★</p></div>
                 </div>
-                <span class="status">online</span>
-                <button class="cta">Choose</button>
+                <span class="status">онлайн</span>
+                <button class="cta">Выбрать</button>
               </div>
               <div class="advisor">
                 <div class="advisor-top">
                   <div class="photo"></div>
-                  <div><h3>Marina</h3><p>Tarot · 4.9 ★</p></div>
+                  <div><h3>Marina</h3><p>Таро · 4.9 ★</p></div>
                 </div>
-                <span class="status offline">offline</span>
-                <button class="cta secondary">Notify me</button>
+                <span class="status offline">не в сети</span>
+                <button class="cta secondary">Уведомить меня</button>
               </div>
               <div class="advisor">
                 <div class="advisor-top">
                   <div class="photo"></div>
-                  <div><h3>Mia</h3><p>Astrology · 4.7 ★</p></div>
+                  <div><h3>Mia</h3><p>Астрология · 4.7 ★</p></div>
                 </div>
-                <span class="status">online</span>
-                <button class="cta">Choose</button>
+                <span class="status">онлайн</span>
+                <button class="cta">Выбрать</button>
               </div>
             </div>
           </div>
 
           <div class="mini-screen">
-            <div class="screen-label">Step 5 / consultation format</div>
-            <h3>Choose how you want to receive guidance</h3>
+            <div class="screen-label">Шаг 5 / формат консультации</div>
+            <h3>Выберите формат консультации</h3>
             <div class="format-row">
-              <div class="format"><b>Live chat now</b><small>Start a real-time paid chat.</small></div>
-              <div class="format"><b>Detailed reading</b><small>Send a question and get an answer later.</small></div>
-              <div class="format"><b>Book a session</b><small>Choose time and duration.</small></div>
+              <div class="format"><b>Live-чат сейчас</b><small>Начать платный чат в реальном времени.</small></div>
+              <div class="format"><b>Подробный асинхронный ответ</b><small>Отправить вопрос и получить ответ позже.</small></div>
+              <div class="format"><b>Записаться на сессию</b><small>Выбрать время и длительность.</small></div>
             </div>
           </div>
 
           <div class="mini-screen">
-            <div class="screen-label">Step 6 / offer</div>
-            <h3>Starter reading package</h3>
+            <div class="screen-label">Шаг 6 / офер</div>
+            <h3>Стартовый пакет консультации</h3>
             <div class="payment-card">
               <div>
-                <h3>Your first love reading</h3>
-                <p>Includes one main question, expert answer and saved transcript.</p>
+                <h3>Ваша первая love-консультация</h3>
+                <p>Включает один главный вопрос, ответ эксперта и сохраненную стенограмму.</p>
               </div>
               <div class="price">
-                <span>Free intro available</span>
+                <span>Доступно бесплатное вступление</span>
                 <strong>$4.99</strong>
               </div>
             </div>
           </div>
 
           <div class="mini-screen">
-            <div class="screen-label">Step 7 / question intake</div>
-            <h3>Ask your main question</h3>
+            <div class="screen-label">Шаг 7 / вопрос эксперту</div>
+            <h3>Задайте главный вопрос</h3>
             <div class="question">
-              <div class="textarea">Example: I feel distance in my relationship. What should I understand before making a decision?</div>
-              <button class="cta">Send to advisor</button>
+              <div class="textarea">Пример: я чувствую дистанцию в отношениях. Что мне понять перед решением?</div>
+              <button class="cta">Отправить эксперту</button>
             </div>
           </div>
         </div>
@@ -1164,7 +1164,7 @@
     </div>
 
     <section class="panel demo" style="margin-top:22px;">
-      <h2>Mobile behavior: fullscreen / bottom sheet</h2>
+      <h2>Поведение на мобильном: полный экран / нижняя шторка</h2>
       <div class="mobile-wrap">
         <div class="phone">
           <div class="phone-bg">
@@ -1175,19 +1175,19 @@
             <div class="mobile-progress"><span id="mobileProgress"></span></div>
             <div id="mobileSheetBody"></div>
             <div class="mobile-actions">
-              <button class="ghost" id="mobileBack">Back</button>
-              <button class="cta" id="mobileNext">Continue</button>
+              <button class="ghost" id="mobileBack">Назад</button>
+              <button class="cta" id="mobileNext">Продолжить</button>
             </div>
           </div>
         </div>
         <div>
           <h3>Что нужно отрисовать на mobile</h3>
-          <p style="color:var(--muted);max-width:560px;">На телефоне это должен быть fullscreen modal или bottom sheet. Нужно показать состояние с клавиатурой, выбором темы, карточками экспертов, оплатой и отправкой вопроса. Нельзя ограничиться desktop-модалкой.</p>
+          <p style="color:var(--muted);max-width:560px;">На телефоне это должен быть модальное окно на весь экран или нижняя шторка. Нужно показать состояние с клавиатурой, выбором темы, карточками экспертов, оплатой и отправкой вопроса. Нельзя ограничиться десктоп-модалкой.</p>
           <ul style="color:var(--muted);">
             <li>Первый вход после регистрации.</li>
             <li>Переход между шагами.</li>
-            <li>Клавиатура на question intake.</li>
-            <li>Payment / free intro на маленьком экране.</li>
+            <li>Клавиатура на шаге вопроса.</li>
+            <li>Оплата / бесплатное вступление на маленьком экране.</li>
             <li>Возврат к онбордингу из кабинета.</li>
           </ul>
         </div>
@@ -1197,14 +1197,14 @@
     <section class="panel demo" style="margin-top:22px;">
       <h2>Обязательные состояния для дизайнера</h2>
       <div class="state-grid">
-        <div class="state"><b>First login</b><small>Модалка открывается автоматически после регистрации.</small></div>
-        <div class="state"><b>Skipped</b><small>Пользователь пропустил, но может вернуться из кабинета.</small></div>
-        <div class="state"><b>Loading match</b><small>Подбираем экспертов после ответов.</small></div>
-        <div class="state"><b>No match</b><small>Нет подходящих online-экспертов, предлагаем альтернативы.</small></div>
-        <div class="state"><b>Expert offline</b><small>Notify me / choose another / async reading.</small></div>
-        <div class="state"><b>Payment required</b><small>Пакет, цена, что входит, CTA на оплату.</small></div>
-        <div class="state"><b>Free intro</b><small>Показать бонус и момент перехода к paid continuation.</small></div>
-        <div class="state"><b>Save error</b><small>Данные не сохранились, retry без потери ответов.</small></div>
+        <div class="state"><b>Первый вход</b><small>Модалка открывается автоматически после регистрации.</small></div>
+        <div class="state"><b>Пропущено</b><small>Пользователь пропустил, но может вернуться из кабинета.</small></div>
+        <div class="state"><b>Подбор экспертов</b><small>Подбираем экспертов после ответов.</small></div>
+        <div class="state"><b>Нет совпадений</b><small>Нет подходящих онлайн-экспертов, предлагаем альтернативы.</small></div>
+        <div class="state"><b>Эксперт не в сети</b><small>Уведомить меня / выбрать другого / async-консультация.</small></div>
+        <div class="state"><b>Нужна оплата</b><small>Пакет, цена, что входит, действие на оплату.</small></div>
+        <div class="state"><b>Бесплатное вступление</b><small>Показать бонус и момент перехода к платному продолжению.</small></div>
+        <div class="state"><b>Ошибка сохранения</b><small>Данные не сохранились, повтор без потери ответов.</small></div>
       </div>
     </section>
   </main>
@@ -1213,169 +1213,169 @@
     const steps = [
       {
         key: "intent",
-        title: "What do you need guidance with?",
-        subtitle: "Choose the main topic. The next steps adapt to this choice.",
-        label: "Step 1 / intent"
+        title: "В чем вам нужна ясность?",
+        subtitle: "Выберите главную тему. Следующие шаги адаптируются под выбор.",
+        label: "Шаг 1 / намерение"
       },
       {
         key: "clarify",
-        title: "Tell us what feels closest",
-        subtitle: "One tap is enough. The goal is to understand the situation, not to make the user fill a long form.",
-        label: "Step 2 / clarify"
+        title: "Выберите, что ближе всего к ситуации",
+        subtitle: "Достаточно одного выбора. Цель - понять ситуацию, а не заставить пользователя заполнять длинную анкету.",
+        label: "Шаг 2 / уточнение"
       },
       {
         key: "data",
-        title: "Add details for a personal reading",
-        subtitle: "Keep this lightweight. Optional fields should not block the user.",
-        label: "Step 3 / reading data"
+        title: "Добавьте детали для персональной консультации",
+        subtitle: "Оставляем шаг легким. Необязательные поля не должны блокировать пользователя.",
+        label: "Шаг 3 / данные для консультации"
       },
       {
         key: "advisors",
-        title: "We found advisors for your situation",
-        subtitle: "Show 3 strong matches, not a huge catalog.",
-        label: "Step 4 / matched advisors"
+        title: "Мы нашли экспертов под вашу ситуацию",
+        subtitle: "Показываем 3 сильных совпадения, а не большой каталог.",
+        label: "Шаг 4 / подходящие эксперты"
       },
       {
         key: "format",
-        title: "Choose your consultation format",
-        subtitle: "Make the purchase feel like a clear service, not like buying abstract minutes.",
-        label: "Step 5 / consultation format"
+        title: "Выберите формат консультации",
+        subtitle: "Покупка должна ощущаться как понятная услуга, а не как абстрактные минуты.",
+        label: "Шаг 5 / формат консультации"
       },
       {
         key: "offer",
-        title: "Start your first reading",
-        subtitle: "Show what is included, the price, bonus/free intro and trust note before payment.",
-        label: "Step 6 / offer"
+        title: "Начните первую консультацию",
+        subtitle: "Покажите до оплаты: что входит, цену, бонус/бесплатное вступление и заметку доверия.",
+        label: "Шаг 6 / офер"
       },
       {
         key: "question",
-        title: "Ask your main question",
-        subtitle: "This is the bridge from onboarding to the real paid chat or async reading.",
-        label: "Step 7 / question intake"
+        title: "Задайте главный вопрос",
+        subtitle: "Это мост от онбординга к реальному платному чату или асинхронный ответу.",
+        label: "Шаг 7 / вопрос эксперту"
       }
     ];
 
     const intents = [
-      ["Love & relationships", "Understand what is happening in your love life."],
-      ["Breakup / ex partner", "Get guidance about reconnection or closure."],
-      ["Compatibility", "Check emotional and zodiac compatibility."],
-      ["Future", "Find direction when you feel uncertain."],
-      ["Career", "Ask about work, choices and timing."],
-      ["Tarot reading", "Get a card-based reading for your question."],
-      ["Astrology", "Use birth details for a personal reading."],
-      ["Other", "Describe your situation in your own words."]
+      ["Любовь и отношения", "Понять, что происходит в личной жизни."],
+      ["Расставание / бывший партнер", "Получить подсказку о возвращении или завершении."],
+      ["Совместимость", "Проверить эмоциональную и zodiac-совместимость."],
+      ["Будущее", "Найти направление, когда есть неопределенность."],
+      ["Карьера", "Спросить о работе, выборе и сроках."],
+      ["Таро-консультация", "Получить ответ по картам на свой вопрос."],
+      ["Астрология", "Использовать данные рождения для персональной консультации."],
+      ["Другое", "Описать ситуацию своими словами."]
     ];
 
     const clarifyByIntent = {
-      "Love & relationships": [
-        "I want to understand my current relationship",
-        "I feel distance and need guidance",
-        "I want to know what my partner feels",
-        "I need advice before making a decision"
+      "Любовь и отношения": [
+        "Хочу понять текущие отношения",
+        "Чувствую дистанцию и хочу понять, что делать",
+        "Хочу понять, что чувствует партнер",
+        "Мне нужен совет перед решением"
       ],
-      "Breakup / ex partner": [
-        "Will my ex come back?",
-        "Should I wait or move on?",
-        "Why did the breakup happen?",
-        "How can I find closure?"
+      "Расставание / бывший партнер": [
+        "Вернется ли бывший партнер?",
+        "Ждать или двигаться дальше?",
+        "Почему произошло расставание?",
+        "Как мне закрыть эту историю?"
       ],
-      "Compatibility": [
-        "Check our emotional compatibility",
-        "Check our zodiac compatibility",
-        "Can this relationship become serious?",
-        "What should we work on?"
+      "Совместимость": [
+        "Проверить эмоциональную совместимость",
+        "Проверить zodiac-совместимость",
+        "Могут ли эти отношения стать серьезными?",
+        "Над чем нам стоит работать?"
       ],
-      "Future": [
-        "What should I expect soon?",
-        "I need clarity about a decision",
-        "What energy surrounds me now?",
-        "What should I focus on?"
+      "Будущее": [
+        "Чего ожидать в ближайшее время?",
+        "Мне нужна ясность по решению",
+        "Какая энергия вокруг меня сейчас?",
+        "На чем мне сфокусироваться?"
       ],
-      "Career": [
-        "Should I change my job?",
-        "What blocks my growth?",
-        "Is this opportunity right for me?",
-        "When is the right time to act?"
+      "Карьера": [
+        "Стоит ли менять работу?",
+        "Что блокирует мой рост?",
+        "Подходит ли мне эта возможность?",
+        "Когда правильное время действовать?"
       ],
-      "Tarot reading": [
-        "I have one specific question",
-        "I want a relationship tarot reading",
-        "I want a career tarot reading",
-        "I need a general spread"
+      "Таро-консультация": [
+        "У меня есть один конкретный вопрос",
+        "Хочу таро-консультацию по отношениям",
+        "Хочу таро-консультацию по карьере",
+        "Мне нужен общий расклад"
       ],
-      "Astrology": [
-        "I want a birth chart reading",
-        "I want compatibility astrology",
-        "I want timing guidance",
-        "I want to understand my patterns"
+      "Астрология": [
+        "Хочу разбор натальной карты",
+        "Хочу астрологию совместимости",
+        "Хочу подсказку по срокам",
+        "Хочу понять свои паттерны"
       ],
-      "Other": [
-        "I want to describe it myself",
-        "I am not sure which topic fits",
-        "I need spiritual guidance",
-        "I want to choose an advisor first"
+      "Другое": [
+        "Хочу описать самостоятельно",
+        "Не уверен, какая тема подходит",
+        "Мне нужна духовная консультация",
+        "Хочу сначала выбрать эксперта"
       ]
     };
 
     const advisors = [
       {
         name: "Veronika",
-        role: "Love & relationship expert",
-        rating: "4.8",
-        reviews: "1,211 reviews",
-        price: "45 credits/min",
-        status: "online",
-        match: "Best match for relationship clarity"
+        role: "Эксперт по любви и отношениям",
+        оценка: "4.8",
+        reviews: "1 211 отзывов",
+        price: "45 кредитов/мин",
+        status: "онлайн",
+        match: "Лучше всего подходит для ясности в отношениях"
       },
       {
         name: "Marina",
-        role: "Tarot and compatibility reader",
-        rating: "4.9",
-        reviews: "9,109 reviews",
-        price: "Starter reading $4.99",
+        role: "Эксперт по таро и совместимости",
+        оценка: "4.9",
+        reviews: "9 109 отзывов",
+        price: "Стартовая консультация $4.99",
         status: "offline",
-        match: "Available for async reading"
+        match: "Доступна для async-консультации"
       },
       {
         name: "Mia Jacomo",
-        role: "Astrology and future guidance",
-        rating: "4.7",
-        reviews: "752 reviews",
-        price: "39 credits/min",
-        status: "online",
-        match: "Good match for birth-data reading"
+        role: "Астрология и подсказки о будущем",
+        оценка: "4.7",
+        reviews: "752 отзыва",
+        price: "39 кредитов/мин",
+        status: "онлайн",
+        match: "Хорошо подходит для консультации по данным рождения"
       }
     ];
 
     const formats = [
-      ["Live chat now", "Start a real-time paid chat. Best when the advisor is online."],
-      ["Detailed async reading", "Send one question and receive a prepared answer with transcript."],
-      ["Book a session", "Choose time, duration and timezone for a planned consultation."]
+      ["Live-чат сейчас", "Начать платный чат в реальном времени. Лучше всего, когда эксперт онлайн."],
+      ["Подробный асинхронный ответ", "Отправить один вопрос и получить подготовленный ответ со стенограммой."],
+      ["Записаться на сессию", "Выбрать время, длительность и timezone для запланированной консультации."]
     ];
 
     const state = {
       step: 0,
-      intent: "Love & relationships",
-      clarify: "I want to understand my current relationship",
+      intent: "Любовь и отношения",
+      clarify: "Хочу понять текущие отношения",
       birthDate: "",
       birthTime: "",
       birthCity: "",
       partnerDate: "",
       situation: "",
       advisor: 0,
-      format: "Live chat now",
-      package: "Starter reading",
-      question: "I feel distance in my relationship. What should I understand before making a decision?",
+      format: "Live-чат сейчас",
+      package: "Стартовая консультация",
+      question: "Я чувствую дистанцию в отношениях. Что мне понять перед решением?",
       completed: false
     };
 
     const mobileState = {
       step: 0,
-      intent: "Love & relationships",
-      clarify: "I want to understand my current relationship",
+      intent: "Любовь и отношения",
+      clarify: "Хочу понять текущие отношения",
       advisor: 0,
-      format: "Live chat now",
-      question: "Will my current partner and I stay together?",
+      format: "Live-чат сейчас",
+      question: "Останемся ли мы с текущим партнером вместе?",
       done: false
     };
 
@@ -1414,7 +1414,7 @@
       modal.classList.toggle("hidden", !visible);
       reopenOnboarding.classList.toggle("show", !visible);
       if (!visible) {
-        showToast("Onboarding skipped. User can reopen it from the cabinet.");
+        showToast("Онбординг пропущен. Пользователь может вернуться к нему из кабинета.");
       }
     }
 
@@ -1434,7 +1434,7 @@
     function resetMainFlow() {
       state.step = 0;
       state.completed = false;
-      nextStep.textContent = "Continue";
+      nextStep.textContent = "Продолжить";
       render();
     }
 
@@ -1451,12 +1451,12 @@
     }
 
     function getNextLabel() {
-      if (state.step === 2) return "Find advisors";
-      if (state.step === 3) return "Choose advisor";
-      if (state.step === 4) return "Continue";
-      if (state.step === 5) return "Start my reading";
-      if (state.step === 6) return "Send to advisor";
-      return "Continue";
+      if (state.step === 2) return "Найти экспертов";
+      if (state.step === 3) return "Выбрать эксперта";
+      if (state.step === 4) return "Продолжить";
+      if (state.step === 5) return "Начать консультацию";
+      if (state.step === 6) return "Отправить эксперту";
+      return "Продолжить";
     }
 
     function renderStep(key) {
@@ -1474,14 +1474,14 @@
       }
 
       if (key === "clarify") {
-        const options = clarifyByIntent[state.intent] || clarifyByIntent.Other;
+        const options = clarifyByIntent[state.intent] || clarifyByIntent.Другое;
         return `
           <div class="screen-label">${steps[1].label}</div>
-          <p class="helper">Selected topic: <b>${escapeHtml(state.intent)}</b></p>
+          <p class="helper">Выбранная тема: <b>${escapeHtml(state.intent)}</b></p>
           <div class="option-grid">
             ${options.map((name) => `
               <div class="choice ${state.clarify === name ? "selected" : ""}" data-clarify="${escapeHtml(name)}">
-                ${escapeHtml(name)}<small>This can become the pre-filled question context.</small>
+                ${escapeHtml(name)}<small>Это может стать предзаполненным контекстом вопроса.</small>
               </div>
             `).join("")}
           </div>
@@ -1491,22 +1491,22 @@
       if (key === "data") {
         return `
           <div class="screen-label">${steps[2].label}</div>
-          <p class="helper">Designer note: these fields should feel optional and lightweight. Do not turn onboarding into a heavy form.</p>
+          <p class="helper">Заметка дизайнеру: эти поля должны ощущаться необязательными и легкими. Не превращаем онбординг в тяжелую анкету.</p>
           <div class="mini-form">
-            <label class="input-label">Your birth date
-              <input class="app-input" data-field="birthDate" placeholder="MM / DD / YYYY" value="${escapeHtml(state.birthDate)}">
+            <label class="input-label">Ваша дата рождения
+              <input class="app-input" data-field="birthDate" placeholder="ДД / ММ / ГГГГ" value="${escapeHtml(state.birthDate)}">
             </label>
-            <label class="input-label">Birth time
-              <input class="app-input" data-field="birthTime" placeholder="If known" value="${escapeHtml(state.birthTime)}">
+            <label class="input-label">Время рождения
+              <input class="app-input" data-field="birthTime" placeholder="Если известно" value="${escapeHtml(state.birthTime)}">
             </label>
-            <label class="input-label">Birth city
-              <input class="app-input" data-field="birthCity" placeholder="City, country" value="${escapeHtml(state.birthCity)}">
+            <label class="input-label">Город рождения
+              <input class="app-input" data-field="birthCity" placeholder="Город, страна" value="${escapeHtml(state.birthCity)}">
             </label>
-            <label class="input-label">Partner date
-              <input class="app-input" data-field="partnerDate" placeholder="Optional" value="${escapeHtml(state.partnerDate)}">
+            <label class="input-label">Дата партнера
+              <input class="app-input" data-field="partnerDate" placeholder="Необязательно" value="${escapeHtml(state.partnerDate)}">
             </label>
-            <label class="input-label full">Describe your situation
-              <textarea class="app-textarea" data-field="situation" placeholder="A few words are enough">${escapeHtml(state.situation)}</textarea>
+            <label class="input-label full">Опишите ситуацию
+              <textarea class="app-textarea" data-field="situation" placeholder="Достаточно нескольких слов">${escapeHtml(state.situation)}</textarea>
             </label>
           </div>
         `;
@@ -1527,18 +1527,18 @@
                 </div>
                 <div class="pill-row">
                   <span class="status ${advisor.status === "offline" ? "offline" : ""}">${advisor.status}</span>
-                  <span class="pill">${advisor.rating} stars</span>
+                  <span class="pill">${advisor.rating} звезд</span>
                   <span class="pill">${advisor.reviews}</span>
                 </div>
                 <p>${advisor.match}</p>
                 <p><b>${advisor.price}</b></p>
                 <button class="cta ${advisor.status === "offline" ? "secondary" : ""}" data-advisor-button="${index}">
-                  ${advisor.status === "offline" ? "Notify me" : "Choose"}
+                  ${advisor.status === "offline" ? "Уведомить меня" : "Выбрать"}
                 </button>
               </div>
             `).join("")}
           </div>
-          <p class="helper">Designer note: keep this shortlist small. It should feel curated for the user's situation.</p>
+          <p class="helper">Заметка дизайнеру: shortlist должен быть маленьким и выглядеть подобранным под ситуацию пользователя.</p>
         `;
       }
 
@@ -1562,17 +1562,17 @@
           <div class="screen-label">${steps[5].label}</div>
           <div class="payment-card">
             <div>
-              <h3>Your first ${state.intent.toLowerCase()} reading</h3>
-              <p>Advisor: ${advisor.name}. Format: ${state.format}. Includes one main question, expert answer and saved transcript.</p>
+              <h3>Первая консультация: ${state.intent.toLowerCase()}</h3>
+              <p>Эксперт: ${advisor.name}. Формат: ${state.format}. Включает один главный вопрос, ответ эксперта и сохраненную стенограмму.</p>
             </div>
             <div class="price">
-              <span>Free intro available</span>
+              <span>Доступно бесплатное вступление</span>
               <strong>$4.99</strong>
             </div>
           </div>
           <div class="warning-box">
-            <b>Trust note to design</b>
-            <span>Add short copy near payment: spiritual guidance, no guaranteed outcomes, refund/support path visible.</span>
+            <b>Заметка доверия для дизайна</b>
+            <span>Рядом с оплатой нужен короткий текст: духовная консультация без гарантированных исходов, плюс видимый путь возврата или поддержки.</span>
           </div>
         `;
       }
@@ -1582,13 +1582,13 @@
         return `
           <div class="screen-label">${steps[6].label}</div>
           <div class="question">
-            <label class="input-label full">Main question for ${advisor.name}
-              <textarea class="app-textarea" data-field="question" placeholder="Ask one clear question">${escapeHtml(state.question)}</textarea>
+            <label class="input-label full">Главный вопрос для ${advisor.name}
+              <textarea class="app-textarea" data-field="question" placeholder="Задайте один понятный вопрос">${escapeHtml(state.question)}</textarea>
             </label>
             <div class="pill-row">
-              <span class="pill">Attach photo/file</span>
-              <span class="pill">Saved transcript</span>
-              <span class="pill">Expected reply: 10-20 min</span>
+              <span class="pill">Прикрепить фото/файл</span>
+              <span class="pill">Стенограмма сохранена</span>
+              <span class="pill">Ожидаемый ответ: 10-20 мин</span>
             </div>
           </div>
         `;
@@ -1602,7 +1602,7 @@
         modalBody.querySelectorAll("[data-intent]").forEach((item) => {
           item.addEventListener("click", () => {
             state.intent = item.dataset.intent;
-            state.clarify = (clarifyByIntent[state.intent] || clarifyByIntent.Other)[0];
+            state.clarify = (clarifyByIntent[state.intent] || clarifyByIntent.Другое)[0];
             render();
           });
         });
@@ -1630,7 +1630,7 @@
           item.addEventListener("click", (event) => {
             const index = Number(item.dataset.advisor);
             if (advisors[index].status === "offline") {
-              showToast("Offline state: show Notify me, async reading or choose another advisor.");
+              showToast("Состояние «не в сети»: показать 'Уведомить меня', async-консультацию или выбор другого эксперта.");
               return;
             }
             state.advisor = index;
@@ -1651,26 +1651,26 @@
 
     function completeFlow() {
       const advisor = advisors[state.advisor];
-      modalTitle.textContent = "Your question was sent";
-      modalSubtitle.textContent = "This is the handoff from onboarding into the paid consultation flow.";
-      nextStep.textContent = "Done";
+      modalTitle.textContent = "Ваш вопрос отправлен";
+      modalSubtitle.textContent = "Это переход из онбординга в платную консультацию.";
+      nextStep.textContent = "Готово";
       backStep.style.opacity = "1";
       modalBody.innerHTML = `
-        <div class="screen-label">Complete / chat handoff</div>
+        <div class="screen-label">Готово / переход в чат</div>
         <div class="success-box">
-          <b>Reading started</b>
-          <span>${advisor.name} received the user's question. Show ETA, paid session status and saved transcript entry next.</span>
+          <b>Консультация началась</b>
+          <span>${advisor.name} получил вопрос пользователя. Дальше показываем срок ожидания, статус платной сессии и сохраненную стенограмму.</span>
         </div>
         <div class="summary-card">
-          <div class="summary-row"><b>Topic</b><span>${escapeHtml(state.intent)}</span></div>
-          <div class="summary-row"><b>Situation</b><span>${escapeHtml(state.clarify)}</span></div>
-          <div class="summary-row"><b>Advisor</b><span>${advisor.name} - ${advisor.role}</span></div>
-          <div class="summary-row"><b>Format</b><span>${escapeHtml(state.format)}</span></div>
-          <div class="summary-row"><b>Question</b><span>${escapeHtml(state.question)}</span></div>
+          <div class="summary-row"><b>Тема</b><span>${escapeHtml(state.intent)}</span></div>
+          <div class="summary-row"><b>Ситуация</b><span>${escapeHtml(state.clarify)}</span></div>
+          <div class="summary-row"><b>Эксперт</b><span>${advisor.name} - ${advisor.role}</span></div>
+          <div class="summary-row"><b>Формат</b><span>${escapeHtml(state.format)}</span></div>
+          <div class="summary-row"><b>Вопрос</b><span>${escapeHtml(state.question)}</span></div>
         </div>
       `;
       state.completed = true;
-      showToast("Prototype complete: next screen should be paid chat with SLA and transcript.");
+      showToast("Прототип завершен: следующий экран - платный чат с сроком ответа и стенограммой.");
     }
 
     function setMobileStep(index) {
@@ -1684,16 +1684,16 @@
       mobileProgress.style.width = `${progress}%`;
       mobileBack.disabled = mobileState.step === 0 && !mobileState.done;
       mobileBack.style.opacity = mobileBack.disabled ? ".45" : "1";
-      mobileNext.textContent = mobileState.done ? "Close" : getMobileNextLabel();
+      mobileNext.textContent = mobileState.done ? "Закрыть" : getMobileNextLabel();
       mobileSheetBody.innerHTML = renderMobileStep();
       bindMobileEvents();
     }
 
     function getMobileNextLabel() {
-      if (mobileState.step === 2) return "Match";
-      if (mobileState.step === 5) return "Start";
-      if (mobileState.step === 6) return "Send";
-      return "Continue";
+      if (mobileState.step === 2) return "Подобрать";
+      if (mobileState.step === 5) return "Начать";
+      if (mobileState.step === 6) return "Отправить";
+      return "Продолжить";
     }
 
     function renderMobileStep() {
@@ -1702,17 +1702,17 @@
       if (mobileState.done) {
         const advisor = advisors[mobileState.advisor];
         return `
-          <div class="screen-label">Mobile complete</div>
-          <h3>Question sent</h3>
-          <p class="helper">${advisor.name} received the question. Next mobile screen should show paid chat, ETA and transcript.</p>
-          <div class="success-box"><b>Ready for chat handoff</b><span>${escapeHtml(mobileState.question)}</span></div>
+          <div class="screen-label">Мобильный / готово</div>
+          <h3>Вопрос отправлен</h3>
+          <p class="helper">${advisor.name} получил вопрос. Следующий мобильный экран должен показать платный чат, срок ожидания и стенограмму.</p>
+          <div class="success-box"><b>Готово к переходу в чат</b><span>${escapeHtml(mobileState.question)}</span></div>
         `;
       }
 
       if (step.key === "intent") {
         return `
-          <div class="screen-label">Mobile / Step 1</div>
-          <h3>What do you need guidance with?</h3>
+          <div class="screen-label">Мобильный / шаг 1</div>
+          <h3>В чем вам нужна ясность?</h3>
           ${intents.slice(0, 6).map(([name]) => `
             <div class="mobile-choice ${mobileState.intent === name ? "selected" : ""}" data-mobile-intent="${escapeHtml(name)}">${escapeHtml(name)}</div>
           `).join("")}
@@ -1720,10 +1720,10 @@
       }
 
       if (step.key === "clarify") {
-        const options = clarifyByIntent[mobileState.intent] || clarifyByIntent.Other;
+        const options = clarifyByIntent[mobileState.intent] || clarifyByIntent.Другое;
         return `
-          <div class="screen-label">Mobile / Step 2</div>
-          <h3>What feels closest?</h3>
+          <div class="screen-label">Мобильный / шаг 2</div>
+          <h3>Что ближе всего к вашей ситуации?</h3>
           <p class="helper">${escapeHtml(mobileState.intent)}</p>
           ${options.map((name) => `
             <div class="mobile-choice ${mobileState.clarify === name ? "selected" : ""}" data-mobile-clarify="${escapeHtml(name)}">${escapeHtml(name)}</div>
@@ -1733,22 +1733,22 @@
 
       if (step.key === "data") {
         return `
-          <div class="screen-label">Mobile / Step 3</div>
-          <h3>Add details</h3>
-          <p class="helper">Keep mobile data entry short. Keyboard state should be drawn separately.</p>
-          <label class="input-label">Birth date
-            <input class="app-input" placeholder="MM / DD / YYYY">
+          <div class="screen-label">Мобильный / шаг 3</div>
+          <h3>Добавьте детали</h3>
+          <p class="helper">Мобильный ввод данных должен быть коротким. Состояние с клавиатурой нужно отрисовать отдельно.</p>
+          <label class="input-label">Дата рождения
+            <input class="app-input" placeholder="ДД / ММ / ГГГГ">
           </label>
-          <label class="input-label" style="margin-top:10px;">Describe situation
-            <textarea class="app-textarea" data-mobile-question-source placeholder="A few words are enough"></textarea>
+          <label class="input-label" style="margin-top:10px;">Опишите ситуацию
+            <textarea class="app-textarea" data-mobile-question-source placeholder="Достаточно нескольких слов"></textarea>
           </label>
         `;
       }
 
       if (step.key === "advisors") {
         return `
-          <div class="screen-label">Mobile / Step 4</div>
-          <h3>Matched advisors</h3>
+          <div class="screen-label">Мобильный / шаг 4</div>
+          <h3>Подходящие эксперты</h3>
           ${advisors.map((advisor, index) => `
             <div class="mobile-choice ${mobileState.advisor === index ? "selected" : ""}" data-mobile-advisor="${index}">
               ${advisor.name} · ${advisor.rating} ★ · ${advisor.status}<br>
@@ -1760,8 +1760,8 @@
 
       if (step.key === "format") {
         return `
-          <div class="screen-label">Mobile / Step 5</div>
-          <h3>Choose format</h3>
+          <div class="screen-label">Мобильный / шаг 5</div>
+          <h3>Выберите формат</h3>
           ${formats.map(([name, desc]) => `
             <div class="mobile-choice ${mobileState.format === name ? "selected" : ""}" data-mobile-format="${escapeHtml(name)}">
               ${escapeHtml(name)}<br><small>${escapeHtml(desc)}</small>
@@ -1773,26 +1773,26 @@
       if (step.key === "offer") {
         const advisor = advisors[mobileState.advisor];
         return `
-          <div class="screen-label">Mobile / Step 6</div>
-          <h3>Starter reading</h3>
+          <div class="screen-label">Мобильный / шаг 6</div>
+          <h3>Стартовая консультация</h3>
           <div class="payment-card" style="grid-template-columns:1fr;">
             <div>
               <h3>$4.99</h3>
-              <p>${advisor.name} · ${mobileState.format}. Includes one main question and saved transcript.</p>
+              <p>${advisor.name} · ${mobileState.format}. Включает один главный вопрос и сохраненную стенограмму.</p>
             </div>
           </div>
-          <p class="helper">Designer needs payment success, failed and pending mobile states.</p>
+          <p class="helper">Дизайнеру нужны мобильные состояния: успешная оплата, ошибка и ожидание.</p>
         `;
       }
 
       if (step.key === "question") {
         return `
-          <div class="screen-label">Mobile / Step 7</div>
-          <h3>Ask your question</h3>
+          <div class="screen-label">Мобильный / шаг 7</div>
+          <h3>Задайте вопрос</h3>
           <textarea class="app-textarea" data-mobile-question>${escapeHtml(mobileState.question)}</textarea>
           <div class="pill-row" style="margin-top:10px;">
-            <span class="pill">Attach</span>
-            <span class="pill">ETA 10-20 min</span>
+            <span class="pill">Прикрепить</span>
+            <span class="pill">Ожидание 10-20 мин</span>
           </div>
         `;
       }
@@ -1804,7 +1804,7 @@
       mobileSheetBody.querySelectorAll("[data-mobile-intent]").forEach((item) => {
         item.addEventListener("click", () => {
           mobileState.intent = item.dataset.mobileIntent;
-          mobileState.clarify = (clarifyByIntent[mobileState.intent] || clarifyByIntent.Other)[0];
+          mobileState.clarify = (clarifyByIntent[mobileState.intent] || clarifyByIntent.Другое)[0];
           renderMobile();
         });
       });
@@ -1821,7 +1821,7 @@
           const index = Number(item.dataset.mobileAdvisor);
           mobileState.advisor = index;
           if (advisors[index].status === "offline") {
-            showToast("Mobile offline advisor state: show Notify me or async reading.");
+            showToast("Мобильное состояние «не в сети»: показать 'Уведомить меня' или асинхронную консультацию.");
           }
           renderMobile();
         });
@@ -1857,14 +1857,14 @@
         return;
       }
       if (state.step === 2) {
-        showToast("Matching advisors based on topic and reading data...");
+        showToast("Подбираем экспертов по теме и данным консультации...");
       }
       if (state.step === 5) {
-        showToast("Payment/free intro state: designer should draw success, fail and pending.");
+        showToast("Оплата/free intro: дизайнеру нужно отрисовать успех, ошибку и ожидание.");
       }
       if (state.step === 6) {
         if (!state.question.trim()) {
-          showToast("Add a question before sending to advisor.");
+          showToast("Добавьте вопрос перед отправкой эксперту.");
           return;
         }
         completeFlow();
@@ -1893,18 +1893,18 @@
 
     mobileNext.addEventListener("click", () => {
       if (mobileState.done) {
-        showToast("Mobile flow complete. Designer should connect this to mobile chatroom.");
+        showToast("Мобильный сценарий завершен. Дизайнер должен связать это с мобильным чатом.");
         return;
       }
       if (mobileState.step === 2) {
-        showToast("Mobile matching: show loading before advisors.");
+        showToast("Мобильный матчинг: показать загрузку перед экспертами.");
       }
       if (mobileState.step === 5) {
-        showToast("Mobile payment/free intro: draw success, failed and pending.");
+        showToast("Мобильная оплата / бесплатное вступление: отрисовать успех, ошибку и ожидание.");
       }
       if (mobileState.step === 6) {
         if (!mobileState.question.trim()) {
-          showToast("Add a mobile question before sending.");
+          showToast("Добавьте мобильный вопрос перед отправкой.");
           return;
         }
         mobileState.done = true;
@@ -1925,8 +1925,8 @@
 
     document.querySelectorAll(".state").forEach((item) => {
       item.addEventListener("click", () => {
-        const name = item.querySelector("b")?.textContent || "State";
-        showToast(`${name}: designer should draw this as a separate modal state.`);
+        const name = item.querySelector("b")?.textContent || "Состояние";
+        showToast(`${name}: дизайнер должен отрисовать это как отдельное состояние модалки.`);
       });
     });
 
