@@ -170,19 +170,21 @@
         <h1>Что реально дорисовать для desktop-чата</h1>
         <p class="lead">Сжатый список для Антона: не переделывать весь messenger, а закрыть только paid-service состояния, без которых платная консультация может сломаться на запуске.</p>
       </div>
-      <div class="note">Source: локальный LK source pack, 11 chat-related exports. Fresh Figma node-level proof заблокирован лимитом Figma MCP.</div>
+      <div class="note">Source: локальный LK source pack, 11 chat-related exports + запись клиентской paid session от 2025-04-11. Fresh Figma node-level proof заблокирован лимитом Figma MCP.</div>
     </section>
 
-    <section class="grid" aria-label="9 deliverables" style="grid-template-columns: repeat(9, 1fr);">
+    <section class="grid" aria-label="11 deliverables" style="grid-template-columns: repeat(11, 1fr);">
       <div class="pill"><strong>1</strong>Offer/payment</div>
       <div class="pill"><strong>2</strong>Paid session status</div>
       <div class="pill"><strong>3</strong>Question intake</div>
       <div class="pill"><strong>4</strong>Connection lost</div>
       <div class="pill"><strong>5</strong>Expert unavailable</div>
-      <div class="pill"><strong>6</strong>Low/no credits</div>
-      <div class="pill"><strong>7</strong>Failed send/upload</div>
-      <div class="pill"><strong>8</strong>Ended transcript</div>
-      <div class="pill"><strong>9</strong>Support/refund/report</div>
+      <div class="pill"><strong>6</strong>Connecting/no charge</div>
+      <div class="pill"><strong>7</strong>Low/no credits</div>
+      <div class="pill"><strong>8</strong>Payment retry</div>
+      <div class="pill"><strong>9</strong>Failed send/upload</div>
+      <div class="pill"><strong>10</strong>Ended transcript</div>
+      <div class="pill"><strong>11</strong>Support/refund/report</div>
     </section>
 
     <section class="section">
@@ -255,6 +257,8 @@
           <div><span class="tag">Required</span><h3>5. Expert unavailable / delayed</h3></div>
           <ul>
             <li>offline/busy after selection</li>
+            <li>available alternative experts</li>
+            <li>free-minute/bonus offer if used</li>
             <li>ETA or waiting state</li>
             <li>send async / choose another expert</li>
             <li>refund/support hint if fulfillment fails</li>
@@ -262,17 +266,40 @@
           <p>Нельзя строить запуск на допущении, что эксперт всегда online.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>6. Low credits / no credits</h3></div>
+          <div><span class="tag">Required</span><h3>6. Connecting to expert / no-charge progress</h3></div>
+          <ul>
+            <li>selected expert</li>
+            <li>connection progress</li>
+            <li>expected wait, e.g. 15-20 seconds if true</li>
+            <li>explicit no-charge during connection</li>
+            <li>keep waiting / choose another expert / support fallback</li>
+          </ul>
+          <p>Запись показывает это как отдельный trust state: клиент не должен думать, что его уже тарифицируют во время подключения.</p>
+        </div>
+        <div class="row need">
+          <div><span class="tag">Required</span><h3>7. Low credits / no credits</h3></div>
           <ul>
             <li>low balance warning</li>
             <li>session stopped state</li>
             <li>top up and continue</li>
             <li>end and save transcript</li>
+            <li>auto-refill offer with skip/standard payment</li>
           </ul>
           <p>Самый критичный interruption в paid chat.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>7. Failed send/upload</h3></div>
+          <div><span class="tag">Required</span><h3>8. Failed payment / retry another method</h3></div>
+          <ul>
+            <li>payment failed message</li>
+            <li>selected package/order summary</li>
+            <li>try another method</li>
+            <li>choose another package</li>
+            <li>safe return to chat or support</li>
+          </ul>
+          <p>Это revenue-critical state: покупатель не должен застрять на продолжении консультации.</p>
+        </div>
+        <div class="row need">
+          <div><span class="tag">Required</span><h3>9. Failed send/upload</h3></div>
           <ul>
             <li>message sending/failed/retry</li>
             <li>attachment uploading/failed/retry/remove</li>
@@ -281,7 +308,7 @@
           <p>Достаточно component state set, не отдельные большие страницы.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>8. Ended consultation / transcript</h3></div>
+          <div><span class="tag">Required</span><h3>10. Ended consultation / transcript</h3></div>
           <ul>
             <li>consultation ended</li>
             <li>transcript saved</li>
@@ -291,7 +318,7 @@
           <p>Закрывает платное обещание и создает следующий заказ.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>9. Support/refund/report</h3></div>
+          <div><span class="tag">Required</span><h3>11. Support/refund/report</h3></div>
           <ul>
             <li>report message/expert</li>
             <li>request help/refund</li>
@@ -319,7 +346,7 @@
     </section>
 
     <section class="copybox">
-      <p>Короткий brief Антону: “Базовый desktop chat уже есть. Не редизайним весь messenger. Нужно дорисовать только paid-service states: offer/payment/credits, session status, question intake, expert connection lost/bad connection, expert unavailable fallback, low/no credits top-up, failed send/upload, ended transcript, support/refund/report.”</p>
+      <p>Короткий brief Антону: “Базовый desktop chat уже есть. Не редизайним весь messenger. Нужно дорисовать только paid-service states: offer/payment/credits, session status, question intake, connecting to expert with no-charge progress, expert connection lost/bad connection, expert busy/unavailable fallback with alternative experts, low/no credits top-up, failed payment/retry, failed send/upload, ended transcript, support/refund/report.”</p>
     </section>
   </main>
 </body>
