@@ -830,6 +830,12 @@
       box-shadow: 0 0 0 3px rgba(113, 69, 223, .12);
     }
 
+    .app-input.demo-focus,
+    .app-textarea.demo-focus {
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px rgba(113, 69, 223, .12);
+    }
+
     .app-textarea {
       min-height: 112px;
       resize: vertical;
@@ -872,6 +878,11 @@
       line-height: 1.25;
     }
 
+    .input-hint.error-message {
+      color: #d94747;
+      font-weight: 700;
+    }
+
     .input-counter {
       color: var(--muted);
       font-size: 11px;
@@ -881,6 +892,34 @@
     .input-error {
       border-color: #ff8a8a !important;
       box-shadow: 0 0 0 3px rgba(255, 87, 87, .12) !important;
+    }
+
+    .unknown-toggle {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--violet);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    .unknown-toggle:hover {
+      border-color: var(--violet);
+      background: var(--surface-2);
+    }
+
+    .field-behavior {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field-behavior .field-note {
+      background: var(--surface-2);
     }
 
     .field-notes {
@@ -1105,7 +1144,7 @@
         <h3>Микродетали полей</h3>
         <ul>
           <li>Даты рождения пользователя и партнера должны иметь одинаковую маску: ДД / ММ / ГГГГ.</li>
-          <li>Для необязательных полей нужны состояния: пусто, фокус, заполнено, ошибка, “не знаю”.</li>
+          <li>Необязательные поля должны быть понятны пользователю: можно заполнить, оставить пустыми или выбрать “не знаю”.</li>
           <li>Для описания ситуации нужен лимит и счетчик, чтобы не перегружать пользователя.</li>
           <li>Ошибки должны быть мягкими: подсказать формат, а не блокировать весь онбординг без объяснения.</li>
         </ul>
@@ -1202,7 +1241,7 @@
               <div class="field optional">
                 <b>Время рождения</b>
                 <span class="field-value">ЧЧ:ММ <span class="mask-chip">если известно</span></span>
-                <span class="field-help">Нужно показать пустое, заполненное и “не знаю”.</span>
+                <span class="field-help">Если пользователь не знает время, поле остается пустым.</span>
               </div>
               <div class="field optional">
                 <b>Город рождения</b>
@@ -1217,7 +1256,7 @@
               <div class="field full">
                 <b>Опишите ситуацию</b>
                 <span class="field-value">Что вы хотите понять? <span class="mask-chip">до 240 знаков</span></span>
-                <span class="field-help">Нужны состояния: пусто, фокус, заполнено, ошибка, счетчик.</span>
+                <span class="field-help">Короткий текст с видимым счетчиком символов.</span>
               </div>
             </div>
           </div>
@@ -1291,6 +1330,25 @@
     </div>
 
     <section class="panel demo" style="margin-top:22px;">
+      <h2>Поведение формы: отдельно от экрана</h2>
+      <p class="helper">В самом макете показываем живые состояния полей. Правила ниже нужны дизайнеру как пояснение, но не должны попадать внутрь пользовательской формы.</p>
+      <div class="field-behavior">
+        <div class="field-note">
+          <b>Ошибка поля</b>
+          Если дата введена не полностью, подсказка формата и красная рамка появляются только у этого поля.
+        </div>
+        <div class="field-note">
+          <b>Не знаю</b>
+          Для времени рождения и даты партнера пустое поле или выбор “Не знаю” считается нормальным состоянием.
+        </div>
+        <div class="field-note">
+          <b>Фокус</b>
+          Активное поле мягко подсвечивается фиолетовым контуром, чтобы форма ощущалась легкой.
+        </div>
+      </div>
+    </section>
+
+    <section class="panel demo" style="margin-top:22px;">
       <h2>Поведение на мобильном: полный экран / нижняя шторка</h2>
       <div class="mobile-wrap">
         <div class="phone">
@@ -1309,7 +1367,7 @@
         </div>
         <div>
           <h3>Что нужно для мобильной версии</h3>
-          <p style="color:var(--muted);max-width:560px;">На телефоне это должен быть модальное окно на весь экран или нижняя шторка. Нужно показать состояние с клавиатурой, выбором темы, карточками экспертов, оплатой и отправкой вопроса. Нельзя ограничиться десктоп-модалкой.</p>
+          <p style="color:var(--muted);max-width:560px;">На телефоне это должен быть модальное окно на весь экран или нижняя шторка: выбор темы, карточки экспертов, оплата и отправка вопроса должны оставаться удобными с открытой клавиатурой.</p>
           <ul style="color:var(--muted);">
             <li>Первый вход после регистрации.</li>
             <li>Переход между шагами.</li>
@@ -1578,13 +1636,31 @@
       for (const [field, validator, message] of checks) {
         const input = modalBody.querySelector(`[data-field="${field}"]`);
         if (input && !validator(state[field] || "")) {
-          input.classList.add("input-error");
+          setFieldError(input, message);
           input.focus();
-          showToast(message);
           return false;
         }
       }
       return true;
+    }
+
+    function setFieldError(input, message) {
+      input.classList.add("input-error");
+      const hint = input.closest(".input-label")?.querySelector(".input-hint");
+      if (hint) {
+        if (!hint.dataset.defaultText) hint.dataset.defaultText = hint.textContent;
+        hint.textContent = message;
+        hint.classList.add("error-message");
+      }
+    }
+
+    function clearFieldError(input) {
+      input.classList.remove("input-error");
+      const hint = input.closest(".input-label")?.querySelector(".input-hint");
+      if (hint) {
+        if (hint.dataset.defaultText) hint.textContent = hint.dataset.defaultText;
+        hint.classList.remove("error-message");
+      }
     }
 
     function setModalVisible(visible) {
@@ -1676,7 +1752,7 @@
               <span class="input-hint">Опционально. Нужна для персонализации, не как обязательный барьер.</span>
             </label>
             <label class="input-label">
-              <span class="label-row"><strong>Время рождения</strong><span class="field-meta">необязательно</span></span>
+              <span class="label-row"><strong>Время рождения</strong><button class="unknown-toggle" type="button" data-clear-field="birthTime">Не знаю</button></span>
               <input class="app-input" data-field="birthTime" data-mask="time" inputmode="numeric" maxlength="5" placeholder="ЧЧ:ММ" value="${escapeHtml(state.birthTime)}">
               <span class="input-hint">Если пользователь не знает время, поле можно оставить пустым.</span>
             </label>
@@ -1686,7 +1762,7 @@
               <span class="input-hint">Можно использовать автоподсказки городов. Сейчас поле работает как обычный ввод.</span>
             </label>
             <label class="input-label">
-              <span class="label-row"><strong>Дата партнера</strong><span class="field-meta">та же маска</span></span>
+              <span class="label-row"><strong>Дата партнера</strong><button class="unknown-toggle" type="button" data-clear-field="partnerDate">Не знаю</button></span>
               <input class="app-input" data-field="partnerDate" data-mask="date" inputmode="numeric" maxlength="14" placeholder="ДД / ММ / ГГГГ" value="${escapeHtml(state.partnerDate)}">
               <span class="input-hint">Необязательно. Если дата неизвестна, пользователь ничего не выбирает.</span>
             </label>
@@ -1695,11 +1771,6 @@
               <textarea class="app-textarea" data-field="situation" maxlength="240" placeholder="Например: я не понимаю, стоит ли продолжать отношения">${escapeHtml(state.situation)}</textarea>
               <span class="input-hint">Достаточно одной фразы. Это помогает эксперту начать с контекста, а не с уточнений.</span>
             </label>
-            <div class="field-notes">
-              <div class="field-note"><b>Состояние ошибки</b>Если дата введена не полностью, показываем подсказку формата и красную рамку только у этого поля.</div>
-              <div class="field-note"><b>Состояние “не знаю”</b>Для времени и даты партнера пустое поле считается нормальным, без ошибки.</div>
-              <div class="field-note"><b>Состояние фокуса</b>Фокус должен мягко подсвечивать поле, чтобы форма ощущалась легкой.</div>
-            </div>
           </div>
         `;
       }
@@ -1763,8 +1834,8 @@
             </div>
           </div>
           <div class="warning-box">
-            <b>Заметка доверия для дизайна</b>
-            <span>Рядом с оплатой нужен короткий текст: духовная консультация без гарантированных исходов, плюс видимый путь возврата или поддержки.</span>
+            <b>Перед оплатой</b>
+            <span>Консультация помогает разобраться в ситуации, но не гарантирует конкретный исход. Если что-то пойдет не так, поддержка поможет с вопросом оплаты.</span>
           </div>
         `;
       }
@@ -1777,7 +1848,7 @@
             <label class="input-label full">
               <span class="label-row"><strong>Главный вопрос для ${advisor.name}</strong><span class="input-counter">${state.question.length}/280</span></span>
               <textarea class="app-textarea" data-field="question" maxlength="280" placeholder="Задайте один понятный вопрос">${escapeHtml(state.question)}</textarea>
-              <span class="input-hint">После оплаты вопрос уходит эксперту. Нужны состояния: пусто, заполнено, отправка, ошибка отправки.</span>
+              <span class="input-hint">После оплаты вопрос будет отправлен эксперту. Лучше задать один главный вопрос.</span>
             </label>
             <div class="pill-row">
               <span class="pill">Прикрепить фото/файл</span>
@@ -1820,7 +1891,7 @@
             if (item.dataset.mask === "time") {
               item.value = formatTimeInput(item.value);
             }
-            item.classList.remove("input-error");
+            clearFieldError(item);
             state[item.dataset.field] = item.value;
             const counter = item.closest(".input-label")?.querySelector(".input-counter");
             if (counter) {
@@ -1830,12 +1901,22 @@
           });
           item.addEventListener("blur", () => {
             if (item.dataset.mask === "date" && !isValidDateMask(item.value)) {
-              item.classList.add("input-error");
-              showToast("Дата должна быть в формате ДД / ММ / ГГГГ.");
+              setFieldError(item, "Введите дату в формате ДД / ММ / ГГГГ или оставьте поле пустым.");
             }
             if (item.dataset.mask === "time" && !isValidTimeMask(item.value)) {
-              item.classList.add("input-error");
-              showToast("Время должно быть в формате ЧЧ:ММ.");
+              setFieldError(item, "Введите время в формате ЧЧ:ММ или оставьте поле пустым.");
+            }
+          });
+        });
+
+        modalBody.querySelectorAll("[data-clear-field]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const field = button.dataset.clearField;
+            const input = modalBody.querySelector(`[data-field="${field}"]`);
+            state[field] = "";
+            if (input) {
+              input.value = "";
+              clearFieldError(input);
             }
           });
         });
@@ -2007,7 +2088,7 @@
               <p>${advisor.name} · ${mobileState.format}. Включает один главный вопрос и сохраненную стенограмму.</p>
             </div>
           </div>
-          <p class="helper">Нужны состояния: успешная оплата, ошибка и ожидание.</p>
+          <p class="helper">После оплаты пользователь сразу понимает, что пакет выбран и консультация готова к старту.</p>
         `;
       }
 
@@ -2100,7 +2181,7 @@
         showToast("Подбираем экспертов по теме и данным консультации...");
       }
       if (state.step === 5) {
-        showToast("Оплата и бесплатное вступление: нужны состояния успеха, ошибки и ожидания.");
+            showToast("Показываем выбранный пакет и понятный следующий шаг.");
       }
       if (state.step === 6) {
         if (!state.question.trim()) {
