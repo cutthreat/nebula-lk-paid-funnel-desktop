@@ -1,0 +1,1937 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nebula: интерактивный onboarding modal</title>
+  <style>
+    :root {
+      --bg: #f6f3fb;
+      --surface: #ffffff;
+      --surface-2: #f0ebff;
+      --surface-3: #ebeef3;
+      --ink: #171421;
+      --muted: #726a80;
+      --line: #ded6ee;
+      --violet: #7145df;
+      --violet-2: #9b78f4;
+      --green: #25c969;
+      --yellow: #ffbd63;
+      --red: #d94d68;
+      --shadow: 0 22px 70px rgba(53, 34, 96, .22);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 18% 10%, #e8dfff 0, transparent 32%),
+        linear-gradient(180deg, #fbfaff 0%, var(--bg) 100%);
+      line-height: 1.45;
+    }
+
+    .page {
+      width: min(1280px, calc(100% - 48px));
+      margin: 28px auto 64px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .top h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .top p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .tag {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,.72);
+      color: var(--violet);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .panel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 16px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.82);
+    }
+
+    .panel-links,
+    .panel-step-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .panel-nav a,
+    .panel-step-links a,
+    .breadcrumbs a {
+      color: var(--violet);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .panel-nav a {
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    .panel-nav a.active {
+      color: var(--ink);
+      background: var(--surface-2);
+    }
+
+    .breadcrumbs {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .breadcrumbs span {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 38px rgba(57, 41, 92, .08);
+    }
+
+    .notes {
+      padding: 22px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .notes h2,
+    .notes h3,
+    .demo h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+    }
+
+    .notes p,
+    .notes li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .notes ul {
+      margin: 10px 0 22px 18px;
+      padding: 0;
+    }
+
+    .legend {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .legend span {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .dot.green { background: var(--green); }
+    .dot.yellow { background: var(--yellow); }
+    .dot.red { background: var(--red); }
+
+    .demo {
+      padding: 24px;
+      min-width: 0;
+    }
+
+    .cabinet {
+      min-height: 760px;
+      border-radius: 26px;
+      background:
+        linear-gradient(rgba(255,255,255,.72), rgba(255,255,255,.72)),
+        linear-gradient(90deg, #eceaf1 0 260px, #f8f7fb 260px 100%);
+      border: 1px solid #e7e2ef;
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cabinet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(1px);
+    }
+
+    .nav {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      color: #202028;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .logo::before {
+      content: "";
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b999ff, #5c27c8 70%);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .shell {
+      position: relative;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 26px;
+    }
+
+    .sidebar,
+    .content-placeholder {
+      min-height: 580px;
+      border-radius: 22px;
+      background: #eeeeef;
+      padding: 24px;
+    }
+
+    .avatar {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      margin: 12px auto 18px;
+      border: 3px solid var(--violet-2);
+      background: linear-gradient(135deg, #ffd7d0, #9c7fec);
+    }
+
+    .side-line {
+      height: 44px;
+      border-radius: 12px;
+      background: #fff;
+      margin: 12px 0;
+      border: 1px solid #ded6ee;
+    }
+
+    .content-placeholder {
+      display: grid;
+      grid-template-rows: 70px 200px 1fr;
+      gap: 18px;
+    }
+
+    .placeholder-card {
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid #e2ddeb;
+    }
+
+    .modal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(760px, calc(100% - 52px));
+      max-height: min(780px, calc(100% - 40px));
+      background: var(--surface);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      z-index: 2;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+    }
+
+    .modal-head {
+      padding: 26px 30px 20px;
+      background: linear-gradient(135deg, #ffffff 0%, #f3edff 100%);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 16px;
+    }
+
+    .modal-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .modal h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.18;
+    }
+
+    .modal-sub {
+      color: var(--muted);
+      max-width: 540px;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 0;
+      background: #efe9ff;
+      color: var(--violet);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .progress {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .step {
+      height: 7px;
+      border-radius: 99px;
+      background: #dfd7ef;
+    }
+
+    .step.done,
+    .step.active {
+      background: var(--violet);
+    }
+
+    .modal-body {
+      padding: 28px 30px 30px;
+      display: grid;
+      gap: 22px;
+    }
+
+    #modalBody {
+      overflow-y: auto;
+      min-height: 0;
+    }
+
+    .screen-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--violet);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .screen-label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .choice {
+      min-height: 92px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .choice small {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    .choice.selected {
+      border-color: var(--violet);
+      background: var(--surface-2);
+      box-shadow: inset 0 0 0 1px var(--violet);
+    }
+
+    .mini-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      min-height: 52px;
+      padding: 9px 13px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .field b {
+      display: block;
+      color: var(--ink);
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .field.full { grid-column: 1 / -1; min-height: 90px; }
+
+    .advisor-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .advisor {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .advisor-top {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .photo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd7be, #7654da);
+    }
+
+    .advisor h3 {
+      margin: 0 0 2px;
+      font-size: 16px;
+    }
+
+    .advisor p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      width: fit-content;
+      border-radius: 999px;
+      background: #dcfbe7;
+      color: #0e8d45;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status.offline {
+      background: #ececf0;
+      color: #8a8790;
+    }
+
+    .cta {
+      min-height: 48px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--violet);
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .cta.secondary {
+      background: #e7ddff;
+      color: var(--violet);
+    }
+
+    .format-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .format {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .format b {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .format small {
+      color: var(--muted);
+    }
+
+    .payment-card {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(135deg, #7045df, #9b78f4);
+      color: #fff;
+    }
+
+    .payment-card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .payment-card p {
+      margin: 0;
+      color: rgba(255,255,255,.82);
+    }
+
+    .price {
+      display: grid;
+      align-content: center;
+      justify-items: end;
+      gap: 8px;
+      font-weight: 800;
+    }
+
+    .price strong { font-size: 30px; }
+
+    .question {
+      display: grid;
+      gap: 12px;
+    }
+
+    .textarea {
+      min-height: 120px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 16px;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .skip {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .primary-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .ghost {
+      min-height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--violet);
+      padding: 0 18px;
+      font-weight: 800;
+    }
+
+    .step-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .mini-screen {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 18px;
+      min-height: 215px;
+    }
+
+    .mini-screen h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .mini-screen p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mobile-wrap {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .phone {
+      width: 320px;
+      height: 640px;
+      border-radius: 36px;
+      border: 10px solid #1d1a24;
+      background: #f7f6fa;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .phone-bg {
+      height: 100%;
+      padding: 18px;
+      display: grid;
+      grid-template-rows: 40px 1fr;
+      gap: 12px;
+    }
+
+    .phone-header {
+      border-radius: 12px;
+      background: #e9e7ee;
+    }
+
+    .bottom-sheet {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      border-radius: 28px 28px 0 0;
+      padding: 20px;
+      box-shadow: 0 -18px 44px rgba(45, 30, 80, .2);
+      max-height: 82%;
+      overflow-y: auto;
+    }
+
+    .bottom-sheet h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .mobile-choice {
+      border-radius: 14px;
+      background: var(--surface-2);
+      padding: 12px;
+      margin: 9px 0;
+      color: var(--violet);
+      font-weight: 800;
+    }
+
+    .mobile-choice.selected {
+      background: var(--violet);
+      color: #fff;
+    }
+
+    .mobile-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mobile-actions .cta,
+    .mobile-actions .ghost {
+      width: 100%;
+      min-height: 44px;
+    }
+
+    .mobile-progress {
+      height: 6px;
+      border-radius: 999px;
+      background: #e5ddf7;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .mobile-progress span {
+      display: block;
+      height: 100%;
+      width: 14%;
+      background: var(--violet);
+      transition: width .2s ease;
+    }
+
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .state {
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 14px;
+      min-height: 92px;
+    }
+
+    .state b { display: block; margin-bottom: 6px; }
+    .state small { color: var(--muted); }
+
+    .choice,
+    .advisor,
+    .format,
+    .mobile-choice,
+    .state {
+      cursor: pointer;
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .choice:hover,
+    .advisor:hover,
+    .format:hover,
+    .mobile-choice:hover,
+    .state:hover {
+      transform: translateY(-1px);
+      border-color: var(--violet-2);
+      box-shadow: 0 12px 24px rgba(86, 56, 145, .12);
+    }
+
+    .format.selected,
+    .advisor.selected {
+      border-color: var(--violet);
+      background: var(--surface-2);
+      box-shadow: inset 0 0 0 1px var(--violet);
+    }
+
+    .app-input,
+    .app-textarea,
+    .app-select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      min-height: 52px;
+      padding: 12px 13px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      outline: none;
+    }
+
+    .app-input:focus,
+    .app-textarea:focus,
+    .app-select:focus {
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px rgba(113, 69, 223, .12);
+    }
+
+    .app-textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .input-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .input-label.full { grid-column: 1 / -1; }
+
+    .helper {
+      color: var(--muted);
+      font-size: 13px;
+      margin: -6px 0 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .summary-card {
+      display: grid;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 12px;
+      border-bottom: 1px solid #efeaf7;
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .summary-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .summary-row b { color: var(--muted); }
+
+    .success-box,
+    .warning-box,
+    .error-box {
+      border-radius: 18px;
+      padding: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .success-box {
+      background: #e8fbf0;
+      border: 1px solid #bceccb;
+      color: #0d6e39;
+    }
+
+    .warning-box {
+      background: #fff5df;
+      border: 1px solid #ffd887;
+      color: #754a00;
+    }
+
+    .error-box {
+      background: #fff0f3;
+      border: 1px solid #fac4d0;
+      color: #8a1630;
+    }
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      max-width: min(360px, calc(100vw - 44px));
+      border-radius: 16px;
+      background: #181421;
+      color: #fff;
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 10;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reopen {
+      position: absolute;
+      right: 34px;
+      bottom: 34px;
+      z-index: 1;
+      display: none;
+    }
+
+    .reopen.show { display: block; }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1020px) {
+      .workspace { grid-template-columns: 1fr; }
+      .notes { position: static; }
+      .shell { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .option-grid, .advisor-row, .format-row, .state-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mobile-wrap { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 24px, 1280px); margin-top: 18px; }
+      .top { display: grid; }
+      .top h1 { font-size: 26px; }
+      .demo, .notes { padding: 18px; }
+      .cabinet { padding: 14px; min-height: 680px; overflow: visible; }
+      .nav-links { display: none; }
+      .modal {
+        position: fixed;
+        inset: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100dvh;
+        max-height: none;
+        transform: none;
+        border-radius: 0;
+        z-index: 20;
+      }
+      .modal h2 { font-size: 22px; }
+      .modal-head, .modal-body { padding: 20px; }
+      .option-grid, .advisor-row, .format-row, .mini-form, .step-gallery, .state-grid, .payment-card { grid-template-columns: 1fr; }
+      .actions { display: grid; }
+      .primary-actions { display: grid; }
+      .toast { right: 12px; bottom: 12px; }
+      .reopen { position: fixed; right: 18px; bottom: 18px; z-index: 6; }
+      .phone { width: 100%; max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="panel-nav" aria-label="Навигация по панели">
+      <div class="panel-links">
+        <a href="index.html">Панель</a>
+        <a class="active" href="onboarding-modal.html">Онбординг</a>
+        <a href="matching-payment-example.html">Матчинг + оплата</a>
+        <a href="paid-funnel.html">Полная воронка</a>
+        <a href="chat-paid-session-mockups.html">Макеты чата</a>
+        <a href="chat-designer-minimum.html">Бриф</a>
+      </div>
+      <div class="panel-step-links">
+        <a href="index.html">Назад: панель</a>
+        <a href="matching-payment-example.html">Вперед: матчинг + оплата</a>
+      </div>
+    </nav>
+    <div class="breadcrumbs"><a href="index.html">Панель</a> / <span>Интерактивный onboarding modal</span></div>
+
+    <div class="top">
+      <div>
+        <h1>Интерактивный post-signup onboarding modal для ЛК Nebula</h1>
+        <p>HTML-набросок для дизайнера в прежнем формате: модалка поверх кабинета, шаги, выбор, состояния и переход к первой платной консультации.</p>
+      </div>
+      <div class="tag">Интерактивный пример / P0 funnel</div>
+    </div>
+
+    <div class="workspace">
+      <aside class="panel notes">
+        <h2>Задача модалки</h2>
+        <p>После регистрации пользователь попадает в кабинет. Модалка должна быстро понять его запрос, собрать минимум данных, подобрать экспертов и довести до консультации.</p>
+
+        <h3>Основной путь</h3>
+        <ul>
+          <li>Выбор темы.</li>
+          <li>Уточнение боли.</li>
+          <li>Данные для reading.</li>
+          <li>Подбор экспертов.</li>
+          <li>Формат консультации.</li>
+          <li>Free intro / payment.</li>
+          <li>Главный вопрос эксперту.</li>
+        </ul>
+
+        <h3>Важно дизайнеру</h3>
+        <p>Это не регистрационная анкета. Это персональный мастер: пользователь должен почувствовать, что его ситуацию поняли и сейчас подберут подходящего человека.</p>
+
+        <div class="legend">
+          <span><i class="dot"></i> Главные коммерческие шаги</span>
+          <span><i class="dot green"></i> Успешный путь</span>
+          <span><i class="dot yellow"></i> Бонус / free intro</span>
+          <span><i class="dot red"></i> Ошибки и блокеры</span>
+        </div>
+      </aside>
+
+      <section class="panel demo">
+        <h2>Основной экран: модалка поверх кабинета</h2>
+        <div class="cabinet">
+          <div class="nav">
+            <div class="logo">NEURO</div>
+            <div class="nav-links">
+              <span>Psychic</span>
+              <span>Favorite</span>
+              <span>Chatroom</span>
+              <span>Horoscope</span>
+            </div>
+          </div>
+
+          <div class="shell">
+            <div class="sidebar">
+              <div class="avatar"></div>
+              <div class="side-line"></div>
+              <div class="side-line"></div>
+              <div class="side-line"></div>
+              <div class="side-line"></div>
+            </div>
+            <div class="content-placeholder">
+              <div class="placeholder-card"></div>
+              <div class="placeholder-card"></div>
+              <div class="placeholder-card"></div>
+            </div>
+          </div>
+
+          <button class="cta reopen" id="reopenOnboarding">Открыть онбординг</button>
+
+          <div class="modal" id="onboardingModal">
+            <div class="modal-head">
+              <div class="modal-title-row">
+                <div>
+                  <h2 id="modalTitle">What do you need guidance with?</h2>
+                  <p class="modal-sub" id="modalSubtitle">Answer a few quick questions and we will match you with advisors who fit your situation.</p>
+                </div>
+                <button class="close" id="closeOnboarding" aria-label="Close">×</button>
+              </div>
+              <div class="progress" id="progress">
+                <div class="step active" data-progress="0"></div>
+                <div class="step" data-progress="1"></div>
+                <div class="step" data-progress="2"></div>
+                <div class="step" data-progress="3"></div>
+                <div class="step" data-progress="4"></div>
+                <div class="step" data-progress="5"></div>
+                <div class="step" data-progress="6"></div>
+              </div>
+            </div>
+
+            <div class="modal-body" id="modalBody"></div>
+
+            <div class="modal-body" style="padding-top:0;">
+              <div class="actions">
+                <span class="skip" id="skipOnboarding">Skip for now</span>
+                <div class="primary-actions">
+                  <button class="ghost" id="backStep">Back</button>
+                  <button class="cta" id="nextStep">Continue</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-gallery">
+          <div class="mini-screen">
+            <div class="screen-label">Step 2 / clarify</div>
+            <h3>Уточнение запроса</h3>
+            <p>Для выбранной темы показываем 3-4 варианта: “I want to understand my current relationship”, “Will my ex come back?”, “I need compatibility guidance”.</p>
+            <div class="choice selected">I want to understand my current relationship</div>
+          </div>
+
+          <div class="mini-screen">
+            <div class="screen-label">Step 3 / reading data</div>
+            <h3>Минимальные данные</h3>
+            <div class="mini-form">
+              <div class="field"><b>Your birth date</b>MM / DD / YYYY</div>
+              <div class="field"><b>Birth time</b>If known</div>
+              <div class="field"><b>Birth city</b>City, country</div>
+              <div class="field"><b>Partner date</b>Optional</div>
+              <div class="field full"><b>Describe your situation</b>What do you want to understand?</div>
+            </div>
+          </div>
+
+          <div class="mini-screen">
+            <div class="screen-label">Step 4 / matched advisors</div>
+            <h3>We found advisors for your situation</h3>
+            <div class="advisor-row">
+              <div class="advisor">
+                <div class="advisor-top">
+                  <div class="photo"></div>
+                  <div><h3>Veronika</h3><p>Love expert · 4.8 ★</p></div>
+                </div>
+                <span class="status">online</span>
+                <button class="cta">Choose</button>
+              </div>
+              <div class="advisor">
+                <div class="advisor-top">
+                  <div class="photo"></div>
+                  <div><h3>Marina</h3><p>Tarot · 4.9 ★</p></div>
+                </div>
+                <span class="status offline">offline</span>
+                <button class="cta secondary">Notify me</button>
+              </div>
+              <div class="advisor">
+                <div class="advisor-top">
+                  <div class="photo"></div>
+                  <div><h3>Mia</h3><p>Astrology · 4.7 ★</p></div>
+                </div>
+                <span class="status">online</span>
+                <button class="cta">Choose</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-screen">
+            <div class="screen-label">Step 5 / consultation format</div>
+            <h3>Choose how you want to receive guidance</h3>
+            <div class="format-row">
+              <div class="format"><b>Live chat now</b><small>Start a real-time paid chat.</small></div>
+              <div class="format"><b>Detailed reading</b><small>Send a question and get an answer later.</small></div>
+              <div class="format"><b>Book a session</b><small>Choose time and duration.</small></div>
+            </div>
+          </div>
+
+          <div class="mini-screen">
+            <div class="screen-label">Step 6 / offer</div>
+            <h3>Starter reading package</h3>
+            <div class="payment-card">
+              <div>
+                <h3>Your first love reading</h3>
+                <p>Includes one main question, expert answer and saved transcript.</p>
+              </div>
+              <div class="price">
+                <span>Free intro available</span>
+                <strong>$4.99</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-screen">
+            <div class="screen-label">Step 7 / question intake</div>
+            <h3>Ask your main question</h3>
+            <div class="question">
+              <div class="textarea">Example: I feel distance in my relationship. What should I understand before making a decision?</div>
+              <button class="cta">Send to advisor</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel demo" style="margin-top:22px;">
+      <h2>Mobile behavior: fullscreen / bottom sheet</h2>
+      <div class="mobile-wrap">
+        <div class="phone">
+          <div class="phone-bg">
+            <div class="phone-header"></div>
+            <div class="placeholder-card"></div>
+          </div>
+          <div class="bottom-sheet">
+            <div class="mobile-progress"><span id="mobileProgress"></span></div>
+            <div id="mobileSheetBody"></div>
+            <div class="mobile-actions">
+              <button class="ghost" id="mobileBack">Back</button>
+              <button class="cta" id="mobileNext">Continue</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Что нужно отрисовать на mobile</h3>
+          <p style="color:var(--muted);max-width:560px;">На телефоне это должен быть fullscreen modal или bottom sheet. Нужно показать состояние с клавиатурой, выбором темы, карточками экспертов, оплатой и отправкой вопроса. Нельзя ограничиться desktop-модалкой.</p>
+          <ul style="color:var(--muted);">
+            <li>Первый вход после регистрации.</li>
+            <li>Переход между шагами.</li>
+            <li>Клавиатура на question intake.</li>
+            <li>Payment / free intro на маленьком экране.</li>
+            <li>Возврат к онбордингу из кабинета.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel demo" style="margin-top:22px;">
+      <h2>Обязательные состояния для дизайнера</h2>
+      <div class="state-grid">
+        <div class="state"><b>First login</b><small>Модалка открывается автоматически после регистрации.</small></div>
+        <div class="state"><b>Skipped</b><small>Пользователь пропустил, но может вернуться из кабинета.</small></div>
+        <div class="state"><b>Loading match</b><small>Подбираем экспертов после ответов.</small></div>
+        <div class="state"><b>No match</b><small>Нет подходящих online-экспертов, предлагаем альтернативы.</small></div>
+        <div class="state"><b>Expert offline</b><small>Notify me / choose another / async reading.</small></div>
+        <div class="state"><b>Payment required</b><small>Пакет, цена, что входит, CTA на оплату.</small></div>
+        <div class="state"><b>Free intro</b><small>Показать бонус и момент перехода к paid continuation.</small></div>
+        <div class="state"><b>Save error</b><small>Данные не сохранились, retry без потери ответов.</small></div>
+      </div>
+    </section>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script>
+    const steps = [
+      {
+        key: "intent",
+        title: "What do you need guidance with?",
+        subtitle: "Choose the main topic. The next steps adapt to this choice.",
+        label: "Step 1 / intent"
+      },
+      {
+        key: "clarify",
+        title: "Tell us what feels closest",
+        subtitle: "One tap is enough. The goal is to understand the situation, not to make the user fill a long form.",
+        label: "Step 2 / clarify"
+      },
+      {
+        key: "data",
+        title: "Add details for a personal reading",
+        subtitle: "Keep this lightweight. Optional fields should not block the user.",
+        label: "Step 3 / reading data"
+      },
+      {
+        key: "advisors",
+        title: "We found advisors for your situation",
+        subtitle: "Show 3 strong matches, not a huge catalog.",
+        label: "Step 4 / matched advisors"
+      },
+      {
+        key: "format",
+        title: "Choose your consultation format",
+        subtitle: "Make the purchase feel like a clear service, not like buying abstract minutes.",
+        label: "Step 5 / consultation format"
+      },
+      {
+        key: "offer",
+        title: "Start your first reading",
+        subtitle: "Show what is included, the price, bonus/free intro and trust note before payment.",
+        label: "Step 6 / offer"
+      },
+      {
+        key: "question",
+        title: "Ask your main question",
+        subtitle: "This is the bridge from onboarding to the real paid chat or async reading.",
+        label: "Step 7 / question intake"
+      }
+    ];
+
+    const intents = [
+      ["Love & relationships", "Understand what is happening in your love life."],
+      ["Breakup / ex partner", "Get guidance about reconnection or closure."],
+      ["Compatibility", "Check emotional and zodiac compatibility."],
+      ["Future", "Find direction when you feel uncertain."],
+      ["Career", "Ask about work, choices and timing."],
+      ["Tarot reading", "Get a card-based reading for your question."],
+      ["Astrology", "Use birth details for a personal reading."],
+      ["Other", "Describe your situation in your own words."]
+    ];
+
+    const clarifyByIntent = {
+      "Love & relationships": [
+        "I want to understand my current relationship",
+        "I feel distance and need guidance",
+        "I want to know what my partner feels",
+        "I need advice before making a decision"
+      ],
+      "Breakup / ex partner": [
+        "Will my ex come back?",
+        "Should I wait or move on?",
+        "Why did the breakup happen?",
+        "How can I find closure?"
+      ],
+      "Compatibility": [
+        "Check our emotional compatibility",
+        "Check our zodiac compatibility",
+        "Can this relationship become serious?",
+        "What should we work on?"
+      ],
+      "Future": [
+        "What should I expect soon?",
+        "I need clarity about a decision",
+        "What energy surrounds me now?",
+        "What should I focus on?"
+      ],
+      "Career": [
+        "Should I change my job?",
+        "What blocks my growth?",
+        "Is this opportunity right for me?",
+        "When is the right time to act?"
+      ],
+      "Tarot reading": [
+        "I have one specific question",
+        "I want a relationship tarot reading",
+        "I want a career tarot reading",
+        "I need a general spread"
+      ],
+      "Astrology": [
+        "I want a birth chart reading",
+        "I want compatibility astrology",
+        "I want timing guidance",
+        "I want to understand my patterns"
+      ],
+      "Other": [
+        "I want to describe it myself",
+        "I am not sure which topic fits",
+        "I need spiritual guidance",
+        "I want to choose an advisor first"
+      ]
+    };
+
+    const advisors = [
+      {
+        name: "Veronika",
+        role: "Love & relationship expert",
+        rating: "4.8",
+        reviews: "1,211 reviews",
+        price: "45 credits/min",
+        status: "online",
+        match: "Best match for relationship clarity"
+      },
+      {
+        name: "Marina",
+        role: "Tarot and compatibility reader",
+        rating: "4.9",
+        reviews: "9,109 reviews",
+        price: "Starter reading $4.99",
+        status: "offline",
+        match: "Available for async reading"
+      },
+      {
+        name: "Mia Jacomo",
+        role: "Astrology and future guidance",
+        rating: "4.7",
+        reviews: "752 reviews",
+        price: "39 credits/min",
+        status: "online",
+        match: "Good match for birth-data reading"
+      }
+    ];
+
+    const formats = [
+      ["Live chat now", "Start a real-time paid chat. Best when the advisor is online."],
+      ["Detailed async reading", "Send one question and receive a prepared answer with transcript."],
+      ["Book a session", "Choose time, duration and timezone for a planned consultation."]
+    ];
+
+    const state = {
+      step: 0,
+      intent: "Love & relationships",
+      clarify: "I want to understand my current relationship",
+      birthDate: "",
+      birthTime: "",
+      birthCity: "",
+      partnerDate: "",
+      situation: "",
+      advisor: 0,
+      format: "Live chat now",
+      package: "Starter reading",
+      question: "I feel distance in my relationship. What should I understand before making a decision?",
+      completed: false
+    };
+
+    const mobileState = {
+      step: 0,
+      intent: "Love & relationships",
+      clarify: "I want to understand my current relationship",
+      advisor: 0,
+      format: "Live chat now",
+      question: "Will my current partner and I stay together?",
+      done: false
+    };
+
+    const modal = document.getElementById("onboardingModal");
+    const modalBody = document.getElementById("modalBody");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSubtitle = document.getElementById("modalSubtitle");
+    const backStep = document.getElementById("backStep");
+    const nextStep = document.getElementById("nextStep");
+    const closeOnboarding = document.getElementById("closeOnboarding");
+    const skipOnboarding = document.getElementById("skipOnboarding");
+    const reopenOnboarding = document.getElementById("reopenOnboarding");
+    const toast = document.getElementById("toast");
+    const mobileSheetBody = document.getElementById("mobileSheetBody");
+    const mobileProgress = document.getElementById("mobileProgress");
+    const mobileBack = document.getElementById("mobileBack");
+    const mobileNext = document.getElementById("mobileNext");
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    function setModalVisible(visible) {
+      modal.classList.toggle("hidden", !visible);
+      reopenOnboarding.classList.toggle("show", !visible);
+      if (!visible) {
+        showToast("Onboarding skipped. User can reopen it from the cabinet.");
+      }
+    }
+
+    function updateProgress() {
+      document.querySelectorAll("[data-progress]").forEach((item) => {
+        const index = Number(item.dataset.progress);
+        item.classList.toggle("done", index < state.step);
+        item.classList.toggle("active", index === state.step);
+      });
+    }
+
+    function setStep(index) {
+      state.step = Math.max(0, Math.min(index, steps.length - 1));
+      render();
+    }
+
+    function resetMainFlow() {
+      state.step = 0;
+      state.completed = false;
+      nextStep.textContent = "Continue";
+      render();
+    }
+
+    function render() {
+      const step = steps[state.step];
+      modalTitle.textContent = step.title;
+      modalSubtitle.textContent = step.subtitle;
+      updateProgress();
+      backStep.disabled = state.step === 0;
+      backStep.style.opacity = state.step === 0 ? ".45" : "1";
+      nextStep.textContent = getNextLabel();
+      modalBody.innerHTML = renderStep(step.key);
+      bindStepEvents(step.key);
+    }
+
+    function getNextLabel() {
+      if (state.step === 2) return "Find advisors";
+      if (state.step === 3) return "Choose advisor";
+      if (state.step === 4) return "Continue";
+      if (state.step === 5) return "Start my reading";
+      if (state.step === 6) return "Send to advisor";
+      return "Continue";
+    }
+
+    function renderStep(key) {
+      if (key === "intent") {
+        return `
+          <div class="screen-label">${steps[0].label}</div>
+          <div class="option-grid">
+            ${intents.map(([name, desc]) => `
+              <div class="choice ${state.intent === name ? "selected" : ""}" data-intent="${escapeHtml(name)}">
+                ${escapeHtml(name)}<small>${escapeHtml(desc)}</small>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      if (key === "clarify") {
+        const options = clarifyByIntent[state.intent] || clarifyByIntent.Other;
+        return `
+          <div class="screen-label">${steps[1].label}</div>
+          <p class="helper">Selected topic: <b>${escapeHtml(state.intent)}</b></p>
+          <div class="option-grid">
+            ${options.map((name) => `
+              <div class="choice ${state.clarify === name ? "selected" : ""}" data-clarify="${escapeHtml(name)}">
+                ${escapeHtml(name)}<small>This can become the pre-filled question context.</small>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      if (key === "data") {
+        return `
+          <div class="screen-label">${steps[2].label}</div>
+          <p class="helper">Designer note: these fields should feel optional and lightweight. Do not turn onboarding into a heavy form.</p>
+          <div class="mini-form">
+            <label class="input-label">Your birth date
+              <input class="app-input" data-field="birthDate" placeholder="MM / DD / YYYY" value="${escapeHtml(state.birthDate)}">
+            </label>
+            <label class="input-label">Birth time
+              <input class="app-input" data-field="birthTime" placeholder="If known" value="${escapeHtml(state.birthTime)}">
+            </label>
+            <label class="input-label">Birth city
+              <input class="app-input" data-field="birthCity" placeholder="City, country" value="${escapeHtml(state.birthCity)}">
+            </label>
+            <label class="input-label">Partner date
+              <input class="app-input" data-field="partnerDate" placeholder="Optional" value="${escapeHtml(state.partnerDate)}">
+            </label>
+            <label class="input-label full">Describe your situation
+              <textarea class="app-textarea" data-field="situation" placeholder="A few words are enough">${escapeHtml(state.situation)}</textarea>
+            </label>
+          </div>
+        `;
+      }
+
+      if (key === "advisors") {
+        return `
+          <div class="screen-label">${steps[3].label}</div>
+          <div class="advisor-row">
+            ${advisors.map((advisor, index) => `
+              <div class="advisor ${state.advisor === index ? "selected" : ""}" data-advisor="${index}">
+                <div class="advisor-top">
+                  <div class="photo"></div>
+                  <div>
+                    <h3>${advisor.name}</h3>
+                    <p>${advisor.role}</p>
+                  </div>
+                </div>
+                <div class="pill-row">
+                  <span class="status ${advisor.status === "offline" ? "offline" : ""}">${advisor.status}</span>
+                  <span class="pill">${advisor.rating} stars</span>
+                  <span class="pill">${advisor.reviews}</span>
+                </div>
+                <p>${advisor.match}</p>
+                <p><b>${advisor.price}</b></p>
+                <button class="cta ${advisor.status === "offline" ? "secondary" : ""}" data-advisor-button="${index}">
+                  ${advisor.status === "offline" ? "Notify me" : "Choose"}
+                </button>
+              </div>
+            `).join("")}
+          </div>
+          <p class="helper">Designer note: keep this shortlist small. It should feel curated for the user's situation.</p>
+        `;
+      }
+
+      if (key === "format") {
+        return `
+          <div class="screen-label">${steps[4].label}</div>
+          <div class="format-row">
+            ${formats.map(([name, desc]) => `
+              <div class="format ${state.format === name ? "selected" : ""}" data-format="${escapeHtml(name)}">
+                <b>${escapeHtml(name)}</b>
+                <small>${escapeHtml(desc)}</small>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      if (key === "offer") {
+        const advisor = advisors[state.advisor];
+        return `
+          <div class="screen-label">${steps[5].label}</div>
+          <div class="payment-card">
+            <div>
+              <h3>Your first ${state.intent.toLowerCase()} reading</h3>
+              <p>Advisor: ${advisor.name}. Format: ${state.format}. Includes one main question, expert answer and saved transcript.</p>
+            </div>
+            <div class="price">
+              <span>Free intro available</span>
+              <strong>$4.99</strong>
+            </div>
+          </div>
+          <div class="warning-box">
+            <b>Trust note to design</b>
+            <span>Add short copy near payment: spiritual guidance, no guaranteed outcomes, refund/support path visible.</span>
+          </div>
+        `;
+      }
+
+      if (key === "question") {
+        const advisor = advisors[state.advisor];
+        return `
+          <div class="screen-label">${steps[6].label}</div>
+          <div class="question">
+            <label class="input-label full">Main question for ${advisor.name}
+              <textarea class="app-textarea" data-field="question" placeholder="Ask one clear question">${escapeHtml(state.question)}</textarea>
+            </label>
+            <div class="pill-row">
+              <span class="pill">Attach photo/file</span>
+              <span class="pill">Saved transcript</span>
+              <span class="pill">Expected reply: 10-20 min</span>
+            </div>
+          </div>
+        `;
+      }
+
+      return "";
+    }
+
+    function bindStepEvents(key) {
+      if (key === "intent") {
+        modalBody.querySelectorAll("[data-intent]").forEach((item) => {
+          item.addEventListener("click", () => {
+            state.intent = item.dataset.intent;
+            state.clarify = (clarifyByIntent[state.intent] || clarifyByIntent.Other)[0];
+            render();
+          });
+        });
+      }
+
+      if (key === "clarify") {
+        modalBody.querySelectorAll("[data-clarify]").forEach((item) => {
+          item.addEventListener("click", () => {
+            state.clarify = item.dataset.clarify;
+            render();
+          });
+        });
+      }
+
+      if (key === "data" || key === "question") {
+        modalBody.querySelectorAll("[data-field]").forEach((item) => {
+          item.addEventListener("input", () => {
+            state[item.dataset.field] = item.value;
+          });
+        });
+      }
+
+      if (key === "advisors") {
+        modalBody.querySelectorAll("[data-advisor]").forEach((item) => {
+          item.addEventListener("click", (event) => {
+            const index = Number(item.dataset.advisor);
+            if (advisors[index].status === "offline") {
+              showToast("Offline state: show Notify me, async reading or choose another advisor.");
+              return;
+            }
+            state.advisor = index;
+            render();
+          });
+        });
+      }
+
+      if (key === "format") {
+        modalBody.querySelectorAll("[data-format]").forEach((item) => {
+          item.addEventListener("click", () => {
+            state.format = item.dataset.format;
+            render();
+          });
+        });
+      }
+    }
+
+    function completeFlow() {
+      const advisor = advisors[state.advisor];
+      modalTitle.textContent = "Your question was sent";
+      modalSubtitle.textContent = "This is the handoff from onboarding into the paid consultation flow.";
+      nextStep.textContent = "Done";
+      backStep.style.opacity = "1";
+      modalBody.innerHTML = `
+        <div class="screen-label">Complete / chat handoff</div>
+        <div class="success-box">
+          <b>Reading started</b>
+          <span>${advisor.name} received the user's question. Show ETA, paid session status and saved transcript entry next.</span>
+        </div>
+        <div class="summary-card">
+          <div class="summary-row"><b>Topic</b><span>${escapeHtml(state.intent)}</span></div>
+          <div class="summary-row"><b>Situation</b><span>${escapeHtml(state.clarify)}</span></div>
+          <div class="summary-row"><b>Advisor</b><span>${advisor.name} - ${advisor.role}</span></div>
+          <div class="summary-row"><b>Format</b><span>${escapeHtml(state.format)}</span></div>
+          <div class="summary-row"><b>Question</b><span>${escapeHtml(state.question)}</span></div>
+        </div>
+      `;
+      state.completed = true;
+      showToast("Prototype complete: next screen should be paid chat with SLA and transcript.");
+    }
+
+    function setMobileStep(index) {
+      mobileState.step = Math.max(0, Math.min(index, steps.length - 1));
+      mobileState.done = false;
+      renderMobile();
+    }
+
+    function renderMobile() {
+      const progress = ((mobileState.step + 1) / steps.length) * 100;
+      mobileProgress.style.width = `${progress}%`;
+      mobileBack.disabled = mobileState.step === 0 && !mobileState.done;
+      mobileBack.style.opacity = mobileBack.disabled ? ".45" : "1";
+      mobileNext.textContent = mobileState.done ? "Close" : getMobileNextLabel();
+      mobileSheetBody.innerHTML = renderMobileStep();
+      bindMobileEvents();
+    }
+
+    function getMobileNextLabel() {
+      if (mobileState.step === 2) return "Match";
+      if (mobileState.step === 5) return "Start";
+      if (mobileState.step === 6) return "Send";
+      return "Continue";
+    }
+
+    function renderMobileStep() {
+      const step = steps[mobileState.step];
+
+      if (mobileState.done) {
+        const advisor = advisors[mobileState.advisor];
+        return `
+          <div class="screen-label">Mobile complete</div>
+          <h3>Question sent</h3>
+          <p class="helper">${advisor.name} received the question. Next mobile screen should show paid chat, ETA and transcript.</p>
+          <div class="success-box"><b>Ready for chat handoff</b><span>${escapeHtml(mobileState.question)}</span></div>
+        `;
+      }
+
+      if (step.key === "intent") {
+        return `
+          <div class="screen-label">Mobile / Step 1</div>
+          <h3>What do you need guidance with?</h3>
+          ${intents.slice(0, 6).map(([name]) => `
+            <div class="mobile-choice ${mobileState.intent === name ? "selected" : ""}" data-mobile-intent="${escapeHtml(name)}">${escapeHtml(name)}</div>
+          `).join("")}
+        `;
+      }
+
+      if (step.key === "clarify") {
+        const options = clarifyByIntent[mobileState.intent] || clarifyByIntent.Other;
+        return `
+          <div class="screen-label">Mobile / Step 2</div>
+          <h3>What feels closest?</h3>
+          <p class="helper">${escapeHtml(mobileState.intent)}</p>
+          ${options.map((name) => `
+            <div class="mobile-choice ${mobileState.clarify === name ? "selected" : ""}" data-mobile-clarify="${escapeHtml(name)}">${escapeHtml(name)}</div>
+          `).join("")}
+        `;
+      }
+
+      if (step.key === "data") {
+        return `
+          <div class="screen-label">Mobile / Step 3</div>
+          <h3>Add details</h3>
+          <p class="helper">Keep mobile data entry short. Keyboard state should be drawn separately.</p>
+          <label class="input-label">Birth date
+            <input class="app-input" placeholder="MM / DD / YYYY">
+          </label>
+          <label class="input-label" style="margin-top:10px;">Describe situation
+            <textarea class="app-textarea" data-mobile-question-source placeholder="A few words are enough"></textarea>
+          </label>
+        `;
+      }
+
+      if (step.key === "advisors") {
+        return `
+          <div class="screen-label">Mobile / Step 4</div>
+          <h3>Matched advisors</h3>
+          ${advisors.map((advisor, index) => `
+            <div class="mobile-choice ${mobileState.advisor === index ? "selected" : ""}" data-mobile-advisor="${index}">
+              ${advisor.name} · ${advisor.rating} ★ · ${advisor.status}<br>
+              <small>${advisor.role}</small>
+            </div>
+          `).join("")}
+        `;
+      }
+
+      if (step.key === "format") {
+        return `
+          <div class="screen-label">Mobile / Step 5</div>
+          <h3>Choose format</h3>
+          ${formats.map(([name, desc]) => `
+            <div class="mobile-choice ${mobileState.format === name ? "selected" : ""}" data-mobile-format="${escapeHtml(name)}">
+              ${escapeHtml(name)}<br><small>${escapeHtml(desc)}</small>
+            </div>
+          `).join("")}
+        `;
+      }
+
+      if (step.key === "offer") {
+        const advisor = advisors[mobileState.advisor];
+        return `
+          <div class="screen-label">Mobile / Step 6</div>
+          <h3>Starter reading</h3>
+          <div class="payment-card" style="grid-template-columns:1fr;">
+            <div>
+              <h3>$4.99</h3>
+              <p>${advisor.name} · ${mobileState.format}. Includes one main question and saved transcript.</p>
+            </div>
+          </div>
+          <p class="helper">Designer needs payment success, failed and pending mobile states.</p>
+        `;
+      }
+
+      if (step.key === "question") {
+        return `
+          <div class="screen-label">Mobile / Step 7</div>
+          <h3>Ask your question</h3>
+          <textarea class="app-textarea" data-mobile-question>${escapeHtml(mobileState.question)}</textarea>
+          <div class="pill-row" style="margin-top:10px;">
+            <span class="pill">Attach</span>
+            <span class="pill">ETA 10-20 min</span>
+          </div>
+        `;
+      }
+
+      return "";
+    }
+
+    function bindMobileEvents() {
+      mobileSheetBody.querySelectorAll("[data-mobile-intent]").forEach((item) => {
+        item.addEventListener("click", () => {
+          mobileState.intent = item.dataset.mobileIntent;
+          mobileState.clarify = (clarifyByIntent[mobileState.intent] || clarifyByIntent.Other)[0];
+          renderMobile();
+        });
+      });
+
+      mobileSheetBody.querySelectorAll("[data-mobile-clarify]").forEach((item) => {
+        item.addEventListener("click", () => {
+          mobileState.clarify = item.dataset.mobileClarify;
+          renderMobile();
+        });
+      });
+
+      mobileSheetBody.querySelectorAll("[data-mobile-advisor]").forEach((item) => {
+        item.addEventListener("click", () => {
+          const index = Number(item.dataset.mobileAdvisor);
+          mobileState.advisor = index;
+          if (advisors[index].status === "offline") {
+            showToast("Mobile offline advisor state: show Notify me or async reading.");
+          }
+          renderMobile();
+        });
+      });
+
+      mobileSheetBody.querySelectorAll("[data-mobile-format]").forEach((item) => {
+        item.addEventListener("click", () => {
+          mobileState.format = item.dataset.mobileFormat;
+          renderMobile();
+        });
+      });
+
+      const questionInput = mobileSheetBody.querySelector("[data-mobile-question]");
+      if (questionInput) {
+        questionInput.addEventListener("input", () => {
+          mobileState.question = questionInput.value;
+        });
+      }
+
+      const sourceInput = mobileSheetBody.querySelector("[data-mobile-question-source]");
+      if (sourceInput) {
+        sourceInput.addEventListener("input", () => {
+          if (sourceInput.value.trim()) {
+            mobileState.question = sourceInput.value;
+          }
+        });
+      }
+    }
+
+    nextStep.addEventListener("click", () => {
+      if (state.completed) {
+        setModalVisible(false);
+        return;
+      }
+      if (state.step === 2) {
+        showToast("Matching advisors based on topic and reading data...");
+      }
+      if (state.step === 5) {
+        showToast("Payment/free intro state: designer should draw success, fail and pending.");
+      }
+      if (state.step === 6) {
+        if (!state.question.trim()) {
+          showToast("Add a question before sending to advisor.");
+          return;
+        }
+        completeFlow();
+        return;
+      }
+      setStep(state.step + 1);
+    });
+
+    backStep.addEventListener("click", () => {
+      if (state.completed) {
+        state.completed = false;
+        setStep(6);
+        return;
+      }
+      setStep(state.step - 1);
+    });
+
+    closeOnboarding.addEventListener("click", () => setModalVisible(false));
+    skipOnboarding.addEventListener("click", () => setModalVisible(false));
+    reopenOnboarding.addEventListener("click", () => {
+      if (state.completed) {
+        resetMainFlow();
+      }
+      setModalVisible(true);
+    });
+
+    mobileNext.addEventListener("click", () => {
+      if (mobileState.done) {
+        showToast("Mobile flow complete. Designer should connect this to mobile chatroom.");
+        return;
+      }
+      if (mobileState.step === 2) {
+        showToast("Mobile matching: show loading before advisors.");
+      }
+      if (mobileState.step === 5) {
+        showToast("Mobile payment/free intro: draw success, failed and pending.");
+      }
+      if (mobileState.step === 6) {
+        if (!mobileState.question.trim()) {
+          showToast("Add a mobile question before sending.");
+          return;
+        }
+        mobileState.done = true;
+        renderMobile();
+        return;
+      }
+      setMobileStep(mobileState.step + 1);
+    });
+
+    mobileBack.addEventListener("click", () => {
+      if (mobileState.done) {
+        mobileState.done = false;
+        setMobileStep(6);
+        return;
+      }
+      setMobileStep(mobileState.step - 1);
+    });
+
+    document.querySelectorAll(".state").forEach((item) => {
+      item.addEventListener("click", () => {
+        const name = item.querySelector("b")?.textContent || "State";
+        showToast(`${name}: designer should draw this as a separate modal state.`);
+      });
+    });
+
+    render();
+    renderMobile();
+  </script>
+</body>
+</html>

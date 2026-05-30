@@ -1,8 +1,8 @@
 # Nebula LK designer web panel
 
-External web panel for the Nebula personal cabinet designer handoff.
+Внешняя веб-панель для передачи дизайнеру по личному кабинету Nebula.
 
-Published through GitHub Pages.
+Публикуется через GitHub Pages.
 
 Local entry:
 
@@ -12,9 +12,11 @@ index.html
 
 Included:
 
-1. `index.html` - designer web panel.
-2. `paid-funnel.html` - clickable desktop paid consultation prototype.
-3. `chat-designer-minimum.html` - reduced chat paid-service state brief.
-4. `chat-paid-session-mockups.html` - clickable desktop paid chat state mockups.
+1. `index.html` - главная панель.
+2. `onboarding-modal.html` - отдельный интерактивный onboarding modal, как в исходном локальном наброске.
+3. `matching-payment-example.html` - интерактивный пример результата матчинга, выбора эксперта и офера/оплаты.
+4. `paid-funnel.html` - полный кликабельный desktop paid consultation prototype.
+5. `chat-paid-session-mockups.html` - кликабельные desktop-состояния платного чата.
+6. `chat-designer-minimum.html` - сжатый бриф по paid-service состояниям чата.
 
-Scope: desktop only.
+Фокус панели: desktop. В `onboarding-modal.html` сохранен старый mobile behavior block как reference из исходного прототипа.
