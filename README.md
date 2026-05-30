@@ -1,20 +1,19 @@
-# Nebula LK paid funnel desktop prototype
+# Nebula LK designer web panel
 
-Clickable desktop HTML prototype for the Nebula personal cabinet paid consultation flow.
+External web panel for the Nebula personal cabinet designer handoff.
 
-Open locally:
+Published through GitHub Pages.
+
+Local entry:
 
 ```text
 index.html
 ```
 
-Screens:
+Included:
 
-1. Post-signup onboarding
-2. Advisor match result
-3. Package / checkout
-4. Question intake
-5. Paid chat lifecycle
-6. Async result / transcript / support
+1. `index.html` - designer web panel.
+2. `paid-funnel.html` - clickable desktop paid consultation prototype.
+3. `chat-designer-minimum.html` - reduced chat paid-service state brief.
 
 Scope: desktop only.
