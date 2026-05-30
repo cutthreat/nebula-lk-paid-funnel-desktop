@@ -175,10 +175,10 @@
 
     <section class="grid" aria-label="11 deliverables" style="grid-template-columns: repeat(11, 1fr);">
       <div class="pill"><strong>1</strong>Offer/payment</div>
-      <div class="pill"><strong>2</strong>Paid session status</div>
-      <div class="pill"><strong>3</strong>Question intake</div>
-      <div class="pill"><strong>4</strong>Connection lost</div>
-      <div class="pill"><strong>5</strong>Expert unavailable</div>
+      <div class="pill"><strong>2</strong>Статус платной сессии</div>
+      <div class="pill"><strong>3</strong>Вопрос перед чатом</div>
+      <div class="pill"><strong>4</strong>Обрыв связи</div>
+      <div class="pill"><strong>5</strong>Эксперт недоступен</div>
       <div class="pill"><strong>6</strong>Connecting/no charge</div>
       <div class="pill"><strong>7</strong>Low/no credits</div>
       <div class="pill"><strong>8</strong>Payment retry</div>
@@ -212,7 +212,7 @@
       <h2>Нужно дорисовать для запуска</h2>
       <div class="table">
         <div class="row need">
-          <div><span class="tag">Required</span><h3>1. Offer / payment / credits</h3></div>
+          <div><span class="tag">Required</span><h3>1. Офер / оплата / credits</h3></div>
           <ul>
             <li>selected expert and format</li>
             <li>package/credit offer</li>
@@ -223,7 +223,7 @@
           <p>Пользователь должен понимать, что именно покупает, до старта платного чата.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>2. Paid session status bar</h3></div>
+          <div><span class="tag">Required</span><h3>2. Статус платной сессии bar</h3></div>
           <ul>
             <li>free preview / paid live / waiting / ended</li>
             <li>credits or minutes left</li>
@@ -233,7 +233,7 @@
           <p>Главная защита от непонимания оплаты внутри чата.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>3. Question intake</h3></div>
+          <div><span class="tag">Required</span><h3>3. Вопрос перед чатом</h3></div>
           <ul>
             <li>selected expert/topic/package</li>
             <li>question textarea</li>
@@ -243,7 +243,7 @@
           <p>Без этого у эксперта нет структурированной задачи.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>4. Connection lost / bad connection</h3></div>
+          <div><span class="tag">Required</span><h3>4. Обрыв связи / bad connection</h3></div>
           <ul>
             <li>expert connection lost</li>
             <li>client connection unstable</li>
@@ -254,7 +254,7 @@
           <p>Если у эксперта плохая связь, клиент должен видеть, что услуга защищена и кредиты не списываются молча.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>5. Expert unavailable / delayed</h3></div>
+          <div><span class="tag">Required</span><h3>5. Эксперт недоступен / delayed</h3></div>
           <ul>
             <li>offline/busy after selection</li>
             <li>available alternative experts</li>
@@ -288,7 +288,7 @@
           <p>Самый критичный interruption в paid chat.</p>
         </div>
         <div class="row need">
-          <div><span class="tag">Required</span><h3>8. Failed payment / retry another method</h3></div>
+          <div><span class="tag">Required</span><h3>8. Ошибка оплаты / retry another method</h3></div>
           <ul>
             <li>payment failed message</li>
             <li>selected package/order summary</li>
@@ -347,6 +347,9 @@
 
     <section class="copybox">
       <p>Короткий brief Антону: “Базовый desktop chat уже есть. Не редизайним весь messenger. Нужно дорисовать только paid-service states: offer/payment/credits, session status, question intake, connecting to expert with no-charge progress, expert connection lost/bad connection, expert busy/unavailable fallback with alternative experts, low/no credits top-up, failed payment/retry, failed send/upload, ended transcript, support/refund/report.”</p>
+    </section>
+    <section class="copybox">
+      <p>Кликабельные HTML-макеты этих состояний: <a href="chat-paid-session-mockups.html">chat-paid-session-mockups.html</a></p>
     </section>
   </main>
 </body>
