@@ -232,6 +232,20 @@
       border: 3px solid var(--purple);
     }
 
+    .consultation-mark {
+      width: 118px;
+      height: 118px;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 3px solid var(--purple);
+      background: radial-gradient(circle at 30% 25%, #fff 0 12%, #efe4ff 34%, #8e5cff 70%, #4c23b7 100%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 34px;
+      font-weight: 900;
+    }
+
     .profile-mini h2 {
       margin: 14px 0 4px;
       font-size: 22px;
@@ -788,7 +802,7 @@
     <section class="board-head">
       <div>
         <h1>Десктоп-макеты платной консультации в ЛК</h1>
-        <p class="lead">Кликабельный сценарий того, что нужно закрыть в личном кабинете: после регистрации клиент уточняет запрос, переходит к эксперту, оплачивает понятный пакет и получает консультацию.</p>
+        <p class="lead">Кликабельный сценарий личного кабинета: после регистрации клиент уточняет запрос, выбирает эксперта, оплачивает понятный пакет и получает консультацию.</p>
       </div>
       <div class="scope-note">Фокус: только десктоп. Это кликабельный продуктовый макет платной консультации.</div>
     </section>
@@ -805,9 +819,9 @@
     <section id="screen-onboarding" class="mockup active">
       <aside class="side">
         <div class="profile-mini">
-          <img src="img/avatar-3.png" alt="">
-          <h2>Victoriya</h2>
-          <p class="muted">Профиль: Телец</p>
+          <div class="consultation-mark">N</div>
+          <h2>Love consultation</h2>
+          <p class="muted">Старт после регистрации</p>
         </div>
         <nav class="side-menu">
           <a class="active" href="#">Профиль</a>
@@ -846,7 +860,7 @@
                   <h2>В чем вы хотите получить ясность?</h2>
                   <p class="muted">Это логика онбординга для первого платного пути.</p>
                 </div>
-                <span class="pill">P0-1</span>
+                <span class="pill">Шаг 1</span>
               </div>
               <div class="choice-grid">
                 <div class="choice active"><strong>Любовная ситуация</strong><br><span class="muted">Отношения, расставание, совместимость</span></div>
@@ -882,9 +896,9 @@
     <section id="screen-match" class="mockup">
       <aside class="side">
         <div class="profile-mini">
-          <img src="img/avatar-3.png" alt="">
-          <h2>Victoriya</h2>
-          <p class="muted">Выбрана любовная ситуация</p>
+          <div class="consultation-mark">N</div>
+          <h2>Love consultation</h2>
+          <p class="muted">Выбран запрос об отношениях</p>
         </div>
         <nav class="side-menu">
           <a href="#">Профиль</a>
@@ -902,7 +916,7 @@
               <h2>Результат выбора экспертов</h2>
               <p class="muted">Показываем основной рекомендованный вариант и запасные пути, если эксперт занят или недоступен.</p>
             </div>
-            <span class="pill">P0-2</span>
+            <span class="pill">Шаг 2</span>
           </div>
           <div class="grid-3">
             <article class="advisor-card">
@@ -945,10 +959,10 @@
               </div>
               <div class="tags"><span>Таро</span><span>Расставание</span><span>Будущее</span></div>
               <div class="why"><strong>Почему подходит:</strong> хороша для таро с фокусом на будущее, но не должна быть основным действием живого чата, пока не в сети.</div>
-              <button class="secondary" data-toast="Открыто состояние уведомления: нужно подтверждение и путь назад.">Уведомить меня</button>
+              <button class="secondary" data-toast="Мы сообщим, когда эксперт будет онлайн.">Уведомить меня</button>
             </article>
           </div>
-          <div class="annotation" style="margin-top:18px;">Нужно: добавить объяснение выбора, альтернативы онлайн / занята / не в сети, цену пакета и одно очевидное основное действие.</div>
+          <div class="annotation" style="margin-top:18px;">Клиент видит, кто доступен сейчас, сколько стоит консультация и какой шаг будет следующим.</div>
         </div>
       </main>
     </section>
@@ -956,9 +970,9 @@
     <section id="screen-checkout" class="mockup">
       <aside class="side">
         <div class="profile-mini">
-          <img src="img/avatar-3.png" alt="">
-          <h2>Victoriya</h2>
-          <p class="muted">Выбрана: Veronika</p>
+          <div class="consultation-mark">N</div>
+          <h2>Love consultation</h2>
+          <p class="muted">Выбрана Veronika</p>
         </div>
         <nav class="side-menu">
           <a href="#">Профиль</a>
@@ -976,7 +990,7 @@
               <h2>Выберите первую консультацию</h2>
               <p class="muted">Это недостающий договор покупки внутри ЛК: что пользователь покупает, у кого и за что платит.</p>
             </div>
-            <span class="pill">P0-3 / P0-4</span>
+            <span class="pill">Шаг 3</span>
           </div>
           <div class="offer">
             <div>
@@ -1031,8 +1045,8 @@
     <section id="screen-question" class="mockup">
       <aside class="side">
         <div class="profile-mini">
-          <img src="img/avatar-3.png" alt="">
-          <h2>Victoriya</h2>
+          <div class="consultation-mark">N</div>
+          <h2>Love consultation</h2>
           <p class="muted">Консультация готова к старту</p>
         </div>
         <nav class="side-menu">
@@ -1051,7 +1065,7 @@
               <h2>Подготовьте вопрос</h2>
               <p class="muted">Платной консультации нужен структурированный запрос, а не пустой поле ввода чата.</p>
             </div>
-            <span class="pill">P0-5</span>
+            <span class="pill">Шаг 4</span>
           </div>
           <div class="question-area">
             <div class="panel">
@@ -1085,8 +1099,8 @@
     <section id="screen-chat" class="mockup">
       <aside class="side">
         <div class="profile-mini">
-          <img src="img/avatar-3.png" alt="">
-          <h2>Victoriya</h2>
+          <div class="consultation-mark">N</div>
+          <h2>Love consultation</h2>
           <p class="muted">Живая сессия</p>
         </div>
         <nav class="side-menu">
@@ -1110,7 +1124,7 @@
                     <span class="status online">платный живой чат</span>
                   </div>
                 </div>
-                <span class="pill">P0-6</span>
+                <span class="pill">Шаг 5</span>
               </div>
               <div class="chat-body">
                 <div class="bubble out">Мой главный вопрос: останемся ли мы с текущим партнером вместе?</div>
@@ -1150,8 +1164,8 @@
     <section id="screen-result" class="mockup">
       <aside class="side">
         <div class="profile-mini">
-          <img src="img/avatar-3.png" alt="">
-          <h2>Victoriya</h2>
+          <div class="consultation-mark">N</div>
+          <h2>Love consultation</h2>
           <p class="muted">Ответ доставлен</p>
         </div>
         <nav class="side-menu">
@@ -1170,7 +1184,7 @@
               <h2>Результат консультации</h2>
               <p class="muted">Это закрывает платное обещание и создает следующий платный шаг.</p>
             </div>
-            <span class="pill">P0-7 / P0-8 / P0-10</span>
+            <span class="pill">Финал</span>
           </div>
           <div class="grid-2">
             <section class="result-card">
@@ -1186,7 +1200,7 @@
               </div>
               <div style="display:flex;gap:12px;margin-top:18px;">
                 <button class="primary" data-go="screen-checkout">Задать следующий вопрос</button>
-                <button class="secondary" data-toast="Открыто состояние рейтинга: нужна оценка, пропуск, жалоба и благодарность.">Оценить консультацию</button>
+                <button class="secondary" data-toast="Спасибо. Оценку можно оставить сейчас или позже.">Оценить консультацию</button>
               </div>
             </section>
             <section class="panel">
